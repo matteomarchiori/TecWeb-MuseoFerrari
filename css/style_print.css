@@ -1,0 +1,53 @@
+* {
+    margin-top:0;
+    margin-right:0;
+    margin-bottom:0;
+    margin-left:0;
+    padding-top:0;
+    padding-right:0;
+    padding-bottom:0;
+    padding-left:0;
+    font-size:1.0em;
+    font-family: Georgia, 'Times New Roman', serif;
+    box-sizing:border-box;/*per risolvere il problema di 1px border e la width*/
+}
+body{
+	text-align:justify;
+}
+#currentlink{
+	display:block;
+}
+h1{
+	padding-top:1.0em;
+	padding-bottom:1.0em;
+}
+#content h1{
+    font-size:1.5em;
+}
+#content h2{
+    font-size:1.2em;
+}
+#menu, #breadcrumbs, #language, img, #linktotop{
+	display:none;
+}
+#eventiprossimi p{
+    padding-bottom:1em;
+}
+
+
+
+#footer{
+	margin-top:3em;
+    padding-top:1em;
+    text-align:center;
+    border-top: 1px solid #DDD;
+}
+
+/*#footer{
+ text-align:center;
+ font-size:0.9em;
+ padding:1.0em;
+ font-style:italic;
+ border-top: 1px solid #DDD;
+}*/
+

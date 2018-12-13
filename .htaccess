@@ -1,0 +1,5 @@
+DirectoryIndex ./php/common/header.php
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ ./php/common/header.php/$1 [L]

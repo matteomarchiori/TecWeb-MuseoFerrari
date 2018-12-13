@@ -1,0 +1,79 @@
+<div id="content" class="container">
+  <div id="prenotabiglietti" class="col-4">
+    <h1>Prenota ora i tuoi biglietti</h1>
+    <form action="/prenotazione" method="POST" class="container">
+      <fieldset class="col-4 col-xl-2">
+          <legend>Nominativo</legend>
+          <label for="nome">Nome</label>
+          <input type="text" name="nome" id="nome"/>
+          <br/>
+          <label for="cognome">Cognome</label>
+          <input type="text" name="cognome" id="cognome"/>
+          <br/>
+      </fieldset>
+      <fieldset class="col-4 col-xl-2">
+          <legend>Dati di contatto</legend>
+          <label for="telefono">Telefono</label>
+          <input type="text" name="telefono" id="telefono"/>
+          <br/>
+          <label for="email">Email</label>
+          <input type="text" name="email" id="email"/>
+          <br/>
+      </fieldset>
+      <fieldset class="col-4 col-xl-2">
+          <legend>Dati relativi all'abitazione</legend>
+          <label for="indirizzo">Indirizzo</label>
+          <input type="text" name="indirizzo" id="indirizzo"/>
+          <br/>
+          <label for="stato">Stato</label>
+          <select name="stato">
+            <optgroup label="Africa">
+                <option value="gam">Gambia</option>
+                <option value="mad">Madagascar</option>
+                <option value="nam">Namibia</option>
+            </optgroup>
+            <optgroup label="Europa">
+                <option value="fra">France</option>
+                <option value="rus">Russia</option>
+                <option value="uk">UK</option>
+            </optgroup>
+            <optgroup label="America">
+                <option value="can">Canada</option>
+                <option value="mex">Mexico</option>
+                <option value="usa">USA</option>
+            </optgroup>
+          </select>
+          <br/>
+          <label for="cap"><abbr title="Codice Avviamento Postale">CAP</abbr></label>
+          <select name="cap">
+            <optgroup label="Africa">
+                <option value="gam">Gambia</option>
+                <option value="mad">Madagascar</option>
+                <option value="nam">Namibia</option>
+            </optgroup>
+            <optgroup label="Europe">
+                <option value="fra">France</option>
+                <option value="rus">Russia</option>
+                <option value="uk">UK</option>
+            </optgroup>
+            <optgroup label="North America">
+                <option value="can">Canada</option>
+                <option value="mex">Mexico</option>
+                <option value="usa">USA</option>
+            </optgroup>
+          </select>
+          <br/>
+      </fieldset>
+      <fieldset class="col-4 col-xl-2">
+          <legend>Newsletter</legend>
+          <label for="newsletter">Desidero iscrivermi alla newsletter</label>
+          <input type="checkbox" name="newsletter" id="newsletter"/>
+      </fieldset>
+       <fieldset class="col-4 col-xl-2">
+          <legend>Invia o Cancella</legend>
+          <input type="submit" name="invio" id="invio" value="Invia"/>
+          <input type="reset" name="reset" id="reset" value="Cancella"/>
+      </fieldset>
+    </form>
+  </div>
+</div>

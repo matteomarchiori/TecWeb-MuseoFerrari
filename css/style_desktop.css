@@ -1,0 +1,251 @@
+/*Griglia responsive*/
+
+* {
+    margin-top:0;
+    margin-right:0;
+    margin-bottom:0;
+    margin-left:0;
+    padding-top:0;
+    padding-right:0;
+    padding-bottom:0;
+    padding-left:0;
+    font-size:1.0em;
+    font-family: sans-serif;
+    box-sizing:border-box;/*per risolvere il problema di 1px border e la width*/
+}
+
+body{
+    max-width:1200px;
+    min-width:264px;
+    margin:auto;
+    background-color: #e60000;
+}
+
+#logo{
+	max-width:unset;
+    max-height:7em;
+}
+
+#header{
+    color:white;
+    background-color:#262626;
+    min-height:7em;
+}
+
+#menu{
+    list-style-type:none;
+    text-align:right;
+    font-size:0.9em;
+    margin-top:1.5em;
+    margin-right:1em;
+	max-width:unset;
+}
+#currentLink{
+    background-color:#cccccc;
+    padding:0.8em;/*non lo prende*/
+    color:black;
+}
+#menu > li{
+    text-align:center;
+    display:inline-block;
+}
+#menu li{/*è solo per il currentLink*/
+	text-align:unset;
+	display:unset;
+	margin:unset;
+	padding:0.8em;
+	border:unset;
+}
+
+#menu > li:not(#currentLink){
+	text-align:unset;
+	display:unset;
+	margin:unset;
+	padding:unset;
+	border:unset;
+}
+#menu > li:last-of-type {
+  margin-bottom: unset;
+}
+#menu > li:first-of-type {
+  margin-top: unset;
+}
+#menu li > a{
+    text-decoration:none;
+    color:white; 
+    padding:0.6em;/*piccola diff tra li attivo e a*/
+}
+#menu li > a:hover:not(.no){/*class no se si vuole da aggiungere a header.php*/
+    box-shadow: inset 0 0 0 2px #ffffff;;
+    //transition: all 1s;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {/*ul*/
+    display: none;
+    position: absolute;
+    z-index: 1;
+    margin-top:1em;
+	margin-bottom:unset;
+	margin-left:unset;
+    list-style-type: none;
+	min-width:13em;
+	text-align:left;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+#breadcrumbs{
+    background-color:silver;
+    padding: 0.5em;
+	color:black;
+}
+#formRicerca{
+	float:right;
+	xborder-radius: 0.4em;
+	border:3px solid #262626;
+}
+#formRicerca input[type=text]{
+	border:none;
+	margin:0.1em;
+	padding:0.5em;
+	float:left;
+}
+#formRicerca input[type=submit]{
+	float:right;
+	border:none;
+	background-image:url('../img/header/search.svg');
+	width:2em;
+    height:2em;
+	margin:0.2em;
+	cursor: pointer;
+}
+#content{
+    background-color:white;
+    padding:4em;
+}
+#content h1{
+    font-size:1.5em;
+}
+#content h2{
+    font-size:1.2em;
+}
+#eventoprincipale{
+    text-align:justify;
+    padding-right:2em;/*temporaneo*/
+}
+#eventoprincipale h1,#eventoprincipale h2,#eventoprincipale p{
+    margin-bottom:1em;
+}
+#immagineprincipale{
+    width:100%;
+}
+#presentazionegenerale{
+    text-align:justify;
+    padding:2em;
+    padding-left:6em;
+    padding-right:6em;
+}
+#presentazionegenerale p{
+    margin-top:1em;
+}
+#eventiprossimi{
+    text-align:justify;
+    /*padding:2em;*/
+}
+#eventiprossimi p{
+    text-align:justify;
+    padding-top:1em;
+}
+#eventiprossimi .treColonne{
+    padding-top:1em;
+    padding-left:1em;
+    padding-right:1em;  
+}
+#eventiprossimi .treColonne img{
+    width:100%;
+}
+
+.tablemodelli th{
+    background-color:silver;
+    text-align: left;
+    padding: 0.5em;
+}
+.tablemodelli td{
+	background-color:white;
+    padding:0.5em;
+}
+
+.infomodello{
+	margin-bottom:2em;
+    padding-right:2em;
+}
+.fotomodello{
+	margin-top:1.5em;
+}
+.pulsantePag a{
+	text-decoration:none;
+}
+.pulsantePag{
+	width:33.3%;
+	margin-top:2em;
+}
+#next, #back, #current{
+	color:white;
+	text-align:center;
+	width:60%;
+	background-color:#262626;
+	padding:0.5em;
+	margin:0.5em;
+	margin-left:auto;
+	margin-right:auto;
+}
+#footer{
+    padding:2em;
+    text-align:center;
+    background-color:silver;
+}
+#footer img{
+	width:40%;
+	margin-top:0.8em;
+}
+#footer p{
+	margin-top:unset;
+	margin-bottom:unset;
+}
+#toTop{
+	background-image:url('../img/header/toTop.svg');
+	position:fixed;
+	bottom: 2em;
+	right: 2em;
+    width:3em;
+    height:3em;
+}
+.desktopnone{
+    display: none;
+}
+.container{
+    overflow:hidden;
+    width:100%;
+}
+.container > *{
+    float:left;
+}
+
+.treColonne {
+	width:33.33%;
+  margin:auto;
+}
+
+.col-xl-1 {width: 25%;}
+.col-xl-2 {width: 50%;}
+.col-xl-3 {width: 75%;}
+.col-xl-4 {width: 100%;}
+/*per fare tre colonne usare un div con classe container 
+nel quale inserire tra div con classe treColonne*/
