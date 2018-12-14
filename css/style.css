@@ -218,6 +218,11 @@ body {
   padding-bottom: 0.4em;
 }
 
+.infoEContatti  h3{
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
 /*Generale*/
 
 .col-1 {
