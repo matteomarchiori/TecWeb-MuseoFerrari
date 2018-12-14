@@ -118,7 +118,7 @@ switch ($uri_parts[0]){
         $header = str_replace("LINKINFO","<li id='currentLink'>Info e Contatti</li>",$header);
         $header = str_replace("BREADCRUMBS","Info e Contatti",$header);
         echo $header;
-        include '../../html/pages/info-e-contatti.html';
+        include '../pages/info-e-contatti.php';
         break;
     default:
         break;
