@@ -172,6 +172,13 @@ body{
     width:100%;
 }
 
+#maps{
+	display:block;
+	width:70%;
+	height: 20em;
+	margin:auto;
+}
+
 .tablemodelli th{
     background-color:silver;
     text-align: left;
@@ -241,6 +248,24 @@ body{
 .treColonne {
 	width:33.33%;
   margin:auto;
+}
+
+.ColonnaInfoEContatti{
+	padding-top:1em;
+    padding-left:1em;
+    padding-right:1em;
+	padding-bottom:2em;
+	width:33.33%;
+	margin:auto;
+}
+
+.ColonnaInfoEContatti h1{
+	margin-bottom: 0.3em;
+}
+
+.ColonnaInfoEContatti h3{
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
 }
 
 .col-xl-1 {width: 25%;}
