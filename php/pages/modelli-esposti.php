@@ -19,12 +19,7 @@
 		//print_r("value è ");
 		//print_r($value);
 		$ricerca=true;
-		$where="Modello LIKE '%".$value."%' 
-		OR Anno LIKE '%".$value."%' 
-		OR TipoMotore LIKE '%".$value."%' 
-		OR Cilindrata LIKE '%".$value."%' 
-		OR PotenzaCv LIKE '%".$value."%' 
-		OR VelocitaMax LIKE '%".$value."%'";
+		$where="Modello LIKE '%".$value."%";
 		$stmt = $conn->prepare("SELECT COUNT(*) AS nRighe FROM AutoEsposte WHERE ".$where.";"); 
 	}
 	else{
@@ -36,7 +31,7 @@
 	$result = $stmt->fetch(PDO::FETCH_ASSOC);
 	//print_r($result);
 	$nRighe=$result['nRighe'];
-	$righeVisibili=5;
+	$righeVisibili=10;
 	$nPagine=ceil($nRighe/$righeVisibili);
 	//print_r($nPagine);
 	$pagina=$_GET['pagina'];
