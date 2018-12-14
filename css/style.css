@@ -160,6 +160,13 @@ body {
     font-size:1.2em;
 	margin-top: 0.5em;
 }
+#maps{
+	display: block;
+	margin:auto;
+	width:70%;
+	height: 15em;
+}
+
 .tablemodelli{
 	width:100%;
   background-color:black;
@@ -200,6 +207,15 @@ body {
 
 .container > * {
   float: left;
+}
+
+.infoEContatti {
+	width: 100%;
+	padding-bottom:0.9em;
+}
+
+.infoEContatti  h1{
+  padding-bottom: 0.4em;
 }
 
 /*Generale*/
