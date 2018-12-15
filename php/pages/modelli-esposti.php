@@ -12,8 +12,7 @@
 	</div>";
 	/*parte per la ricerca*/
 	$ricerca=false;
-  $value="";	
-  if(isset($_POST["ric"]))
+    if(isset($_POST["ric"]))
     $value=$_POST["ric"];
 	if(isset($value)){
 		//print_r("value è ");
