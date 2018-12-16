@@ -24,8 +24,7 @@ class Database{
     return false;
   }
     
-  public static function selectEvents($type,$limit){
-    $query="SELECT * FROM Evento WHERE Tipo=\"$type\" ORDER BY DataInizio LIMIT $limit;";
+  private static function selectRows($query){
     if(Database::isConnected()){
         $result=Database::$connection->query($query);
         if($result->num_rows==0) return null;
@@ -34,11 +33,24 @@ class Database{
     return null;
   }
     
+  public static function selectEvents($type,$limit){
+    $query="SELECT * FROM Evento WHERE Tipo=\"$type\" ORDER BY DataInizio LIMIT $limit;";
+    return Database::selectRows($query);
+  }
+    
+  public static function selectAutoModels($limit){
+    $query="SELECT * FROM AutoEsposte LIMIT $limit;";
+    return Database::selectRows($query);
+  }
+    
+  public static function searchAutoModels($model,$limit){
+    $query="SELECT * FROM AutoEsposte WHERE Modello LIKE '%\"$model\"% LIMIT $limit;";
+    return Database::selectRows($query);
+  }
+    
   public static function selectCurrentEvent(){
     $currentEvent=Database::selectEvents("corrente",1);
-    if(isset($currentEvent)){
-      return $currentEvent[0];
-    }
+    if(isset($currentEvent)) return $currentEvent[0];
     return null;
   }
   

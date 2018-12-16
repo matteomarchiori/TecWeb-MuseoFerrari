@@ -123,4 +123,3 @@ switch ($uri_parts[0]){
         break;
 }
 require_once '../../html/common/footer.html';
-?>
