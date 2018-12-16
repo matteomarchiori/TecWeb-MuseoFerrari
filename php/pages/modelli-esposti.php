@@ -15,29 +15,20 @@
     if(isset($_POST["ric"]))
     $value=$_POST["ric"];
 	if(isset($value)){
-		//print_r("value è ");
-		//print_r($value);
 		$ricerca=true;
 		$where="Modello LIKE '%".$value."%";
 		$stmt = $conn->prepare("SELECT COUNT(*) AS nRighe FROM AutoEsposte WHERE ".$where.";"); 
 	}
 	else{
-		//print_r("value è (non settato) ");
-		//print_r($value);
 		$stmt = $conn->prepare("SELECT COUNT(*) AS nRighe FROM AutoEsposte WHERE 1"); 
 	}
     $stmt->execute();
 	$result = $stmt->fetch(PDO::FETCH_ASSOC);
-	//print_r($result);
 	$nRighe=$result['nRighe'];
 	$righeVisibili=10;
 	$nPagine=ceil($nRighe/$righeVisibili);
-	//print_r($nPagine);
 	$pagina=$_GET['pagina'];
 	$offset= ($pagina*$righeVisibili)-$righeVisibili;
-	/*SELECT *
-FROM autoesposte
-WHERE Modello LIKE '%315%' OR Anno LIKE '%315%' OR TipoMotore LIKE '%315%' OR Cilindrata LIKE '%315%' OR PotenzaCv LIKE '%315%' OR VelocitaMax LIKE '%315%';*/
 	if($ricerca==true){
 		$stmt = $conn->prepare("SELECT * FROM AutoEsposte WHERE ".$where." LIMIT ".$righeVisibili." OFFSET ".$offset);
 	}

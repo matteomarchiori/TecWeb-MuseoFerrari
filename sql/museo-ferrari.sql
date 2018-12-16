@@ -1,15 +1,16 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2ubuntu2.1
--- http://www.phpmyadmin.net
+-- version 4.8.2
+-- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Creato il: Dic 12, 2018 alle 05:07
--- Versione del server: 5.7.23-0ubuntu0.16.04.1
--- Versione PHP: 7.2.11-2+ubuntu16.04.1+deb.sury.org+1
+-- Creato il: Dic 16, 2018 alle 14:52
+-- Versione del server: 5.7.24-0ubuntu0.16.04.1
+-- Versione PHP: 7.2.12-1+ubuntu16.04.1+deb.sury.org+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
-
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -20,15 +21,14 @@ SET time_zone = "+00:00";
 --
 -- Database: `museo-ferrari`
 --
+
 -- --------------------------------------------------------
 
-DROP DATABASE IF EXISTS museoFerrari;
-CREATE DATABASE IF NOT EXISTS museoFerrari;
-USE museoFerrari;
 --
 -- Struttura della tabella `AutoEsposte`
 --
 
+DROP TABLE IF EXISTS `AutoEsposte`;
 CREATE TABLE `AutoEsposte` (
   `ID` int(11) NOT NULL,
   `Modello` varchar(60) NOT NULL,
@@ -42,6 +42,11 @@ CREATE TABLE `AutoEsposte` (
   `percorsoFoto` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Svuota la tabella prima dell'inserimento `AutoEsposte`
+--
+
+TRUNCATE TABLE `AutoEsposte`;
 --
 -- Dump dei dati per la tabella `AutoEsposte`
 --
@@ -70,6 +75,7 @@ INSERT INTO `AutoEsposte` (`ID`, `Modello`, `Anno`, `StatoConservazione`, `Espos
 -- Struttura della tabella `Evento`
 --
 
+DROP TABLE IF EXISTS `Evento`;
 CREATE TABLE `Evento` (
   `ID` int(11) NOT NULL,
   `Titolo` varchar(60) NOT NULL,
@@ -82,6 +88,11 @@ CREATE TABLE `Evento` (
   `altFoto1` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Svuota la tabella prima dell'inserimento `Evento`
+--
+
+TRUNCATE TABLE `Evento`;
 --
 -- Dump dei dati per la tabella `Evento`
 --
@@ -98,6 +109,7 @@ INSERT INTO `Evento` (`ID`, `Titolo`, `BreveDescrizione`, `LungaDescrizione`, `p
 -- Struttura della tabella `Utente`
 --
 
+DROP TABLE IF EXISTS `Utente`;
 CREATE TABLE `Utente` (
   `ID` int(11) NOT NULL,
   `Nome` varchar(16) NOT NULL,
@@ -112,6 +124,11 @@ CREATE TABLE `Utente` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+-- Svuota la tabella prima dell'inserimento `Utente`
+--
+
+TRUNCATE TABLE `Utente`;
+--
 -- Indici per le tabelle scaricate
 --
 
@@ -125,7 +142,8 @@ ALTER TABLE `AutoEsposte`
 -- Indici per le tabelle `Utente`
 --
 ALTER TABLE `Utente`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`ID`),
+  ADD UNIQUE KEY `Email` (`Email`);
 
 --
 -- AUTO_INCREMENT per le tabelle scaricate
@@ -136,11 +154,14 @@ ALTER TABLE `Utente`
 --
 ALTER TABLE `AutoEsposte`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
 --
 -- AUTO_INCREMENT per la tabella `Utente`
 --
 ALTER TABLE `Utente`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
