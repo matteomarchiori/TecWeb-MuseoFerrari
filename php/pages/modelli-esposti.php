@@ -5,13 +5,9 @@ $database = new Database();
 if($database){
     $modelli = file_get_contents("../../html/pages/modelli-esposti.html");
     $righeVisibili=10;
-    if(isset($_POST["ric"])){
-        $search=$_POST["ric"];
-        $automobili = Database::searchAutoModels($search,$righeVisibili);
-    }
-    else{
-        $automobili = Database::selectAutoModels($righeVisibili);
-    }
+    if(isset($_POST["ric"])) $search = $_POST['ric'];
+    else $search="";
+    $automobili = Database::selectAutoModels($search,$righeVisibili);
     if(isset($_GET['pagina']))$pagina=$_GET['pagina'];
     else $pagina=1;
     
@@ -19,9 +15,9 @@ if($database){
       $modelliPagina="";
       $nRighe=count($automobili);
 	  $nPagine=ceil($nRighe/$righeVisibili);
-      $offset= ($pagina*$righeVisibili)-$righeVisibili;
+      $offset=($pagina*$righeVisibili)-$righeVisibili;
       $fileModello = file_get_contents("../../html/pages/modello-esposto.html");
-      for($auto=$offset;$auto<$righeVisibili;$auto++){
+      for($auto=$offset;$auto<$nRighe;$auto++){
         $modello = $fileModello;
         $modello = str_replace("MODELLO",$automobili[$auto]['Modello'],$modello);
         $modello = str_replace("ANNOPRODUZIONE",$automobili[$auto]['Anno'],$modello);

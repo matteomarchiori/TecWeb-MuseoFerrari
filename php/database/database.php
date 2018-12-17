@@ -50,13 +50,13 @@ class Database{
     return Database::selectRows($query);
   }
     
-  public static function selectAutoModels($limit){
+  /*public static function selectAutoModels($limit){
     $query="SELECT * FROM AutoEsposte LIMIT $limit;";
     return Database::selectRows($query);
-  }
+  }*/
     
-  public static function searchAutoModels($model,$limit){
-    $query="SELECT * FROM AutoEsposte WHERE Modello LIKE '%\"$model\"% LIMIT $limit;";
+  public static function selectAutoModels($model,$limit){
+    $query="SELECT * FROM AutoEsposte WHERE Modello LIKE \"%$model%\" LIMIT $limit;";
     return Database::selectRows($query);
   }
     
