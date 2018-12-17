@@ -162,8 +162,9 @@ body {
 }
 #maps{
 	display: block;
-	margin:auto;
-	width:70%;
+	margin: auto;
+	margin-bottom: 1.0em;
+	width: 70%;
 	height: 15em;
 }
 
@@ -200,6 +201,9 @@ body {
 #footer p{
 	margin-top:1.5em;
 	margin-bottom:1.5em;
+}
+#form{
+	padding-bottom: 0.5em;
 }
 .container {
   overflow: hidden;
