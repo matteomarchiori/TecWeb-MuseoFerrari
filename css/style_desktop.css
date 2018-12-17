@@ -234,6 +234,9 @@ body{
     width:3em;
     height:3em;
 }
+#form{
+	padding-bottom: 0.5em;
+}
 .desktopnone{
     display: none;
 }
