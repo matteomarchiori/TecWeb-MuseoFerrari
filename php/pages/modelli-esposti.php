@@ -1,7 +1,7 @@
 <?php
 require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . "database" . DIRECTORY_SEPARATOR . "database.php";
 use Database\Database;
-$database = Database::connect();
+$database = new Database();
 if($database){
     $modelli = file_get_contents("../../html/pages/modelli-esposti.html");
     $righeVisibili=10;
@@ -20,8 +20,9 @@ if($database){
       $nRighe=count($automobili);
 	  $nPagine=ceil($nRighe/$righeVisibili);
       $offset= ($pagina*$righeVisibili)-$righeVisibili;
+      $fileModello = file_get_contents("../../html/pages/modello-esposto.html");
       for($auto=$offset;$auto<$righeVisibili;$auto++){
-        $modello = file_get_contents("../../html/pages/modello-esposto.html");
+        $modello = $fileModello;
         $modello = str_replace("MODELLO",$automobili[$auto]['Modello'],$modello);
         $modello = str_replace("ANNOPRODUZIONE",$automobili[$auto]['Anno'],$modello);
         $modello = str_replace("STATOCONSERVAZIONE",$automobili[$auto]['StatoConservazione'],$modello);

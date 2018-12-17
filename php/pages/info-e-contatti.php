@@ -1,6 +1,8 @@
 <?php
-    $info = file_get_contents("../../html/pages/info-e-contatti.html");
-	include_once("../connection.php");
+require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . "database" . DIRECTORY_SEPARATOR . "database.php";
+use Database\Database;
+$database = new Database();
+if($database){
     if(isset($_POST['email'])){
       $email = $_POST['email'];
       $stmt = $conn -> prepare("SELECT COUNT(*) AS nRighe FROM Utente WHERE Email = \"$email\";");
@@ -23,4 +25,5 @@
     }
     else $info = str_replace("SUBSCRIBE","",$info);
     echo $info;
+}
 ?>

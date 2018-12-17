@@ -10,8 +10,11 @@ class Database{
   
   private static $connection;
     
-  public static function connect(){
-    if(!Database::isConnected()) Database::$connection = new \mysqli(static::HOST_DB,static::USERNAME,static::PASSWORD,static::DB_NAME);
+  public function __construct(){
+    if(!Database::isConnected()){
+        Database::$connection = new \mysqli(static::HOST_DB,static::USERNAME,static::PASSWORD,static::DB_NAME);
+        Database::$connection->set_charset('utf8');
+    }
     return Database::isConnected();
   }
     
@@ -52,6 +55,13 @@ class Database{
     $currentEvent=Database::selectEvents("corrente",1);
     if(isset($currentEvent)) return $currentEvent[0];
     return null;
+  }
+    
+  public static function newsletter($email){
+    $query="SELECT Email FROM Utente WHERE Email = \"$email\";";
+    $user=Database::selectRows($query);
+    if(isset($user))return true;
+    return false;
   }
   
 }

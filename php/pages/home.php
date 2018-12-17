@@ -1,7 +1,7 @@
 <?php
 require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . "database" . DIRECTORY_SEPARATOR . "database.php";
 use Database\Database;
-$database = Database::connect();
+$database = new Database();
 if($database){
   $home = file_get_contents("../../html/pages/home.html");
   $eventoCorrente = Database::selectCurrentEvent();
