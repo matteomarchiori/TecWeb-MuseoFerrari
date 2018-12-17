@@ -12,8 +12,8 @@ class Database{
     
   public function __construct(){
     if(!Database::isConnected()){
-        Database::$connection = new \mysqli(static::HOST_DB,static::USERNAME,static::PASSWORD,static::DB_NAME);
-        Database::$connection->set_charset('utf8');
+      Database::$connection = new \mysqli(static::HOST_DB,static::USERNAME,static::PASSWORD,static::DB_NAME);
+      Database::$connection->set_charset('utf8');
     }
     return Database::isConnected();
   }
@@ -29,11 +29,20 @@ class Database{
     
   private static function selectRows($query){
     if(Database::isConnected()){
-        $result=Database::$connection->query($query);
-        if($result->num_rows==0) return null;
-        return $result->fetch_all(MYSQLI_ASSOC);
+      $result=Database::$connection->query($query);
+      if($result->num_rows==0) return null;
+      return $result->fetch_all(MYSQLI_ASSOC);
     }
     return null;
+  }
+    
+  private static function insertUpdateDelete($query){
+    if(Database::isConnected()){
+      $result=Database::$connection->query($query);
+      if(Database::$connection->affected_rows > 0)return true;
+      return false; 
+    }
+    return false;
   }
     
   public static function selectEvents($type,$limit){
@@ -60,8 +69,9 @@ class Database{
   public static function newsletter($email){
     $query="SELECT Email FROM Utente WHERE Email = \"$email\";";
     $user=Database::selectRows($query);
-    if(isset($user))return true;
-    return false;
+    if(isset($user)) $query="UPDATE Utente SET NewsLetter=true WHERE Email = \"$email\";";
+    else $query="INSERT INTO Utente (Email, NewsLetter) VALUES (\"$email\", true);";
+    return Database::insertUpdateDelete($query);
   }
   
 }

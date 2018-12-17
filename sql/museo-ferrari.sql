@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Creato il: Dic 16, 2018 alle 14:52
+-- Creato il: Dic 17, 2018 alle 22:14
 -- Versione del server: 5.7.24-0ubuntu0.16.04.1
 -- Versione PHP: 7.2.12-1+ubuntu16.04.1+deb.sury.org+1
 
@@ -112,8 +112,8 @@ INSERT INTO `Evento` (`ID`, `Titolo`, `BreveDescrizione`, `LungaDescrizione`, `p
 DROP TABLE IF EXISTS `Utente`;
 CREATE TABLE `Utente` (
   `ID` int(11) NOT NULL,
-  `Nome` varchar(16) NOT NULL,
-  `Cognome` varchar(16) NOT NULL,
+  `Nome` varchar(16) DEFAULT NULL,
+  `Cognome` varchar(16) DEFAULT NULL,
   `Telefono` varchar(15) DEFAULT NULL,
   `Email` varchar(30) NOT NULL,
   `Indirizzo` varchar(50) DEFAULT NULL,
@@ -128,6 +128,13 @@ CREATE TABLE `Utente` (
 --
 
 TRUNCATE TABLE `Utente`;
+--
+-- Dump dei dati per la tabella `Utente`
+--
+
+INSERT INTO `Utente` (`ID`, `Nome`, `Cognome`, `Telefono`, `Email`, `Indirizzo`, `Citta`, `Stato`, `CAP`, `NewsLetter`) VALUES
+(1, NULL, NULL, NULL, 'a', NULL, NULL, NULL, NULL, 1);
+
 --
 -- Indici per le tabelle scaricate
 --
@@ -159,7 +166,7 @@ ALTER TABLE `AutoEsposte`
 -- AUTO_INCREMENT per la tabella `Utente`
 --
 ALTER TABLE `Utente`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
