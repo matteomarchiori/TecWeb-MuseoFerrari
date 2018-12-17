@@ -7,17 +7,17 @@ if($database){
     $righeVisibili=10;
     if(isset($_POST["ric"])) $search = $_POST['ric'];
     else $search="";
-    $automobili = Database::selectAutoModels($search,$righeVisibili);
     if(isset($_GET['pagina']))$pagina=$_GET['pagina'];
     else $pagina=1;
+    $offset=($pagina*$righeVisibili)-$righeVisibili;
+    $automobili = Database::selectAutoModels($search,$righeVisibili,$offset);
     
     if(isset($automobili)){
       $modelliPagina="";
       $nRighe=count($automobili);
 	  $nPagine=ceil($nRighe/$righeVisibili);
-      $offset=($pagina*$righeVisibili)-$righeVisibili;
       $fileModello = file_get_contents("../../html/pages/modello-esposto.html");
-      for($auto=$offset;$auto<$nRighe;$auto++){
+      for($auto=0;$auto<$nRighe;$auto++){
         $modello = $fileModello;
         $modello = str_replace("MODELLO",$automobili[$auto]['Modello'],$modello);
         $modello = str_replace("ANNOPRODUZIONE",$automobili[$auto]['Anno'],$modello);
@@ -33,10 +33,10 @@ if($database){
         $modelliPagina.=$modello;
       }
       $modelli = str_replace("MODELLIESPOSTI",$modelliPagina,$modelli);
-      if($pagina>1) $modelli = str_replace("PAGINABACK",$pagina-1,$modelli);
+      if($pagina>1) $modelli = str_replace("PAGINABACK","<a href='/modelli-esposti?pagina=".($pagina-1)."' tabindex='8' accesskey='p'><div id='back'><p>INDIETRO</p></div></a>",$modelli);
       else $modelli = str_replace("PAGINABACK","",$modelli);
       $modelli = str_replace("PAGINACORRENTE",$pagina,$modelli);
-      if($pagina<$nPagine) $modelli = str_replace("PAGINANEXT",$pagina+1,$modelli);
+      if($pagina<=$nPagine) $modelli = str_replace("PAGINANEXT","<a href='/modelli-esposti?pagina=".($pagina+1)."' tabindex='9' accesskey='n'><div id='next'><p>AVANTI</p></div></a>",$modelli);
       else $modelli = str_replace("PAGINANEXT","",$modelli);
       echo $modelli;
     }

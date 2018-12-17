@@ -55,8 +55,8 @@ class Database{
     return Database::selectRows($query);
   }*/
     
-  public static function selectAutoModels($model,$limit){
-    $query="SELECT * FROM AutoEsposte WHERE Modello LIKE \"%$model%\" LIMIT $limit;";
+  public static function selectAutoModels($model,$limit,$offset){
+    $query="SELECT * FROM AutoEsposte WHERE Modello LIKE \"%$model%\" LIMIT $limit OFFSET $offset;";
     return Database::selectRows($query);
   }
     
