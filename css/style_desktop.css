@@ -143,9 +143,7 @@ body{
 #eventoprincipale h1,#eventoprincipale h2,#eventoprincipale p{
     margin-bottom:1em;
 }
-#immagineprincipale{
-    width:100%;
-}
+
 #presentazionegenerale{
     text-align:justify;
     padding:2em;
