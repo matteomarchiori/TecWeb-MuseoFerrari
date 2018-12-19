@@ -166,11 +166,12 @@ body {
 	margin-top: 0.5em;
 }
 #maps{
-	display: block;
-	margin: auto;
-	margin-bottom: 1.0em;
-	width: 70%;
-	height: 15em;
+	display:block;
+	margin:auto;
+	margin-top:1.0em;
+	margin-bottom:1.0em;
+	width:90%;
+	height:15em;
 }
 
 .tablemodelli{
@@ -207,9 +208,6 @@ body {
 	margin-top:1.5em;
 	margin-bottom:1.5em;
 }
-#form{
-	padding-bottom: 0.5em;
-}
 .container {
   overflow: hidden;
 }
@@ -218,18 +216,20 @@ body {
   float: left;
 }
 
-.infoEContatti {
-	width: 100%;
-	padding-bottom:0.9em;
+#form{
+	padding-bottom: 0.5em;
 }
-
-.infoEContatti  h1{
-  padding-bottom: 0.4em;
-}
-
-.infoEContatti  h3{
-	margin-top: 0.5em;
+#form input{
 	margin-bottom: 0.5em;
+}
+#newsletter h1{
+	margin-bottom:0.3em;
+}
+#comeRaggiungerci h1{
+	margin-bottom:0.3em;
+}
+#contattaci h1{
+	margin-bottom:0.3em;
 }
 
 /*Generale*/
