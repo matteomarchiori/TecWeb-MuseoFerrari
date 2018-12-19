@@ -172,8 +172,8 @@ body{
 
 #maps{
 	display:block;
-	width:70%;
-	height: 20em;
+	width:80%;
+	height:20em;
 	margin:auto;
 }
 
@@ -232,9 +232,24 @@ body{
     width:3em;
     height:3em;
 }
+
 #form{
+	padding-top: 0.5em;
 	padding-bottom: 0.5em;
 }
+#form input{
+	margin-bottom: 0.5em;
+}
+#newsletter h1{
+	margin-bottom:0.3em;
+}
+#comeRaggiungerci h1{
+	margin-bottom:0.3em;
+}
+#contattaci h1{
+	margin-bottom:0.3em;
+}
+
 .desktopnone{
     display: none;
 }
@@ -249,24 +264,6 @@ body{
 .treColonne {
 	width:33.33%;
   margin:auto;
-}
-
-.ColonnaInfoEContatti{
-	padding-top:1em;
-    padding-left:1em;
-    padding-right:1em;
-	padding-bottom:2em;
-	width:33.33%;
-	margin:auto;
-}
-
-.ColonnaInfoEContatti h1{
-	margin-bottom: 0.3em;
-}
-
-.ColonnaInfoEContatti h3{
-	margin-top: 0.5em;
-	margin-bottom: 0.5em;
 }
 
 .col-xl-1 {width: 25%;}
