@@ -1,6 +1,7 @@
 <?php
 $header = file_get_contents("../../html/common/header.html");
 $uri_parts = explode('?', $_SERVER['REQUEST_URI'], 2);
+$uri_parts[0] = substr($uri_parts[0], strrpos($uri_parts[0], '/'));
 
 /**
  * ACCESKEY MAP:
