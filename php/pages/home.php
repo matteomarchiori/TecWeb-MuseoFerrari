@@ -19,7 +19,7 @@ if($database){
       $home = str_replace("TITOLOEVENTO".$key,$evento['Titolo'],$home);
       $home = str_replace("INIZIOEVENTO".$key,date("d/m/Y", strtotime($evento['DataInizio'])),$home);
       $home = str_replace("FINEEVENTO".$key,date("d/m/Y", strtotime($evento['DataFine'])),$home);
-      $home = str_replace("DESCRIZIONEEVENTO".$key,$evento['LungaDescrizione'],$home);
+      $home = str_replace("DESCRIZIONEEVENTO".$key,$evento['BreveDescrizione'],$home);
       $home = str_replace("FOTOEVENTO".$key,$evento['percorsoFoto1'],$home);
       $home = str_replace("ALTFOTOEVENTO".$key,$evento['altFoto1'],$home);
     }

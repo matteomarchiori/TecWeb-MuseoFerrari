@@ -1,39 +1,34 @@
 /*Griglia responsive*/
 
 * {
-  margin-top: 0;
-  margin-right: 0;
-  margin-bottom: 0;
-  margin-left: 0;
-  padding-top: 0;
-  padding-right: 0;
-  padding-bottom: 0;
-  padding-left: 0;
-  font-size: 1.0em;
-  font-family: sans-serif;
+    margin:0;
+    padding:0;
+    font-size: 1.0em;
+    font-family: sans-serif;
 }
 
 body {
-  max-width: 1200px;
-  min-width: 264px; //background-color: #e60000;
+    max-width: 1200px;
+    min-width: 264px;
+    /*background-color: #e60000;*/
 }
 
 #header {
-  background-color: #262626;
+    background-color: #262626;
 }
 
 #logo {
-	max-width:10em;
+    max-width:10em;
 }
 
 #hamburger {
-  background-image: url('../img/header/burger2.svg');
-  background-size: cover;/*me par che non serva*/
-  width: 2em;
-  height: 2em;
-  margin: auto;
-  margin-top: 1.5em;
-  display: none;
+    background-image: url('../img/header/burger2.svg');
+    background-size: cover;/*me par che non serva*/
+    width: 2em;
+    height: 2em;
+    margin: auto;
+    margin-top: 1.5em;
+    display: none;
 }
 
 #currentLink{
@@ -42,23 +37,23 @@ body {
 }
 
 #menu {
-  list-style-type: none;
-  margin:auto;
-  max-width:80%;
+    list-style-type: none;
+    margin:auto;
+    max-width:80%;
 }
 
 #menu  li {
-  text-align: center;
-  margin: 0.5em;
-  padding: 0.5em;
-  border: 2px solid white;
+    text-align: center;
+    margin: 0.5em;
+    padding: 0.5em;
+    border: 2px solid white;
 }
 
 #menu li:last-of-type {
-  margin-bottom: 1em;
+    margin-bottom: 1em;
 }
 #menu > li:first-of-type {
-  margin-top: 1em;
+    margin-top: 1em;
 }
 #menu li > a{
     text-decoration:none;
@@ -66,54 +61,54 @@ body {
 }
 .dropdown-content {
     list-style-type: none;
-	margin-top:-0.5em;
-	margin-bottom:-0.5em;
-	margin-left:20%;
+    margin-top:-0.5em;
+    margin-bottom:-0.5em;
+    margin-left:20%;
 }
 
 #breadcrumbs {
-	background-color:silver;
-	padding-top: 0.3em;
-	padding-left: 0.3em;
-	padding-bottom: 0.3em;
+    background-color:silver;
+    padding-top: 0.3em;
+    padding-left: 0.3em;
+    padding-bottom: 0.3em;
 }
 
 #formRicerca{
-	float:right;
-	xborder-radius: 0.4em;
-	border:3px solid #262626;	
+    float:right;
+    /*border-radius: 0.4em;*/
+    border:3px solid #262626;	
 }
 #formRicerca input[type=text]{
-	border:none;
-	width:7.3em;
-	margin:0.1em;
-	padding:0.5em;
-	float:left;
+    border:none;
+    width:7.3em;
+    margin:0.1em;
+    padding:0.5em;
+    float:left;
 }
 #formRicerca input[type=submit]{
-	float:right;
-	border:none;
-	background-image:url('../img/header/search.svg');
-	width:2em;
+    float:right;
+    border:none;
+    background-image:url('../img/header/search.svg');
+    width:2em;
     height:2em;
-	margin:0.2em;
-	cursor: pointer;
+    margin:0.2em;
+    cursor: pointer;
 }
 
 #immagineprincipale {
-  width: 100%;
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
+    width: 100%;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
 }
 
 #eventiprossimi .treColonne {
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
 }
 #eventiprossimi .treColonne img{
-  width:100%;
-	margin-top: 0.5em;
-	margin-bottom: 0.5em;
+    width:100%;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
 }
 #eventiprossimi .treColonne h1{
     font-size:1.2em;
@@ -122,10 +117,9 @@ body {
     font-size:1.0em;
 }
 #footer {
-  padding:2em;
-  text-align:center;
-  background-color:silver;
-
+    padding:2em;
+    text-align:center;
+    background-color:silver;
 }
 
 .immagineprincipale{
@@ -134,120 +128,129 @@ body {
 }
 
 #toTop{
-	background-image:url('../img/header/toTop.svg');
-	position:fixed;
-	bottom: 2em;
-	right: 2em;
+    background-image:url('../img/header/toTop.svg');
+    position:fixed;
+    bottom: 2em;
+    right: 2em;
     width:2.8em;
     height:2.8em;
 }
 
 #hamburger.mobile {
-  display: block;
+    display: block;
 }
 
 #menu.mobile.show {
-  display: block;
+    display: block;
 }
 
 #menu.mobile {
-  display: none;
+    display: none;
 }
 
 #content {
-	padding:1em;
+    padding:1em;
 }
 #content h1{
     font-size:1.5em;
-	margin-top: 0.5em;
+    margin-top: 0.5em;
 }
 #content h2{
     font-size:1.2em;
-	margin-top: 0.5em;
+    margin-top: 0.5em;
 }
 #maps{
-	display:block;
-	margin:auto;
-	margin-top:1.0em;
-	margin-bottom:1.0em;
-	width:90%;
-	height:15em;
+    display:block;
+    margin:auto;
+    margin-top:1.0em;
+    margin-bottom:1.0em;
+    width:90%;
+    height:15em;
 }
 
 .tablemodelli{
-	width:100%;
-  background-color:black;
-  margin-top: 0.5em; 
+    width:100%;
+    background-color:black;
+    margin-top: 0.5em; 
 }
 .tablemodelli td{
-	background-color:white;
-	padding:0.4em;
+    background-color:white;
+    padding:0.4em;
 }
 .tablemodelli th{
-	background-color:silver;
-  text-align: left;
-  padding: 0.4em;
+    background-color:silver;
+    text-align: left;
+    padding: 0.4em;
 }
 .pulsantePag a{
-	text-decoration:none;
+    text-decoration:none;
 }
 #next, #back, #current{
-	color:white;
-	text-align:center;
-	width:45%;
-	background-color:#262626;
-	padding:0.5em;
-	margin:0.5em;
-	margin-left:auto;
-	margin-right:auto;
+    color:white;
+    text-align:center;
+    width:45%;
+    background-color:#262626;
+    padding:0.5em;
+    margin:0.5em;
+    margin-left:auto;
+    margin-right:auto;
 }
 #footer img{
-	width:6em;
+    width:6em;
 }
 #footer p{
-	margin-top:1.5em;
-	margin-bottom:1.5em;
+    margin-top:1.5em;
+    margin-bottom:1.5em;
 }
 .container {
-  overflow: hidden;
+    overflow: hidden;
 }
 
 .container > * {
-  float: left;
+    float: left;
 }
 
 #form{
-	padding-bottom: 0.5em;
+    padding-bottom: 0.5em;
 }
 #form input{
-	margin-bottom: 0.5em;
+    margin-bottom: 0.5em;
 }
 #newsletter h1{
-	margin-bottom:0.3em;
+    margin-bottom:0.3em;
 }
 #comeRaggiungerci h1{
-	margin-bottom:0.3em;
+    margin-bottom:0.3em;
 }
 #contattaci h1{
-	margin-bottom:0.3em;
+    margin-bottom:0.3em;
+}
+
+fieldset{
+    padding:0.5em;
+    min-height:8em;
+}
+
+fieldset > *{
+    margin:0.5em;
 }
 
 /*Generale*/
 
 .col-1 {
-  width: 25%;
+    width: 25%;
 }
 
 .col-2 {
-  width: 50%;
+    width: 50%;
 }
 
 .col-3 {
-  width: 75%;
+    width: 75%;
 }
 
 .col-4 {
-  width: 100%;
+    width: 100%;
 }
 
 /* Piccoli schermi, telefoni portrait */

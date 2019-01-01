@@ -1,28 +1,16 @@
 /*Griglia responsive*/
 
 * {
-    margin-top:0;
-    margin-right:0;
-    margin-bottom:0;
-    margin-left:0;
-    padding-top:0;
-    padding-right:0;
-    padding-bottom:0;
-    padding-left:0;
-    font-size:1.0em;
-    font-family: sans-serif;
     box-sizing:border-box;/*per risolvere il problema di 1px border e la width*/
 }
 
 body{
-    max-width:1200px;
-    min-width:264px;
     margin:auto;
     background-color: #e60000;
 }
 
 #logo{
-	max-width:unset;
+	max-width:none;
     max-height:7em;
 }
 
@@ -38,7 +26,7 @@ body{
     font-size:0.9em;
     margin-top:1.5em;
     margin-right:1em;
-	max-width:unset;
+	max-width:none;
 }
 #currentLink{
     background-color:#cccccc;
@@ -50,25 +38,25 @@ body{
     display:inline-block;
 }
 #menu li{/*è solo per il currentLink*/
-	text-align:unset;
+	text-align:initial;
 	display:unset;
-	margin:unset;
+	margin:initial;
 	padding:0.8em;
-	border:unset;
+	border:none;
 }
 
 #menu > li:not(#currentLink){
-	text-align:unset;
+	text-align:initial;
 	display:unset;
-	margin:unset;
-	padding:unset;
-	border:unset;
+	margin:initial;
+	padding:initial;
+	border:none;
 }
 #menu > li:last-of-type {
-  margin-bottom: unset;
+  margin-bottom:auto;
 }
 #menu > li:first-of-type {
-  margin-top: unset;
+  margin-top:auto;
 }
 #menu li > a{
     text-decoration:none;
@@ -77,7 +65,7 @@ body{
 }
 #menu li > a:hover:not(.no){/*class no se si vuole da aggiungere a header.php*/
     box-shadow: inset 0 0 0 2px #ffffff;;
-    //transition: all 1s;
+    /*transition: all 1s;*/
 }
 
 .dropdown {
@@ -90,8 +78,8 @@ body{
     position: absolute;
     z-index: 1;
     margin-top:1em;
-	margin-bottom:unset;
-	margin-left:unset;
+	margin-bottom:auto;
+	margin-left:auto;
     list-style-type: none;
 	min-width:13em;
 	text-align:left;
@@ -108,7 +96,7 @@ body{
 }
 #formRicerca{
 	float:right;
-	xborder-radius: 0.4em;
+	/*border-radius: 0.4em;*/
 	border:3px solid #262626;
 }
 #formRicerca input[type=text]{
@@ -221,8 +209,8 @@ body{
 	margin-top:0.8em;
 }
 #footer p{
-	margin-top:unset;
-	margin-bottom:unset;
+	margin-top:auto;
+	margin-bottom:auto;
 }
 #toTop{
 	background-image:url('../img/header/toTop.svg');
@@ -263,7 +251,7 @@ body{
 
 .treColonne {
 	width:33.33%;
-  margin:auto;
+    margin:auto;
 }
 
 .col-xl-1 {width: 25%;}
