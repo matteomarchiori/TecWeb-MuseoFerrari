@@ -3,7 +3,7 @@ require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . "database" . DIRECTORY_SEP
 use Database\Database;
 $database = new Database();
 if($database){
-    $info = file_get_contents("../../html/pages/info-e-contatti.html");
+    $info = file_get_contents(dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . "html" . DIRECTORY_SEPARATOR . "pages" . DIRECTORY_SEPARATOR . "info-e-contatti.html");
     if(isset($_POST['email'])){
       $email = $_POST['email'];
       $newsletter = Database::newsletter($email);

@@ -3,7 +3,7 @@ require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . "database" . DIRECTORY_SEP
 use Database\Database;
 $database = new Database();
 if($database){
-    $modelli = file_get_contents("../../html/pages/modelli-esposti.html");
+    $modelli = file_get_contents(dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . "html" . DIRECTORY_SEPARATOR . "pages" . DIRECTORY_SEPARATOR . "modelli-esposti.html");
     $righeVisibili=10;
     if(isset($_POST["ric"])) $search = $_POST['ric'];
     else $search="";
@@ -16,7 +16,7 @@ if($database){
       $modelliPagina="";
       $nRighe=count($automobili);
 	  $nPagine=ceil($nRighe/$righeVisibili);
-      $fileModello = file_get_contents("../../html/pages/modello-esposto.html");
+      $fileModello = file_get_contents(dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . "html" . DIRECTORY_SEPARATOR . "pages" . DIRECTORY_SEPARATOR . "modello-esposto.html");
       for($auto=0;$auto<$nRighe;$auto++){
         $modello = $fileModello;
         $modello = str_replace("MODELLO",$automobili[$auto]['Modello'],$modello);

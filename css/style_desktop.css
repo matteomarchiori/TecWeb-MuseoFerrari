@@ -1,9 +1,3 @@
-/*Griglia responsive*/
-
-* {
-    box-sizing:border-box;/*per risolvere il problema di 1px border e la width*/
-}
-
 body{
     margin:auto;
     background-color: #e60000;
@@ -243,10 +237,6 @@ body{
 }
 .container{
     overflow:hidden;
-    width:100%;
-}
-.container > *{
-    float:left;
 }
 
 .treColonne {

@@ -13,7 +13,7 @@ $uri_parts = explode('?', $_SERVER['REQUEST_URI'], 2);
 $uri_parts[0] = substr($uri_parts[0], strrpos($uri_parts[0], '/')+1);
 
 switch ($uri_parts[0]){
-    case "":   // TABINDEX ACCESSKEY OK
+    case "":  
         $header = str_replace("TITLE","Homepage | Museo Ferrari",$header);
         $header = str_replace("DESCRIPTION","L'homepage del museo presenta l'ultima Ferrari 250 Testa Rossa entrata in esposizione, una breve decrizione del museo e una sezione dedicata alle collezioni in esposizione prossimamente.",$header);
         $header = str_replace("KEYWORDS","Ferrari,esposizione,museo,programma",$header);
@@ -21,7 +21,7 @@ switch ($uri_parts[0]){
         $header = str_replace("BREADCRUMBS","<span xml:lang='en'>Home</span>",$header);
 		$page = '../pages/home.php';
         break;
-    case "mostre": // TABINDEX ACCESSKEY OK
+    case "mostre":
         $header = str_replace("TITLE","Mostre | Museo Ferrari",$header);
         $header = str_replace("DESCRIPTION","",$header);
         $header = str_replace("KEYWORDS","",$header);
@@ -29,7 +29,7 @@ switch ($uri_parts[0]){
         $header = str_replace("BREADCRUMBS","Mostre",$header);
         $page = '../pages/mostre.php';
         break;
-    case "mostra-corrente": // TABINDEX ACCESSKEY OK
+    case "mostra-corrente":
         $header = str_replace("TITLE","Mostra Corrente | Mostre | Museo Ferrari",$header);
         $header = str_replace("DESCRIPTION","",$header);
         $header = str_replace("KEYWORDS","",$header);
@@ -37,7 +37,7 @@ switch ($uri_parts[0]){
         $header = str_replace("BREADCRUMBS","<a href='/mostre'>Mostre</a> > Mostra Corrente",$header);
         $page = '../pages/mostra-corrente.php';
         break;
-    case "mostre-in-programma": // TABINDEX ACCESSKEY OK
+    case "mostre-in-programma":
         $header = str_replace("TITLE","Mostre in Programma | Mostre | Museo Ferrari",$header);
         $header = str_replace("DESCRIPTION","",$header);
         $header = str_replace("KEYWORDS","",$header);
@@ -45,7 +45,7 @@ switch ($uri_parts[0]){
         $header = str_replace("BREADCRUMBS","<a href='/mostre'>Mostre</a> > Mostre in Programma",$header);
         $page = '../pages/mostre-in-programma.php';
         break;
-    case "modelli-esposti": // TABINDEX ACCESSKEY OK
+    case "modelli-esposti":
         $header = str_replace("TITLE","Modelli Esposti | Museo Ferrari",$header);
         $header = str_replace("DESCRIPTION","",$header);
         $header = str_replace("KEYWORDS","",$header);
@@ -53,15 +53,15 @@ switch ($uri_parts[0]){
         $header = str_replace("BREADCRUMBS","Modelli Esposti",$header);
         $page = '../pages/modelli-esposti.php';
         break;
-    case "biglietti": // TABINDEX ACCESSKEY OK
+    case "biglietti":
         $header = str_replace("TITLE","Biglietti | Museo Ferrari",$header);
         $header = str_replace("DESCRIPTION","",$header);
         $header = str_replace("KEYWORDS","",$header);
         $header = str_replace("LINKBIGLIETTI","<li id='currentLink'>Biglietti</li>",$header);
         $header = str_replace("BREADCRUMBS","Biglietti",$header);
-        $page = '../../html/pages/biglietti.html';
+        $page = '../pages/biglietti.php';
         break;
-    case "info-e-contatti": // TABINDEX ACCESSKEY OK
+    case "info-e-contatti":
         $header = str_replace("TITLE","Info e Contatti | Museo Ferrari",$header);
         $header = str_replace("DESCRIPTION","",$header);
         $header = str_replace("KEYWORDS","",$header);

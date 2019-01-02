@@ -62,8 +62,7 @@ class Database {
 
     public static function selectCurrentEvent() {
         $currentEvent = Database::selectEvents("corrente", 1);
-        if (isset($currentEvent))
-            return $currentEvent[0];
+        if (isset($currentEvent)) return $currentEvent[0];
         return null;
     }
 
@@ -77,14 +76,13 @@ class Database {
         return Database::insertUpdateDelete($query);
     }
     
-    public static function buyTickets() {
-        $query = "SELECT Email FROM Utente WHERE Email = \"$email\";";
-        $user = Database::selectRows($query);
-        if (isset($user))
-            $query = "UPDATE Utente SET NewsLetter=true WHERE Email = \"$email\";";
-        else
-            $query = "INSERT INTO Utente (Email, NewsLetter) VALUES (\"$email\", true);";
+    public static function insertUser($nome,$cognome,$telefono,$email,$indirizzo,$citta,$stato,$cap,$newsletter) {
+        $query = "INSERT INTO Utente (Nome, Cognome, Telefono, Email, Indirizzo, Citta, Stato, CAP, NewsLetter) VALUES (\"$nome\", \"$cognome\", \"$telefono\", \"$email\", \"$indirizzo\", \"$citta\", \"$stato\", \"$cap\", $newsletter);";
         return Database::insertUpdateDelete($query);
     }
-
+    
+    public static function buyTickets($utente,$evento,$data,$biglietti) {
+        $query = "INSERT INTO Biglietti (Utente, Evento, Data, NrBiglietti) VALUES ($utente, $evento, \"$data\", $biglietti);";
+        return Database::insertUpdateDelete($query);
+    }
 }

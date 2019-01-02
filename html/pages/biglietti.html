@@ -1,136 +1,206 @@
 <div id="content" class="container">
     <div id="prenotabiglietti" class="col-4">
         <h1>Prenota ora i tuoi biglietti</h1>
-        <form action="/prenotazione" method="POST" class="container">
-            <fieldset class="col-4 col-xl-2">
-                <legend>Nominativo</legend>
-                <label for="nome">Nome</label>
-                <input type="text" name="nome" id="nome" size="15" maxlength="20"/>
-                <label for="cognome">Cognome</label>
-                <input type="text" name="cognome" id="cognome" size="15" maxlength="20"/>
-            </fieldset>
-            <fieldset class="col-4 col-xl-2">
-                <legend>Dati di nascita</legend>
-                <label for="giornonascita">Giorno</label>
-                <select name="giornonascita" id="giornonascita">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                    <option value="13">13</option>
-                    <option value="14">14</option>
-                    <option value="15">15</option>
-                    <option value="16">16</option>
-                    <option value="17">17</option>
-                    <option value="18">18</option>
-                    <option value="19">19</option>
-                    <option value="20">20</option>
-                    <option value="21">21</option>
-                    <option value="2">22</option>
-                    <option value="23">23</option>
-                    <option value="24">24</option>
-                    <option value="25">25</option>
-                    <option value="26">26</option>
-                    <option value="27">27</option>
-                    <option value="28">28</option>
-                    <option value="29">29</option>
-                    <option value="30">30</option>
-                    <option value="31">31</option>
-                </select>
-                <label for="mesenascita">Mese</label>
-                <select name="mesenascita" id="mesenascita">
-                    <option value="1">Gennaio</option>
-                    <option value="2">Febbraio</option>
-                    <option value="3">Marzo</option>
-                    <option value="4">Aprile</option>
-                    <option value="5">Maggio</option>
-                    <option value="6">Giugno</option>
-                    <option value="7">Luglio</option>
-                    <option value="8">Agosto</option>
-                    <option value="9">Settembre</option>
-                    <option value="10">Ottobre</option>
-                    <option value="11">Novembre</option>
-                    <option value="12">Dicembre</option>
-                </select>
-                <label for="annonascita">Anno</label>
-                <select name="annonascita" id="annonascita">
-                    <option value="1988">1988</option>
-                    <option value="1989">1989</option>
-                    <option value="1990">1990</option>
-                    <option value="1991">1991</option>
-                    <option value="1992">1992</option>
-                    <option value="1993">1993</option>
-                    <option value="1994">1994</option>
-                    <option value="1995">1995</option>
-                    <option value="1996">1996</option>
-                    <option value="1997">1997</option>
-                </select>
-                <br/>
-                <label for="comunenascita">Comune</label>
-                <input type="text" name="comunenascita" id="comunenascita" size="15" maxlength="20"/>
-            </fieldset>
-            <fieldset class="col-4 col-xl-2">
-                <legend>Dati di contatto</legend>
-                <label for="telefono">Telefono</label>
-                <input type="text" name="telefono" id="telefono" size="15" maxlength="20"/>
-                <br/>
-                <label for="email">Email</label>
-                <input type="text" name="email" id="email" size="30" maxlength="50"/>
-            </fieldset>
-            <fieldset class="col-4 col-xl-2">
-                <legend>Dati relativi all'abitazione</legend>
-                <label for="stato">Stato</label>
-                <select name="stato" id="stato">
-                    <option value="fr">France</option>
-                    <option value="it">Italia</option>
-                    <option value="uk">United Kingdom</option>
-                </select>
-                <br/>
-                <label for="indirizzo">Indirizzo</label>
-                <input type="text" name="indirizzo" id="indirizzo"/>
-                <label for="cap"><abbr title="Codice Avviamento Postale">CAP</abbr></label>
-                <input type="text" name="cap" id="cap" size="5" maxlength="5"/>
-            </fieldset>
-            <fieldset class="col-4 col-xl-2">
-                <legend>Biglietti</legend>
-                <label for="mostra">Mostra</label>
-                <select name="mostra" id="mostra"></select>
-                <label for="giornomostra">Giorno</label>
-                <select name="giornomostra" id="giornomostra"></select>
-                <label for="mesemostra">Mese</label>
-                <select name="mesemostra" id="mesemostra"></select>
-                <label for="annomostra">Anno</label>
-                <select name="annomostra" id="annomostra"></select>
-                <label for="nbiglietti">Numero di biglietti</label>
-                <select name="nbiglietti" id="nbiglietti">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                </select>
-            </fieldset>
-            <fieldset class="col-4 col-xl-2">
-                <legend>Newsletter</legend>
-                <label for="newsletter">Desidero iscrivermi alla newsletter</label>
-                <input type="checkbox" name="newsletter" id="newsletter"/>
-            </fieldset>
-            <fieldset class="col-4 col-xl-2">
-                <legend>Invia o Cancella</legend>
-                <input type="submit" name="invio" id="invio" value="Invia"/>
-                <input type="reset" name="reset" id="reset" value="Cancella"/>
-            </fieldset>
+        <form action="/biglietti" method="POST">
+            <div class="container">
+                <fieldset class="col-4 col-xl-2">
+                    <legend>Nominativo</legend>
+                    <div class="container formfield">
+                        <div class="col-2">
+                            <label for="nome">Nome</label>
+                            <input type="text" name="nome" id="nome" size="15" maxlength="20" value="*nome*"/>
+                        </div>
+                        <p class="col-2">Inserire il nome senza spazi e con sole lettere alfabetiche.</p>
+                        *errornome*
+                    </div>
+                    <div class="container formfield">
+                        <div class="col-2">
+                            <label for="cognome">Cognome</label>
+                            <input type="text" name="cognome" id="cognome" size="15" maxlength="20" value="*cognome*"/>
+                        </div>
+                        <p class="col-2">Inserire il cognome senza spazi e con sole lettere alfabetiche.</p>
+                        *errorcognome*
+                    </div>
+                </fieldset>
+                <fieldset class="col-4 col-xl-2">
+                    <legend>Dati di nascita</legend>
+                    <div class="container formfield">
+                        <div class="col-4">
+                            <label for="giornonascita">Giorno</label>
+                            <select name="giornonascita" id="giornonascita">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                                <option value="19">19</option>
+                                <option value="20">20</option>
+                                <option value="21">21</option>
+                                <option value="2">22</option>
+                                <option value="23">23</option>
+                                <option value="24">24</option>
+                                <option value="25">25</option>
+                                <option value="26">26</option>
+                                <option value="27">27</option>
+                                <option value="28">28</option>
+                                <option value="29">29</option>
+                                <option value="30">30</option>
+                                <option value="31">31</option>
+                            </select>
+                            <label for="mesenascita">Mese</label>
+                            <select name="mesenascita" id="mesenascita">
+                                <option value="1">Gennaio</option>
+                                <option value="2">Febbraio</option>
+                                <option value="3">Marzo</option>
+                                <option value="4">Aprile</option>
+                                <option value="5">Maggio</option>
+                                <option value="6">Giugno</option>
+                                <option value="7">Luglio</option>
+                                <option value="8">Agosto</option>
+                                <option value="9">Settembre</option>
+                                <option value="10">Ottobre</option>
+                                <option value="11">Novembre</option>
+                                <option value="12">Dicembre</option>
+                            </select>
+                            <label for="annonascita">Anno</label>
+                            <select name="annonascita" id="annonascita">
+                                <option value="1988">1988</option>
+                                <option value="1989">1989</option>
+                                <option value="1990">1990</option>
+                                <option value="1991">1991</option>
+                                <option value="1992">1992</option>
+                                <option value="1993">1993</option>
+                                <option value="1994">1994</option>
+                                <option value="1995">1995</option>
+                                <option value="1996">1996</option>
+                                <option value="1997">1997</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="container formfield">
+                        <div class="col-2">
+                            <label for="comunenascita">Comune</label>
+                            <input type="text" name="comunenascita" id="comunenascita" size="15" maxlength="20"/>
+                        </div>
+                        <p class="col-2">Inserire il comune senza spazi e con sole lettere alfabetiche.</p>
+                        <p class="col-4">Il comune non è corretto. Rispettare il formato indicato.</p>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="container">
+                <fieldset class="col-4 col-xl-2">
+                    <legend>Dati di contatto</legend>
+                    <div class="container formfield">
+                        <div class="col-2">
+                            <label for="telefono">Telefono</label>
+                            <input type="text" name="telefono" id="telefono" size="15" maxlength="20"/>
+                        </div>
+                        <p class="col-2">Inserire il numero di telefono con sole cifre, senza spazi.</p></div>
+                        <p class="col-4">Il numero di telefono non è corretto. Rispettare il formato indicato.</p>
+                    <div class="container formfield">
+                        <div class="col-2">
+                            <label for="email">Email</label>
+                            <input type="text" name="email" id="email" size="15" maxlength="50"/>
+                        </div>
+                        <p class="col-2">Inserire l'email nel formato casella@dominio.</p>
+                        <p class="col-4">L'email non è corretta. Rispettare il formato indicato.</p>
+                    </div>
+                </fieldset>
+                <fieldset class="col-4 col-xl-2">
+                    <legend>Dati relativi all'abitazione</legend>
+                    <div class="container formfield">
+                        <div class="col-4">
+                            <label for="stato">Stato</label>
+                            <select name="stato" id="stato">
+                                <option value="fr">France</option>
+                                <option value="it">Italia</option>
+                                <option value="uk">United Kingdom</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="container formfield">
+                        <div class="col-2">
+                            <label for="indirizzo">Indirizzo</label>
+                            <input type="text" name="indirizzo" id="indirizzo"/>
+                        </div>
+                        <p class="col-2">Inserire l'indirizzo con il nome della via e il numero civico.</p>
+                        <p class="col-4">L'indirizzo non è corretto. Rispettare il formato indicato.</p>
+                    </div>
+                    <div class="container formfield">
+                        <div class="col-2">
+                            <label for="cap"><abbr title="Codice Avviamento Postale">CAP</abbr></label>
+                            <input type="text" name="cap" id="cap" size="5" maxlength="5"/>
+                        </div>
+                        <p class="col-2">Inserire il numero del CAP con sole cifre.</p>
+                        <p class="col-4">Il CAP non è corretto. Rispettare il formato indicato.</p>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="container">
+                <fieldset class="col-4 col-xl-2">
+                    <legend>Biglietti</legend>
+                    <div class="container formfield">
+                        <div class="col-4">
+                            <label for="mostra">Mostra</label>
+                            <select name="mostra" id="mostra"></select>
+                            <label for="giornomostra">Giorno</label>
+                            <select name="giornomostra" id="giornomostra"></select>
+                            <label for="mesemostra">Mese</label>
+                            <select name="mesemostra" id="mesemostra"></select>
+                            <label for="annomostra">Anno</label>
+                            <select name="annomostra" id="annomostra"></select>
+                        </div>
+                        <div class="col-4">
+                            <label for="nbiglietti">Numero di biglietti</label>
+                            <select name="nbiglietti" id="nbiglietti">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                            </select>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset class="col-4 col-xl-2">
+                    <legend>Newsletter</legend>
+                    <div class="container formfield">
+                        <div class="col-4">
+                            <label for="newsletter">Desidero iscrivermi alla newsletter</label>
+                            <input type="checkbox" name="newsletter" id="newsletter"/>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="container">
+                <fieldset class="col-4 col-xl-2">
+                    <legend>Invia o Cancella</legend>
+                    <div class="container formfield">
+                        <div class="col-2">
+                            <input type="submit" name="invio" id="invio" value="Invia"/>
+                        </div>
+                        <div class="col-2">
+                            <input type="reset" name="reset" id="reset" value="Cancella"/>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
         </form>
     </div>
 </div>

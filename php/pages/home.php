@@ -3,7 +3,7 @@ require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . "database" . DIRECTORY_SEP
 use Database\Database;
 $database = new Database();
 if($database){
-  $home = file_get_contents("../../html/pages/home.html");
+  $home = file_get_contents(dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . "html" . DIRECTORY_SEPARATOR . "pages" . DIRECTORY_SEPARATOR . "home.html");
   $eventoCorrente = Database::selectCurrentEvent();
   if(isset($eventoCorrente)){
     $home = str_replace("TITOLOCORRENTE",$eventoCorrente['Titolo'],$home);
@@ -26,35 +26,3 @@ if($database){
   }
   echo $home;
 }
-
-
-	/*function toMese($mese){
-		switch($mese){
-		case 1:
-			return "Gennaio";break;
-		case 2:
-			return "Febbraio";break;
-		case 3:
-			return "Marzo";break;
-		case 4:
-			return "Aprile";break;
-		case 5:
-			return "Maggio";break;
-		case 6:
-			return "Giugno";break;
-		case 7:
-			return "Luglio";break;
-		case 8:
-			return "Agosto";break;
-		case 9:
-			return "Settembre";break;
-		case 10:
-			return "Ottobre";break;
-		case 11:
-			return "Novembre";break;
-		case 12:
-			return "Dicembre";break;
-		default:
-			return null;break;
-		}
-	}*/
