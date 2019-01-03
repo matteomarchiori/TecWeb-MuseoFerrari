@@ -211,6 +211,10 @@ body {
     display:inline-block;
 }
 
+.error{
+    color:#f00;
+}
+
 .formfield > *{
     margin-bottom: 0.7em;
 }
