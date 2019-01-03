@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Creato il: Dic 17, 2018 alle 22:14
+-- Creato il: Gen 03, 2019 alle 19:43
 -- Versione del server: 5.7.24-0ubuntu0.16.04.1
 -- Versione PHP: 7.2.12-1+ubuntu16.04.1+deb.sury.org+1
 
@@ -72,6 +72,26 @@ INSERT INTO `AutoEsposte` (`ID`, `Modello`, `Anno`, `StatoConservazione`, `Espos
 -- --------------------------------------------------------
 
 --
+-- Struttura della tabella `Biglietti`
+--
+
+DROP TABLE IF EXISTS `Biglietti`;
+CREATE TABLE `Biglietti` (
+  `ID` int(11) NOT NULL,
+  `Utente` int(11) NOT NULL,
+  `Evento` int(11) NOT NULL,
+  `Data` date NOT NULL,
+  `NrBiglietti` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Svuota la tabella prima dell'inserimento `Biglietti`
+--
+
+TRUNCATE TABLE `Biglietti`;
+-- --------------------------------------------------------
+
+--
 -- Struttura della tabella `Evento`
 --
 
@@ -114,12 +134,13 @@ CREATE TABLE `Utente` (
   `ID` int(11) NOT NULL,
   `Nome` varchar(16) DEFAULT NULL,
   `Cognome` varchar(16) DEFAULT NULL,
+  `DataNascita` date DEFAULT NULL,
+  `ComuneNascita` date DEFAULT NULL,
   `Telefono` varchar(15) DEFAULT NULL,
   `Email` varchar(30) NOT NULL,
   `Indirizzo` varchar(50) DEFAULT NULL,
   `Citta` varchar(20) DEFAULT NULL,
   `Stato` varchar(20) DEFAULT NULL,
-  `CAP` int(10) DEFAULT NULL,
   `NewsLetter` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -132,8 +153,9 @@ TRUNCATE TABLE `Utente`;
 -- Dump dei dati per la tabella `Utente`
 --
 
-INSERT INTO `Utente` (`ID`, `Nome`, `Cognome`, `Telefono`, `Email`, `Indirizzo`, `Citta`, `Stato`, `CAP`, `NewsLetter`) VALUES
-(1, NULL, NULL, NULL, 'a', NULL, NULL, NULL, NULL, 1);
+INSERT INTO `Utente` (`ID`, `Nome`, `Cognome`, `DataNascita`, `ComuneNascita`, `Telefono`, `Email`, `Indirizzo`, `Citta`, `Stato`, `NewsLetter`) VALUES
+(1, NULL, NULL, NULL, NULL, NULL, 'a', NULL, NULL, NULL, 1),
+(2, NULL, NULL, NULL, NULL, NULL, 'aaaa', NULL, NULL, NULL, 1);
 
 --
 -- Indici per le tabelle scaricate
@@ -143,6 +165,20 @@ INSERT INTO `Utente` (`ID`, `Nome`, `Cognome`, `Telefono`, `Email`, `Indirizzo`,
 -- Indici per le tabelle `AutoEsposte`
 --
 ALTER TABLE `AutoEsposte`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indici per le tabelle `Biglietti`
+--
+ALTER TABLE `Biglietti`
+  ADD PRIMARY KEY (`Utente`,`Evento`,`Data`),
+  ADD UNIQUE KEY `ID` (`ID`),
+  ADD KEY `Evento` (`Evento`);
+
+--
+-- Indici per le tabelle `Evento`
+--
+ALTER TABLE `Evento`
   ADD PRIMARY KEY (`ID`);
 
 --
@@ -163,10 +199,33 @@ ALTER TABLE `AutoEsposte`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
+-- AUTO_INCREMENT per la tabella `Biglietti`
+--
+ALTER TABLE `Biglietti`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `Evento`
+--
+ALTER TABLE `Evento`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT per la tabella `Utente`
 --
 ALTER TABLE `Utente`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Limiti per le tabelle scaricate
+--
+
+--
+-- Limiti per la tabella `Biglietti`
+--
+ALTER TABLE `Biglietti`
+  ADD CONSTRAINT `Evento` FOREIGN KEY (`Evento`) REFERENCES `Evento` (`ID`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `Utente` FOREIGN KEY (`Utente`) REFERENCES `Utente` (`ID`) ON DELETE NO ACTION ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
