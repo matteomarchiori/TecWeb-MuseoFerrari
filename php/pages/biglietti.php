@@ -199,5 +199,8 @@ if ($database) {
     $page = str_replace("*mesenascita*", createSelectableNumber("mesenascita", 1, 12), $page);
     $page = str_replace("*giornonascita*", createSelectableNumber("giornonascita", 1, 31), $page);
     loadmostre($database, $page);
+    if(!empty($_POST['newsletter'])){
+        $page = str_replace("*newsletter*", "checked=\"checked\"", $page);
+    }
     echo $page;
 }
