@@ -19,25 +19,26 @@ if($database){
       $fileModello = file_get_contents(dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . "html" . DIRECTORY_SEPARATOR . "pages" . DIRECTORY_SEPARATOR . "modello-esposto.html");
       for($auto=0;$auto<$nRighe;$auto++){
         $modello = $fileModello;
-        $modello = str_replace("MODELLO",$automobili[$auto]['Modello'],$modello);
-        $modello = str_replace("ANNOPRODUZIONE",$automobili[$auto]['Anno'],$modello);
-        $modello = str_replace("STATOCONSERVAZIONE",$automobili[$auto]['StatoConservazione'],$modello);
+        $modello = str_replace("*modello*",$automobili[$auto]['Modello'],$modello);
+        $modello = str_replace("*annoproduzione*",$automobili[$auto]['Anno'],$modello);
+        $modello = str_replace("*statoconservazione*",$automobili[$auto]['StatoConservazione'],$modello);
         if($automobili[$auto]['Esposta'])$esposta="Sì";
         else $esposta = "No";
-        $modello = str_replace("ESPOSTA",$esposta,$modello);
-        $modello = str_replace("TIPOMOTORE",$automobili[$auto]['TipoMotore'],$modello);
-        $modello = str_replace("CILINDRATA",$automobili[$auto]['Cilindrata'],$modello);
-        $modello = str_replace("POTENZACV",$automobili[$auto]['PotenzaCv'],$modello);
-        $modello = str_replace("VELOCITAMAX",$automobili[$auto]['VelocitaMax'],$modello);
-        $modello = str_replace("PERCORSOFOTO",$automobili[$auto]['percorsoFoto'],$modello);
+        $modello = str_replace("*esposta*",$esposta,$modello);
+        $modello = str_replace("*tipomotore*",$automobili[$auto]['TipoMotore'],$modello);
+        $modello = str_replace("*cilindrata*",$automobili[$auto]['Cilindrata'],$modello);
+        $modello = str_replace("*potenzacv*",$automobili[$auto]['PotenzaCv'],$modello);
+        $modello = str_replace("*velocitamax*",$automobili[$auto]['VelocitaMax'],$modello);
+        $modello = str_replace("*percorsofoto*",$automobili[$auto]['percorsoFoto'],$modello);
+        $modello = str_replace("*altfoto*",$automobili[$auto]['Modello'],$modello);
         $modelliPagina.=$modello;
       }
-      $modelli = str_replace("MODELLIESPOSTI",$modelliPagina,$modelli);
-      if($pagina>1) $modelli = str_replace("PAGINABACK","<a href='/modelli-esposti?pagina=".($pagina-1)."' tabindex='8' accesskey='p'><div id='back'><p>INDIETRO</p></div></a>",$modelli);
-      else $modelli = str_replace("PAGINABACK","",$modelli);
-      $modelli = str_replace("PAGINACORRENTE",$pagina,$modelli);
-      if($pagina<=$nPagine) $modelli = str_replace("PAGINANEXT","<a href='/modelli-esposti?pagina=".($pagina+1)."' tabindex='9' accesskey='n'><div id='next'><p>AVANTI</p></div></a>",$modelli);
-      else $modelli = str_replace("PAGINANEXT","",$modelli);
+      $modelli = str_replace("*modelliesposti*",$modelliPagina,$modelli);
+      if($pagina>1) $modelli = str_replace("*paginaback*","<a href='/modelli-esposti?pagina=".($pagina-1)."' tabindex='8' accesskey='p'><div id='back'><p>INDIETRO</p></div></a>",$modelli);
+      else $modelli = str_replace("*paginaback*","",$modelli);
+      $modelli = str_replace("*paginacorrente*",$pagina,$modelli);
+      if($pagina<=$nPagine) $modelli = str_replace("*paginanext*","<a href='/modelli-esposti?pagina=".($pagina+1)."' tabindex='9' accesskey='n'><div id='next'><p>AVANTI</p></div></a>",$modelli);
+      else $modelli = str_replace("*paginanext*","",$modelli);
       echo $modelli;
     }
 }

@@ -215,11 +215,11 @@ body{
     height:3em;
 }
 
-#form{
+.forminfo{
 	padding-top: 0.5em;
 	padding-bottom: 0.5em;
 }
-#form input{
+.forminfo input{
 	margin-bottom: 0.5em;
 }
 #newsletter h1{

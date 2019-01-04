@@ -223,10 +223,10 @@ body {
     margin-bottom: 0.7em;
 }
 
-#form{
+.forminfo{
     padding-bottom: 0.5em;
 }
-#form input{
+.forminfo input{
     margin-bottom: 0.5em;
 }
 #newsletter h1{
