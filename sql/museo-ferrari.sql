@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Creato il: Gen 03, 2019 alle 19:43
+-- Creato il: Gen 04, 2019 alle 22:07
 -- Versione del server: 5.7.24-0ubuntu0.16.04.1
 -- Versione PHP: 7.2.12-1+ubuntu16.04.1+deb.sury.org+1
 
@@ -89,6 +89,13 @@ CREATE TABLE `Biglietti` (
 --
 
 TRUNCATE TABLE `Biglietti`;
+--
+-- Dump dei dati per la tabella `Biglietti`
+--
+
+INSERT INTO `Biglietti` (`ID`, `Utente`, `Evento`, `Data`, `NrBiglietti`) VALUES
+(1, 3, 1, '2019-01-16', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -135,7 +142,7 @@ CREATE TABLE `Utente` (
   `Nome` varchar(16) DEFAULT NULL,
   `Cognome` varchar(16) DEFAULT NULL,
   `DataNascita` date DEFAULT NULL,
-  `ComuneNascita` date DEFAULT NULL,
+  `ComuneNascita` varchar(20) DEFAULT NULL,
   `Telefono` varchar(15) DEFAULT NULL,
   `Email` varchar(30) NOT NULL,
   `Indirizzo` varchar(50) DEFAULT NULL,
@@ -155,7 +162,8 @@ TRUNCATE TABLE `Utente`;
 
 INSERT INTO `Utente` (`ID`, `Nome`, `Cognome`, `DataNascita`, `ComuneNascita`, `Telefono`, `Email`, `Indirizzo`, `Citta`, `Stato`, `NewsLetter`) VALUES
 (1, NULL, NULL, NULL, NULL, NULL, 'a', NULL, NULL, NULL, 1),
-(2, NULL, NULL, NULL, NULL, NULL, 'aaaa', NULL, NULL, NULL, 1);
+(2, NULL, NULL, '1919-01-01', NULL, NULL, 'aaaa', NULL, NULL, NULL, 1),
+(3, 'Matteo', 'Marchiori', '1919-01-01', 'Vigonza', '3473818358', 'matteo.marchiori97@gmail.com', 'Via campolino', 'Vigonza', 'it', 0);
 
 --
 -- Indici per le tabelle scaricate
@@ -202,7 +210,7 @@ ALTER TABLE `AutoEsposte`
 -- AUTO_INCREMENT per la tabella `Biglietti`
 --
 ALTER TABLE `Biglietti`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT per la tabella `Evento`
@@ -214,7 +222,7 @@ ALTER TABLE `Evento`
 -- AUTO_INCREMENT per la tabella `Utente`
 --
 ALTER TABLE `Utente`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Limiti per le tabelle scaricate
