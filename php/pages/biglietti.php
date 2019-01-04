@@ -240,13 +240,19 @@ if ($database) {
         if (!empty($_POST['giornomostra']) && !empty($_POST['mesemostra']) && !empty($_POST['annomostra'])) {
             $check['datamostra'] = checkdate($_POST['mesemostra'], $_POST['giornomostra'], $_POST['annomostra']);
             if ($check['datamostra']) {
-                loadDataMostre($database, $mostre, $dataold, $datanew);
+                if(empty($mostre))loadDataMostre($database, $mostre, $dataold, $datanew);
                 $check['datamostra'] = checkBoundLimit(strtotime($_POST['annomostra'] . '-' . $_POST['mesemostra'] . '-' . $_POST['giornomostra']), $dataold, $datanew);
             }
         } else
             $check['datamostra'] = false;
         if (!$check['datamostra'])
             $page = str_replace("*errordatamostra*", "<p class=\"col-4 error\">La data inserita non è corretta. Immettere una data valida.</p>", $page);
+        
+        if(!empty($_POST['mostra'])){
+            if(empty($mostre))loadDataMostre($database, $mostre, $dataold, $datanew);
+            $check['mostra'] = in_array($_POST['mostra'],array_keys($mostre));
+        }
+        
         if (!empty($_POST['nbiglietti']))
             $check['nbiglietti'] = checkBoundLimit($_POST['nbiglietti'], MINBIGLIETTI, MAXBIGLIETTI);
         else
@@ -282,7 +288,7 @@ if ($database) {
     $page = str_replace("*errorgiornonascita*", "", $page);
     $page = str_replace("*errormesenascita*", "", $page);
     $page = str_replace("*errorannonascita*", "", $page);
-    loadmostre($database, $page);
+    loadMostre($database, $page);
     $page = str_replace("*errormostra*", "", $page);
     $page = str_replace("*errordatamostra*", "", $page);
     $page = str_replace("*errorgiornomostra*", "", $page);
