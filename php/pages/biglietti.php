@@ -22,7 +22,7 @@ function checkNumeric($number) {
 }
 
 function checkAddress($string) {
-    if (ctype_alnum($string) && !ctype_digit($string))
+    if (is_string($string))
         return ucfirst(strtolower($string));
     return false;
 }
@@ -142,9 +142,8 @@ function createStati(){
 
 function loadDataMostre($database, &$mostre, &$dataold, &$datanew) {
     $mostredb = array_merge(Database::selectEvents("corrente", 1), Database::selectEvents("futuro", 2));
-    $mostre = array();
     foreach ($mostredb as $mostra) {
-        $mostre[$mostra['ID']] = $mostra['Titolo'];
+        $mostre[$mostra['ID']]=$mostra;
         if (empty($dataold)) {
             $dataold = $mostra['DataInizio'];
             $datanew = $mostra['DataFine'];
@@ -161,22 +160,22 @@ function loadDataMostre($database, &$mostre, &$dataold, &$datanew) {
         $dataold = $now;
 }
 
-function loadMostre($database, &$page) {
-    $mostre = "";
+function viewMostre($database, &$page) {
+    $mostreview = "";
     $anni = "";
     $mesi = "";
     $giorni = "";
     $dataold = "";
     $datanew = "";
-    loadDataMostre($database, $mostrearray, $dataold, $datanew);
+    loadDataMostre($database, $mostre, $dataold, $datanew);
     $flag = false;
-    foreach ($mostrearray as $id => $mostra) {
-        $mostre .= '<option value="' . $id . '"';
-        if (!empty($_POST["mostra"]) && $_POST["mostra"] == $id) {
+    foreach ($mostre as $id => $mostra) {
+        $mostreview .= '<option value="' . $mostra['ID'] . '"';
+        if (!empty($_POST["mostra"]) && $_POST["mostra"] == $mostra['ID']) {
             $flag = true;
-            $mostre .= " selected=\"selected\"";
+            $mostreview .= " selected=\"selected\"";
         }
-        $mostre .= '>' . $mostra . '</option>';
+        $mostreview .= '>' . $mostra['Titolo'] . '</option>';
     }
     if(!empty($_POST["mostra"]) && !$flag){
         $page = str_replace("*errormostra*", "<p class=\"col-4 error\">Controlla la mostra selezionata. La mostra inviata non era in elenco.</p>", $page);
@@ -196,7 +195,7 @@ function loadMostre($database, &$page) {
         }
     }
     $page = str_replace("*nbiglietti*", createOptionsNumber("nbiglietti", $page, MINBIGLIETTI, MAXBIGLIETTI), $page);
-    $page = str_replace("*mostre*", $mostre, $page);
+    $page = str_replace("*mostre*", $mostreview, $page);
 }
 
 $database = new Database();
@@ -237,27 +236,35 @@ if ($database) {
         
         $check['indirizzo'] = checkText("indirizzo", $page, 'a');
         $check['citta'] = checkText("citta", $page, 's');
+        
+        if(!empty($_POST['mostra'])){
+            if(empty($mostre))loadDataMostre($database, $mostre, $dataold, $datanew);
+            $check['mostra'] = in_array($_POST['mostra'], array_column($mostre,'ID'));
+        } else
+            $check['mostra'] = false;
+        
         if (!empty($_POST['giornomostra']) && !empty($_POST['mesemostra']) && !empty($_POST['annomostra'])) {
             $check['datamostra'] = checkdate($_POST['mesemostra'], $_POST['giornomostra'], $_POST['annomostra']);
             if ($check['datamostra']) {
                 if(empty($mostre))loadDataMostre($database, $mostre, $dataold, $datanew);
-                $check['datamostra'] = checkBoundLimit(strtotime($_POST['annomostra'] . '-' . $_POST['mesemostra'] . '-' . $_POST['giornomostra']), $dataold, $datanew);
+                $check['datamostra'] = checkBoundLimit(strtotime($_POST['annomostra'] . '-' . $_POST['mesemostra'] . '-' . $_POST['giornomostra']), strtotime($mostre[$_POST['mostra']]['DataInizio']), strtotime($mostre[$_POST['mostra']]['DataFine']));
             }
         } else
             $check['datamostra'] = false;
         if (!$check['datamostra'])
             $page = str_replace("*errordatamostra*", "<p class=\"col-4 error\">La data inserita non è corretta. Immettere una data valida.</p>", $page);
         
-        if(!empty($_POST['mostra'])){
-            if(empty($mostre))loadDataMostre($database, $mostre, $dataold, $datanew);
-            $check['mostra'] = in_array($_POST['mostra'],array_keys($mostre));
-        }
-        
         if (!empty($_POST['nbiglietti']))
             $check['nbiglietti'] = checkBoundLimit($_POST['nbiglietti'], MINBIGLIETTI, MAXBIGLIETTI);
         else
             $check['nbiglietti'] = false;
     }
+        
+    if(!empty($check) && in_array(false, $check)==false){
+        header("Location: /prenotazione");
+        die();
+    }
+    
     $page = str_replace("*nome*", "", $page);
     $page = str_replace("*errornome*", "", $page);
     $page = str_replace("*cognome*", "", $page);
@@ -271,8 +278,8 @@ if ($database) {
     foreach (createStati() as $key => $stato) {
         $stati .= "<option value=\"$key\">$stato</option>";
     }
-    
     $page = str_replace("*stato*", $stati, $page);
+    
     $page = str_replace("*email*", "", $page);
     $page = str_replace("*erroremail*", "", $page);
     $page = str_replace("*errorstato*", "", $page);
@@ -288,7 +295,7 @@ if ($database) {
     $page = str_replace("*errorgiornonascita*", "", $page);
     $page = str_replace("*errormesenascita*", "", $page);
     $page = str_replace("*errorannonascita*", "", $page);
-    loadMostre($database, $page);
+    viewMostre($database, $page, $dataold, $datanew);
     $page = str_replace("*errormostra*", "", $page);
     $page = str_replace("*errordatamostra*", "", $page);
     $page = str_replace("*errorgiornomostra*", "", $page);
