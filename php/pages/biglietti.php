@@ -1,8 +1,15 @@
 <?php
 
 require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . "database" . DIRECTORY_SEPARATOR . "database.php";
+require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . "tools" . DIRECTORY_SEPARATOR . "phpqrcode" . DIRECTORY_SEPARATOR . DIRECTORY_SEPARATOR . "qrlib.php";
 
 use Database\Database;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . "tools" . DIRECTORY_SEPARATOR . "phpmailer" . DIRECTORY_SEPARATOR . "src" . DIRECTORY_SEPARATOR . "Exception.php";
+require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . "tools" . DIRECTORY_SEPARATOR . "phpmailer" . DIRECTORY_SEPARATOR . "src" . DIRECTORY_SEPARATOR . "PHPMailer.php";
+require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . "tools" . DIRECTORY_SEPARATOR . "phpmailer" . DIRECTORY_SEPARATOR . "src" . DIRECTORY_SEPARATOR . "SMTP.php";
 
 define("MINANNONASCITA", date("Y") - 100);
 define("MAXANNONASCITA", date("Y") - 14);
@@ -131,19 +138,19 @@ function createMese($n) {
     }
 }
 
-function createStati(){
+function createStati() {
     $statiarray = array();
     $statiarray['fr'] = 'France';
     $statiarray['it'] = 'Italia';
     $statiarray['uk'] = 'United Kingdom';
-    
+
     return $statiarray;
 }
 
 function loadDataMostre($database, &$mostre, &$dataold, &$datanew) {
     $mostredb = array_merge(Database::selectEvents("corrente", 1), Database::selectEvents("futuro", 2));
     foreach ($mostredb as $mostra) {
-        $mostre[$mostra['ID']]=$mostra;
+        $mostre[$mostra['ID']] = $mostra;
         if (empty($dataold)) {
             $dataold = $mostra['DataInizio'];
             $datanew = $mostra['DataFine'];
@@ -177,7 +184,7 @@ function viewMostre($database, &$page) {
         }
         $mostreview .= '>' . $mostra['Titolo'] . '</option>';
     }
-    if(!empty($_POST["mostra"]) && !$flag){
+    if (!empty($_POST["mostra"]) && !$flag) {
         $page = str_replace("*errormostra*", "<p class=\"col-4 error\">Controlla la mostra selezionata. La mostra inviata non era in elenco.</p>", $page);
     }
     if ($dataold < $datanew) {
@@ -212,14 +219,17 @@ if ($database) {
             }
         } else
             $check['datanascita'] = false;
+
         if (!$check['datanascita'])
             $page = str_replace("*errordatanascita*", "<p class=\"col-4 error\">La data inserita non è corretta. Immettere una data valida.</p>", $page);
+
         $check['comune'] = checkText("comune", $page, 's');
         $check['telefono'] = checkText("telefono", $page, 'n');
         $check['email'] = checkText("email", $page, 'e');
-        
-        $stati="";
-        $flag=false;
+
+
+        $stati = "";
+        $flag = false;
         foreach (createStati() as $key => $stato) {
             $stati .= '<option value="' . $key . '"';
             if (!empty($_POST["stato"]) && $_POST["stato"] == $key) {
@@ -232,39 +242,108 @@ if ($database) {
         if (!empty($_POST['stato']) && !$flag) {
             $page = str_replace("*errorstato*", "<p class=\"col-4 error\">Lo stato inserito non è corretto. Sceglierlo tra quelli in elenco.</p>", $page);
         }
-        $check['stato']=$flag;
-        
+        $check['stato'] = $flag;
         $check['indirizzo'] = checkText("indirizzo", $page, 'a');
         $check['citta'] = checkText("citta", $page, 's');
-        
-        if(!empty($_POST['mostra'])){
-            if(empty($mostre))loadDataMostre($database, $mostre, $dataold, $datanew);
-            $check['mostra'] = in_array($_POST['mostra'], array_column($mostre,'ID'));
+
+        if (!empty($_POST['mostra'])) {
+            if (empty($mostre))
+                loadDataMostre($database, $mostre, $dataold, $datanew);
+            $check['mostra'] = in_array($_POST['mostra'], array_column($mostre, 'ID'));
         } else
             $check['mostra'] = false;
-        
+
         if (!empty($_POST['giornomostra']) && !empty($_POST['mesemostra']) && !empty($_POST['annomostra'])) {
             $check['datamostra'] = checkdate($_POST['mesemostra'], $_POST['giornomostra'], $_POST['annomostra']);
             if ($check['datamostra']) {
-                if(empty($mostre))loadDataMostre($database, $mostre, $dataold, $datanew);
-                $check['datamostra'] = checkBoundLimit(strtotime($_POST['annomostra'] . '-' . $_POST['mesemostra'] . '-' . $_POST['giornomostra']), strtotime($mostre[$_POST['mostra']]['DataInizio']), strtotime($mostre[$_POST['mostra']]['DataFine']));
+                if (empty($mostre))
+                    loadDataMostre($database, $mostre, $dataold, $datanew);
+                $dataold = strtotime($mostre[$_POST['mostra']]['DataInizio']) < strtotime("now") ? strtotime("now") : strtotime($mostre[$_POST['mostra']]['DataInizio']);
+                $check['datamostra'] = checkBoundLimit(strtotime($_POST['annomostra'] . '-' . $_POST['mesemostra'] . '-' . $_POST['giornomostra']), $dataold, strtotime($mostre[$_POST['mostra']]['DataFine']));
             }
         } else
             $check['datamostra'] = false;
         if (!$check['datamostra'])
             $page = str_replace("*errordatamostra*", "<p class=\"col-4 error\">La data inserita non è corretta. Immettere una data valida.</p>", $page);
-        
+
         if (!empty($_POST['nbiglietti']))
             $check['nbiglietti'] = checkBoundLimit($_POST['nbiglietti'], MINBIGLIETTI, MAXBIGLIETTI);
         else
             $check['nbiglietti'] = false;
+
+        if (in_array(false, $check) == false) {
+            $error = false;
+            $user = Database::selectUser($_POST['email']);
+            $registereduser = true;
+            if (empty($user)) {
+                $registereduser = Database::registerUser($_POST['nome'], $_POST['cognome'], $_POST['annonascita'] . '-' . $_POST['mesenascita'] . '-' . $_POST['giornonascita'], $_POST['comune'], $_POST['telefono'], $_POST['email'], $_POST['stato'], $_POST['indirizzo'], $_POST['citta'], $_POST['newsletter']);
+            }
+            if ($registereduser) {
+                if (empty($user))
+                    $user = Database::selectUser($_POST['email']);
+                $biglietto = Database::buyTickets($user['ID'], $_POST['mostra'], $_POST['annomostra'] . '-' . $_POST['mesemostra'] . '-' . $_POST['giornomostra'], $_POST['nbiglietti']);
+                if ($biglietto) {
+                    $mail = new PHPMailer(true);
+                    if (isset($mail)) {
+                        try {
+                            $mail->isSMTP();
+                            $mail->Host = 'smtp.gmail.com';
+                            $mail->SMTPAuth = true;
+                            $mail->Username = 'museoferrariunipd@gmail.com';
+                            $mail->Password = 'museoferrariunipd/tecweb';
+                            $mail->SMTPSecure = 'tls';
+                            $mail->Port = 587;
+                            $mail->setFrom('museoferrariunipd@gmail.com', 'Museo Ferrari');
+                            $mail->addAddress($_POST['email'], $_POST['nome'] . ' ' . $_POST['cognome']);
+                            $mail->addCC('museoferrariunipd@gmail.com');
+
+
+                            $user = Database::selectUser($_POST['email']);
+                            $qrcode = $user['ID'] . $_POST['mostra'] . $_POST['annomostra'] . $_POST['mesemostra'] . $_POST['giornomostra'] . $_POST['nbiglietti'];
+
+                            $tmpdir = dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . "img" . DIRECTORY_SEPARATOR . "tmp" . DIRECTORY_SEPARATOR;
+
+                            QRCode::png($qrcode, $tmpdir . $_POST['email'] . ".png", QR_ECLEVEL_L, 3);
+
+                            $mail->addAttachment($tmpdir . $_POST['email'] . ".png", 'QR-code-prenotazione.png');
+
+                            $mail->CharSet = 'UTF-8';
+                            $mail->Encoding = 'base64';
+                            $mail->Subject = 'Prenotazione effettuata';
+                            $mail->Body = "Buongiorno " . $_POST['nome'] . " " . $_POST['cognome'] . ",\n\n"
+                                    . "Le comunichiamo che la sua prenotazione "
+                                    . "è stata effettuata con successo.\n\n"
+                                    . "Dati della prenotazione:\n"
+                                    . "Mostra - " . $mostre[$_POST['mostra']]['Titolo'] . "\n"
+                                    . "Data della mostra - " . $_POST['giornomostra'] . " " . createMese($_POST['mesemostra'])
+                                    . " " . $_POST['annomostra'] . "\n"
+                                    . "Biglietti prenotati - " . $_POST['nbiglietti'] . "\n\n"
+                                    . "Potrà procedere al pagamento direttamente alle casse del museo, presentando la stampa della prenotazione o il codice in allegato.\n\n"
+                                    . "Cordiali saluti"
+                                    . "-- \n"
+                                    . "Museo Ferrari";
+
+                            $mail->send();
+                        } catch (Exception $e) {
+                            $error = true;
+                        } finally {
+                            unlink($tmpdir . $_POST['email'] . ".png");
+                            if (!$error) {
+                                $page = str_replace("*status*", "<p class=\"col-4 status\">La sua prenotazione è stata inviata correttamente. Controlli la sua casella di posta elettronica.</p>", $page);
+                                $page = str_replace("*disabled*", "disabled=\"disabled\"", $page);
+                            }
+                        }
+                    }
+                } else
+                    $error = true;
+            } else {
+                $error = true;
+            }
+            if ($error || !$registereduser)
+                $page = str_replace("*status*", "<p class=\"col-4 error\">Si è verificato un errore nell'invio della prenotazione. La preghiamo di contattarci usando l'apposito <a href=\"/info-e-contatti#form\">form di contatto</a></p>", $page);
+        }
     }
-        
-    if(!empty($check) && in_array(false, $check)==false){
-        header("Location: /prenotazione");
-        die();
-    }
-    
+
     $page = str_replace("*nome*", "", $page);
     $page = str_replace("*errornome*", "", $page);
     $page = str_replace("*cognome*", "", $page);
@@ -273,13 +352,13 @@ if ($database) {
     $page = str_replace("*errorcomune*", "", $page);
     $page = str_replace("*telefono*", "", $page);
     $page = str_replace("*errortelefono*", "", $page);
-    
-    $stati="";
+
+    $stati = "";
     foreach (createStati() as $key => $stato) {
         $stati .= "<option value=\"$key\">$stato</option>";
     }
     $page = str_replace("*stato*", $stati, $page);
-    
+
     $page = str_replace("*email*", "", $page);
     $page = str_replace("*erroremail*", "", $page);
     $page = str_replace("*errorstato*", "", $page);
@@ -305,5 +384,6 @@ if ($database) {
     if (!empty($_POST['newsletter'])) {
         $page = str_replace("*newsletter*", "checked=\"checked\"", $page);
     }
+    $page = str_replace("*status*", "", $page);
     echo $page;
 }

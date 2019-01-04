@@ -71,6 +71,15 @@ class Database {
             return $currentEvent[0];
         return null;
     }
+    
+    public static function selectUser($email) {
+        $email = Database::$connection->real_escape_string($email);
+        $query = "SELECT ID FROM Utente WHERE Email = \"$email\";";
+        $users = Database::selectRows($query);
+        if (isset($users) && $users)
+            return $users[0];
+        return null;
+    }
 
     public static function newsletter($email) {
         $email = Database::$connection->real_escape_string($email);
@@ -83,7 +92,7 @@ class Database {
         return Database::insertUpdateDelete($query);
     }
 
-    public static function insertUser($nome, $cognome, $datanascita, $comunenascita, $telefono, $email, $stato, $indirizzo, $citta, $newsletter) {
+    public static function registerUser($nome, $cognome, $datanascita, $comunenascita, $telefono, $email, $stato, $indirizzo, $citta, $newsletter) {
         $nome = Database::$connection->real_escape_string($nome);
         $cognome = Database::$connection->real_escape_string($cognome);
         $datanascita = Database::$connection->real_escape_string($datanascita);
@@ -93,12 +102,15 @@ class Database {
         $indirizzo = Database::$connection->real_escape_string($indirizzo);
         $citta = Database::$connection->real_escape_string($citta);
         $newsletter = is_bool($newsletter);
+        if($newsletter) $newsletter = "true";
+        else $newsletter = "false";
         if(!is_numeric($telefono)) return null;
         $query = "INSERT INTO Utente (Nome, Cognome, DataNascita, ComuneNascita, Telefono, Email, Indirizzo, Citta, Stato, NewsLetter) VALUES (\"$nome\", \"$cognome\", \"$datanascita\", \"$comunenascita\", \"$telefono\", \"$email\", \"$indirizzo\", \"$citta\", \"$stato\", $newsletter);";
         return Database::insertUpdateDelete($query);
     }
 
     public static function buyTickets($utente, $evento, $data, $biglietti) {
+        $data = Database::$connection->real_escape_string($data);
         $query = "INSERT INTO Biglietti (Utente, Evento, Data, NrBiglietti) VALUES ($utente, $evento, \"$data\", $biglietti);";
         return Database::insertUpdateDelete($query);
     }

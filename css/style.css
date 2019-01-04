@@ -215,6 +215,10 @@ body {
     color:#f00;
 }
 
+.status{
+    color:#00AA53;
+}
+
 .formfield > *{
     margin-bottom: 0.7em;
 }
