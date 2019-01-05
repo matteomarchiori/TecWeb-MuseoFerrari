@@ -1,7 +1,7 @@
 * {
     margin:0;
     padding:0;
-    font-size: 1.0em;
+    font-size: 1em;
     font-family: sans-serif;
     box-sizing:border-box;
     max-width:100%;
@@ -116,10 +116,35 @@ body {
 #eventiprossimi .treColonne h2{
     font-size:1.0em;
 }
+/*MOSTRE*/
+.riquadro{
+	padding:2em;
+	background-color:white;
+	xborder:1px solid lime;
+}
+#elencoMostre{
+	text-align:center;
+    margin-top: 1em;
+}
+#elencoMostre ul {
+	list-style-type:none;
+	padding:2em;
+	background-color:white;
+	width: 50%;
+    margin: auto;
+}
+#elencoMostre li {
+    margin-top: 0.5em;
+}
+#elencoMostre li p{
+    margin-top: 0.5em;
+}
+/*FOOTER*/
 #footer {
     padding:2em;
     text-align:center;
-    background-color:silver;
+    background-color:#262626;
+	color:white;
 }
 
 .immagineprincipale{
@@ -153,11 +178,13 @@ body {
 }
 #content h1{
     font-size:1.5em;
-    margin-top: 0.5em;
 }
 #content h2{
-    font-size:1.2em;
+    font-size:1.1em;
     margin-top: 0.5em;
+}
+#eventoprincipale p{
+    margin-top:0.5em;
 }
 #maps{
     display:block;

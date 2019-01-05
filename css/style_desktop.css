@@ -109,22 +109,24 @@ body{
 	cursor: pointer;
 }
 #content{
-    background-color:white;
-    padding:4em;
+    xbackground-color:white;
+	background-color:#f1f1f1;
+    padding:2em;
 }
 #content h1{
     font-size:1.5em;
 }
 #content h2{
-    font-size:1.2em;
+    font-size:1.1em;
 }
 #eventoprincipale{
     text-align:justify;
     padding-right:2em;/*temporaneo*/
 }
-#eventoprincipale h1,#eventoprincipale h2,#eventoprincipale p{
-    margin-bottom:1em;
+#eventoprincipale h1{
+    margin-bottom:0.5em;
 }
+
 
 #presentazionegenerale{
     text-align:justify;
@@ -193,10 +195,18 @@ body{
 	margin-left:auto;
 	margin-right:auto;
 }
+/*MOSTRE*/
+#elencoMostre{
+	text-align:center;
+    margin-top: 2em;
+}
+
+/*FOOTER*/
 #footer{
     padding:2em;
     text-align:center;
-    background-color:silver;
+	color:white;
+    background-color:#262626;
 }
 #footer img{
 	width:40%;
