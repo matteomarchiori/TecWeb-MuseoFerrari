@@ -8,11 +8,10 @@ function checkCounter(&$counter,&$tabIndex){
 }
 
 $header = file_get_contents("../../html/common/header.html");
-$page = '../pages/home.php';
-$uri_parts = explode('?', $_SERVER['REQUEST_URI'], 2);
-$uri_parts[0] = substr($uri_parts[0], strrpos($uri_parts[0], '/')+1);
+$last_uri_parts = explode('?', $_SERVER['REQUEST_URI'], 2);
+$last_uri_parts[0] = substr($last_uri_parts[0], strrpos($last_uri_parts[0], '/')+1);
 
-switch ($uri_parts[0]){
+switch ($last_uri_parts[0]){
     case "":  
         $header = str_replace("*title*","Homepage | Museo Ferrari",$header);
         $header = str_replace("*description*","L'homepage del museo presenta l'ultima Ferrari 250 Testa Rossa entrata in esposizione, una breve decrizione del museo e una sezione dedicata alle collezioni in esposizione prossimamente.",$header);
@@ -83,8 +82,10 @@ switch ($uri_parts[0]){
  * b -> biglietti
  * i -> info
  */
-
 $tabIndex = 1;
+$header = str_replace("*title*","Pagina non trovata",$header);
+$header = str_replace("*breadcrumbs*","Pagina non trovata",$header);
+$header = str_replace("*student*",$student,$header);
 $header = str_replace("*linkhome*","<li><a href='./' xml:lang='en' tabindex=\"$tabIndex\" accesskey=\"h\">Home</a></li>",$header,$counter);
 if ($counter > 0) checkCounter($counter,$tabIndex);
 $header = str_replace("*linkmostre*","<li><a href='./mostre' tabindex=\"$tabIndex\" accesskey=\"m\">Mostre</a></li>",$header,$counter);
@@ -98,7 +99,6 @@ if ($counter > 0) checkCounter($counter,$tabIndex);
 $header = str_replace("*linkbiglietti*","<li><a href='./biglietti' tabindex=\"$tabIndex\" accesskey=\"b\">Biglietti</a></li>",$header,$counter);
 if ($counter > 0) checkCounter($counter,$tabIndex);
 $header = str_replace("*linkinfo*","<li><a href='./info-e-contatti' tabindex=\"$tabIndex\" accesskey=\"i\">Info e Contatti</a></li>",$header);
-
 echo $header;
 require_once $page;
 require_once '../../html/common/footer.html';
