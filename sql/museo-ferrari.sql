@@ -52,22 +52,22 @@ TRUNCATE TABLE `AutoEsposte`;
 --
 
 INSERT INTO `AutoEsposte` (`ID`, `Modello`, `Anno`, `StatoConservazione`, `Esposta`, `TipoMotore`, `Cilindrata`, `PotenzaCv`, `VelocitaMax`, `percorsoFoto`) VALUES
-(1, 'F 430', 2004, 7, 0, 'V8', 5748, 490, 315, '../../img/fotoAuto/f430.jpg'),
-(2, '208 Turbo', 1982, 9, 0, 'V8', 1990, 220, 242, '../../img/fotoAuto/208_Turbo.jpg'),
-(3, '288 GTO', 1984, 8, 1, 'V8', 2855, 400, 306, '../../img/fotoAuto/288_GTO.jpg'),
-(4, 'Testarossa', 1984, 10, 0, 'V8', 4943, 390, 290, '../../img/fotoAuto/testarossa.png'),
-(5, '412', 1985, 6, 1, 'V12', 4953, 270, 250, '../../img/fotoAuto/412.jpg'),
-(7, '408 Integrale', 1987, 9, 0, 'V8', 3985, 300, 290, '../../img/fotoAuto/408_integrale.jpg'),
-(8, 'F40 LM', 1989, 7, 1, 'V8', 2936, 750, 320, '../../img/fotoAuto/F40_LM.jpg'),
-(9, 'MYTHOS', 1990, 7, 0, 'V12', 4942, 390, 290, '../../img/fotoAuto/pinifarinia_mythos.jpg'),
-(10, '512 TR', 1992, 10, 1, 'V12', 4943, 428, 314, '../../img/fotoAuto/512_TR.jpg'),
-(11, '348 Spider', 1993, 10, 0, 'V8', 3405, 300, 275, '../../img/fotoAuto/348_spider.jpg'),
-(12, 'F50', 1995, 9, 0, 'V12', 4700, 520, 325, '../../img/fotoAuto/ferrari_f50.jpg'),
-(13, 'F355 Spider', 1995, 8, 0, 'V8', 3496, 380, 295, '../../img/fotoAuto/F355_spider.jpg'),
-(14, '550 Maranello', 1996, 5, 1, 'V12', 5474, 485, 320, '../../img/fotoAuto/550_maranello.jpg'),
-(15, '456 M GTA', 1997, 8, 0, 'V12', 5476, 442, 302, '../../img/fotoAuto/ferrari_456_M_GTA.jpg'),
-(16, '360 Modena', 1999, 10, 0, 'V8', 3586, 400, 295, '../../img/fotoAuto/360_modena.jpg'),
-(17, '550 Barchetta Pininfarina', 2000, 8, 0, 'V12', 5474, 475, 300, '../../img/fotoAuto/550_barchetta_pininfarina.jpg');
+(1, 'F 430', 2004, 7, 0, 'V8', 5748, 490, 315, './img/fotoAuto/f430.jpg'),
+(2, '208 Turbo', 1982, 9, 0, 'V8', 1990, 220, 242, './img/fotoAuto/208_Turbo.jpg'),
+(3, '288 GTO', 1984, 8, 1, 'V8', 2855, 400, 306, './img/fotoAuto/288_GTO.jpg'),
+(4, 'Testarossa', 1984, 10, 0, 'V8', 4943, 390, 290, './img/fotoAuto/testarossa.png'),
+(5, '412', 1985, 6, 1, 'V12', 4953, 270, 250, './img/fotoAuto/412.jpg'),
+(7, '408 Integrale', 1987, 9, 0, 'V8', 3985, 300, 290, './img/fotoAuto/408_integrale.jpg'),
+(8, 'F40 LM', 1989, 7, 1, 'V8', 2936, 750, 320, './img/fotoAuto/F40_LM.jpg'),
+(9, 'MYTHOS', 1990, 7, 0, 'V12', 4942, 390, 290, './img/fotoAuto/pinifarinia_mythos.jpg'),
+(10, '512 TR', 1992, 10, 1, 'V12', 4943, 428, 314, './img/fotoAuto/512_TR.jpg'),
+(11, '348 Spider', 1993, 10, 0, 'V8', 3405, 300, 275, './img/fotoAuto/348_spider.jpg'),
+(12, 'F50', 1995, 9, 0, 'V12', 4700, 520, 325, './img/fotoAuto/ferrari_f50.jpg'),
+(13, 'F355 Spider', 1995, 8, 0, 'V8', 3496, 380, 295, './img/fotoAuto/F355_spider.jpg'),
+(14, '550 Maranello', 1996, 5, 1, 'V12', 5474, 485, 320, './img/fotoAuto/550_maranello.jpg'),
+(15, '456 M GTA', 1997, 8, 0, 'V12', 5476, 442, 302, './img/fotoAuto/ferrari_456_M_GTA.jpg'),
+(16, '360 Modena', 1999, 10, 0, 'V8', 3586, 400, 295, './img/fotoAuto/360_modena.jpg'),
+(17, '550 Barchetta Pininfarina', 2000, 8, 0, 'V12', 5474, 475, 300, './img/fotoAuto/550_barchetta_pininfarina.jpg');
 
 -- --------------------------------------------------------
 

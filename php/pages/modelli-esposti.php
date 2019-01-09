@@ -34,10 +34,10 @@ if($database){
         $modelliPagina.=$modello;
       }
       $modelli = str_replace("*modelliesposti*",$modelliPagina,$modelli);
-      if($pagina>1) $modelli = str_replace("*paginaback*","<a href='/modelli-esposti?pagina=".($pagina-1)."' tabindex='8' accesskey='p'><div id='back'><p>INDIETRO</p></div></a>",$modelli);
+      if($pagina>1) $modelli = str_replace("*paginaback*","<a href='./modelli-esposti?pagina=".($pagina-1)."' tabindex='8' accesskey='p'><div id='back'><p>INDIETRO</p></div></a>",$modelli);
       else $modelli = str_replace("*paginaback*","",$modelli);
       $modelli = str_replace("*paginacorrente*",$pagina,$modelli);
-      if($pagina<=$nPagine) $modelli = str_replace("*paginanext*","<a href='/modelli-esposti?pagina=".($pagina+1)."' tabindex='9' accesskey='n'><div id='next'><p>AVANTI</p></div></a>",$modelli);
+      if($pagina<=$nPagine) $modelli = str_replace("*paginanext*","<a href='./modelli-esposti?pagina=".($pagina+1)."' tabindex='9' accesskey='n'><div id='next'><p>AVANTI</p></div></a>",$modelli);
       else $modelli = str_replace("*paginanext*","",$modelli);
       echo $modelli;
     }
