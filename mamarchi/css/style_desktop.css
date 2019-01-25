@@ -130,7 +130,7 @@ body{
 
 #presentazionegenerale{
     text-align:justify;
-    padding:2em;
+    xpadding:2em;
     padding-left:6em;
     padding-right:6em;
 }
@@ -172,11 +172,11 @@ body{
 }
 
 .infomodello{
-	margin-bottom:2em;
+	margin-bottom:0.9em;
     padding-right:2em;
 }
 .fotomodello{
-	margin-top:2.2em;
+	xmargin-top:2.2em;
 }
 .pulsantePag a{
 	text-decoration:none;
@@ -194,11 +194,6 @@ body{
 	margin:0.5em;
 	margin-left:auto;
 	margin-right:auto;
-}
-/*MOSTRE*/
-#elencoMostre{
-	text-align:center;
-    margin-top: 2em;
 }
 
 /*FOOTER*/

@@ -120,11 +120,11 @@ body {
 .riquadro{
 	padding:2em;
 	background-color:white;
-	xborder:1px solid lime;
+	//border:1px solid lime;
+	margin-bottom: 2em;
 }
 #elencoMostre{
 	text-align:center;
-    margin-top: 1em;
 }
 #elencoMostre ul {
 	list-style-type:none;
@@ -197,17 +197,20 @@ body {
 
 .tablemodelli{
     width:100%;
-    background-color:black;
     margin-top: 0.5em; 
+	border-collapse:collapse;
+	border-top:2px solid #262626;
 }
 .tablemodelli td{
     background-color:white;
     padding:0.4em;
+	border-bottom:2px solid #262626;
 }
 .tablemodelli th{
     background-color:silver;
     text-align: left;
     padding: 0.4em;
+	border-bottom:2px solid #262626;
 }
 .pulsantePag a{
     text-decoration:none;
