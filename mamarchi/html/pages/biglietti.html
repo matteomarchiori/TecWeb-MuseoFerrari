@@ -1,168 +1,182 @@
-<div id="content" class="container">
-    <div id="prenotabiglietti" class="col-4">
+<div class="container" id="contentwhite">
+    <div class="col-4">
         <h1>Prenota ora i tuoi biglietti</h1>
         <form action="./biglietti" method="POST">
             <div class="container">
-                <fieldset class="col-4 col-xl-2">
-                    <legend>Nominativo</legend>
-                    <div class="container formfield">
-                        <div class="col-2">
-                            <label for="nome">Nome</label>
-                            <input type="text" name="nome" id="nome" size="15" maxlength="20" value="*nome*" *disabled*/>
-                        </div>
-                        <p class="col-2">Inserire il nome senza spazi e con sole lettere alfabetiche.</p>
-                        *errornome*
-                    </div>
-                    <div class="container formfield">
-                        <div class="col-2">
-                            <label for="cognome">Cognome</label>
-                            <input type="text" name="cognome" id="cognome" size="15" maxlength="20" value="*cognome*" *disabled*/>
-                        </div>
-                        <p class="col-2">Inserire il cognome senza spazi e con sole lettere alfabetiche.</p>
-                        *errorcognome*
-                    </div>
-                </fieldset>
-                <fieldset class="col-4 col-xl-2">
-                    <legend>Dati di nascita</legend>
-                    <div class="container formfield">
-                        <div class="col-4">
-                            <label for="giornonascita">Giorno</label>
-                            <select name="giornonascita" id="giornonascita" *disabled*>
-                                *giornonascita*
-                            </select>
-                            <label for="mesenascita">Mese</label>
-                            <select name="mesenascita" id="mesenascita" *disabled*>
-                                *mesenascita*
-                            </select>
-                            <label for="annonascita">Anno</label>
-                            <select name="annonascita" id="annonascita" *disabled*>
-                                *annonascita*
-                            </select>
-                        </div>
-                        *errordatanascita*
-                        *errorannonascita*
-                        *errormesenascita*
-                        *errorgiornonascita*
-                    </div>
-                    <div class="container formfield">
-                        <div class="col-2">
-                            <label for="comune">Comune</label>
-                            <input type="text" name="comune" id="comune" size="15" maxlength="20" value="*comune*" *disabled*/>
-                        </div>
-                        <p class="col-2">Inserire il comune senza spazi e con sole lettere alfabetiche.</p>
-                        *errorcomune*
-                    </div>
-                </fieldset>
+				<div class="col-4 col-xl-2">
+					<fieldset>
+						<legend>Nominativo</legend>
+						<div class="container formfield">
+							<div class="col-4 col-xl-2">
+								<label for="nome">Nome</label><br/>
+								<input type="text" name="nome" id="nome" size="15" maxlength="20" value="*nome*" *disabled*/>
+							</div>
+							<p class="col-4 col-xl-2">Inserire il nome senza spazi e con sole lettere alfabetiche.</p>
+							*errornome*
+						</div>
+						<div class="container formfield">
+							<div class="col-4 col-xl-2">
+								<label for="cognome">Cognome</label><br/>
+								<input type="text" name="cognome" id="cognome" size="15" maxlength="20" value="*cognome*" *disabled*/>
+							</div>
+							<p class="col-4 col-xl-2">Inserire il cognome senza spazi e con sole lettere alfabetiche.</p>
+							*errorcognome*
+						</div>
+					</fieldset>
+				</div>
+				<div class="col-4 col-xl-2">
+					<fieldset>
+						<legend>Dati di nascita</legend>
+						<div class="container formfield">
+							<div class="col-4">
+								<label for="giornonascita">Giorno</label>
+								<select name="giornonascita" id="giornonascita" *disabled*>
+									*giornonascita*
+								</select>
+								<label for="mesenascita">Mese</label>
+								<select name="mesenascita" id="mesenascita" *disabled*>
+									*mesenascita*
+								</select>
+								<label for="annonascita">Anno</label>
+								<select name="annonascita" id="annonascita" *disabled*>
+									*annonascita*
+								</select>
+							</div>
+							*errordatanascita*
+							*errorannonascita*
+							*errormesenascita*
+							*errorgiornonascita*
+						</div>
+						<div class="container formfield">
+							<div class="col-4 col-xl-2">
+								<label for="comune">Comune</label>
+								<input type="text" name="comune" id="comune" size="15" maxlength="20" value="*comune*" *disabled*/>
+							</div>
+							<p class="col-4 col-xl-2">Inserire il comune senza spazi e con sole lettere alfabetiche.</p>
+							*errorcomune*
+						</div>
+					</fieldset>
+				</div>
             </div>
             <div class="container">
-                <fieldset class="col-4 col-xl-2">
-                    <legend>Dati di contatto</legend>
-                    <div class="container formfield">
-                        <div class="col-2">
-                            <label for="telefono">Telefono</label>
-                            <input type="text" name="telefono" id="telefono" size="15" maxlength="15" value="*telefono*" *disabled*/>
-                        </div>
-                        <p class="col-2">Inserire il numero di telefono con sole cifre, senza spazi.</p></div>
-                        *errortelefono*
-                    <div class="container formfield">
-                        <div class="col-2">
-                            <label for="email">Email</label>
-                            <input type="text" name="email" id="email" size="15" maxlength="50" value="*email*" *disabled*/>
-                        </div>
-                        <p class="col-2">Inserire l'email nel formato casella@dominio.</p>
-                        *erroremail*
-                    </div>
-                </fieldset>
-                <fieldset class="col-4 col-xl-2">
-                    <legend>Dati relativi all'abitazione</legend>
-                    <div class="container formfield">
-                        <div class="col-4">
-                            <label for="stato">Stato</label>
-                            <select name="stato" id="stato" *disabled*>
-                                *stato*
-                            </select>
-                        </div>
-                        *errorstato*
-                    </div>
-                    <div class="container formfield">
-                        <div class="col-2">
-                            <label for="indirizzo">Indirizzo</label>
-                            <input type="text" name="indirizzo" id="indirizzo" value="*indirizzo*" *disabled*/>
-                        </div>
-                        <p class="col-2">Inserire l'indirizzo con il nome della via e il numero civico.</p>
-                        *errorindirizzo*
-                    </div>
-                    <div class="container formfield">
-                        <div class="col-2">
-                            <label for="citta">Città</label>
-                            <input type="text" name="citta" id="citta" value="*citta*" *disabled*/>
-                        </div>
-                        <p class="col-2">Inserire la città senza spazi e con sole lettere alfabetiche.</p>
-                        *errorcitta*
-                    </div>
-                </fieldset>
+				<div class="col-4 col-xl-2">
+					<fieldset>
+						<legend>Dati di contatto</legend>
+						<div class="container formfield">
+							<div class="col-4 col-xl-2">
+								<label for="telefono">Telefono</label><br/>
+								<input type="text" name="telefono" id="telefono" size="15" maxlength="15" value="*telefono*" *disabled*/>
+							</div>
+							<p class="col-4 col-xl-2">Inserire il numero di telefono con sole cifre, senza spazi.</p></div>
+							*errortelefono*
+						<div class="container formfield">
+							<div class="col-4 col-xl-2">
+								<label for="email">Email</label><br/>
+								<input type="text" name="email" id="email" size="15" maxlength="50" value="*email*" *disabled*/>
+							</div>
+							<p class="col-4 col-xl-2">Inserire l'email nel formato casella@dominio.</p>
+							*erroremail*
+						</div>
+					</fieldset>
+				</div>
+				<div class="col-4 col-xl-2">
+					<fieldset>
+						<legend>Dati relativi all'abitazione</legend>
+						<div class="container formfield">
+							<div class="col-4">
+								<label for="stato">Stato</label>
+								<select name="stato" id="stato" *disabled*>
+									*stato*
+								</select>
+							</div>
+							*errorstato*
+						</div>
+						<div class="container formfield">
+							<div class="col-4 col-xl-2">
+								<label for="indirizzo">Indirizzo</label><br/>
+								<input type="text" name="indirizzo" id="indirizzo" size="15" value="*indirizzo*" *disabled*/>
+							</div>
+							<p class="col-4 col-xl-2">Inserire l'indirizzo con il nome della via e il numero civico.</p>
+							*errorindirizzo*
+						</div>
+						<div class="container formfield">
+							<div class="col-4 col-xl-2">
+								<label for="citta">Città</label><br/>
+								<input type="text" name="citta" id="citta" size="15" value="*citta*" *disabled*/>
+							</div>
+							<p class="col-4 col-xl-2">Inserire la città senza spazi e con sole lettere alfabetiche.</p>
+							*errorcitta*
+						</div>
+					</fieldset>
+				</div>
             </div>
             <div class="container">
-                <fieldset class="col-4 col-xl-2">
-                    <legend>Biglietti</legend>
-                    <div class="container formfield">
-                        <div class="col-4">
-                            <label for="mostra">Mostra</label>
-                            <select name="mostra" id="mostra" *disabled*>
-                                *mostre*
-                            </select>
-                        </div>
-                        *errormostra*
-                        <div class="col-4">
-                            <label for="giornomostra">Giorno</label>
-                            <select name="giornomostra" id="giornomostra" *disabled*>
-                                *giornimostre*
-                            </select>
-                            <label for="mesemostra">Mese</label>
-                            <select name="mesemostra" id="mesemostra" *disabled*>
-                                *mesimostre*
-                            </select>
-                            <label for="annomostra">Anno</label>
-                            <select name="annomostra" id="annomostra" *disabled*>
-                                *annimostre*
-                            </select>
-                        </div>
-                        *errordatamostra*
-                        *errorannomostra*
-                        *errormesemostra*
-                        *errorgiornomostra*
-                        <div class="col-4">
-                            <label for="nbiglietti">Numero di biglietti</label>
-                            <select name="nbiglietti" id="nbiglietti" *disabled*>
-                                *nbiglietti*
-                            </select>
-                        </div>
-                        *errornbiglietti*
-                    </div>
-                </fieldset>
-                <fieldset class="col-4 col-xl-2">
-                    <legend>Newsletter</legend>
-                    <div class="container formfield">
-                        <div class="col-4">
-                            <label for="newsletter">Desidero iscrivermi alla newsletter</label>
-                            <input type="checkbox" name="newsletter" id="newsletter" *newsletter* *disabled*/>
-                        </div>
-                    </div>
-                </fieldset>
+				<div class="col-4 col-xl-2">
+					<fieldset>
+						<legend>Biglietti</legend>
+						<div class="container formfield">
+							<div class="col-4">
+								<label for="mostra">Mostra</label>
+								<select name="mostra" id="mostra" *disabled*>
+									*mostre*
+								</select>
+							</div>
+							*errormostra*
+							<div class="col-4">
+								<label for="giornomostra">Giorno</label>
+								<select name="giornomostra" id="giornomostra" *disabled*>
+									*giornimostre*
+								</select>
+								<label for="mesemostra">Mese</label>
+								<select name="mesemostra" id="mesemostra" *disabled*>
+									*mesimostre*
+								</select>
+								<label for="annomostra">Anno</label>
+								<select name="annomostra" id="annomostra" *disabled*>
+									*annimostre*
+								</select>
+							</div>
+							*errordatamostra*
+							*errorannomostra*
+							*errormesemostra*
+							*errorgiornomostra*
+							<div class="col-4">
+								<label for="nbiglietti">Numero di biglietti</label>
+								<select name="nbiglietti" id="nbiglietti" *disabled*>
+									*nbiglietti*
+								</select>
+							</div>
+							*errornbiglietti*
+						</div>
+					</fieldset>
+				</div>
+				<div class="col-4 col-xl-2">
+					<fieldset>
+						<legend>Newsletter</legend>
+						<div class="container formfield">
+							<div class="col-4">
+								<label for="newsletter">Desidero iscrivermi alla newsletter</label>
+								<input type="checkbox" name="newsletter" id="newsletter" *newsletter* *disabled*/>
+							</div>
+						</div>
+					</fieldset>
+				</div>
             </div>
             <div class="container">
-                <fieldset class="col-4 col-xl-2">
+				<div class="col-4 col-xl-2">
+                <fieldset>
                     <legend>Invia o Cancella</legend>
                     <div class="container formfield">
-                        <div class="col-2">
+                        <div class="col-4 col-xl-2">
                             <input type="submit" name="invio" id="invio" value="Invia" *disabled*/>
                         </div>
-                        <div class="col-2">
+                        <div class="col-4 col-xl-2">
                             <input type="reset" name="reset" id="reset" value="Cancella" *disabled*/>
                         </div>
                         *status*
                     </div>
                 </fieldset>
+				</div>
             </div>
         </form>
     </div>

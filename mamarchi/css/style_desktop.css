@@ -219,6 +219,10 @@ body{
     width:3em;
     height:3em;
 }
+#contentwhite{
+background-color:white;
+padding:2em;
+}
 
 .forminfo{
 	padding-top: 0.5em;

@@ -254,6 +254,10 @@ body {
     margin-bottom: 0.7em;
 }
 
+.formfield input{
+    max-width:100%;
+}
+
 .forminfo{
     padding-bottom: 0.5em;
 }
@@ -269,19 +273,26 @@ body {
 #contattaci h1{
     margin-bottom:0.3em;
 }
-
 fieldset{
     padding:0.5em;
-}
-
-input{
-    max-width:50%;
+	background-color:#f1f1f1;
+	margin:0.5em;
 }
 
 fieldset > *{
     margin:0.5em;
 }
-
+input{
+	border:none;
+	padding:0.3em;
+}
+textarea{
+	border:none;
+	padding:0.5em;
+	resize:none;
+	width:100%;
+	margin-bottom:0.5em;
+}
 /*Generale*/
 
 .col-1 {
