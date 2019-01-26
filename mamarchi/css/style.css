@@ -183,6 +183,16 @@ body {
     font-size:1em;
     margin-top: 0.5em;
 }
+#contentwhite {
+    padding:1em;
+}
+#contentwhite h1{
+    font-size:1.3em;
+}
+#contentwhite h2{
+    font-size:1em;
+    margin-top: 0.5em;
+}
 #eventoprincipale p{
     margin-top:0.5em;
 }
@@ -256,12 +266,25 @@ body {
 .formfield input{
     max-width:100%;
 }
-
+label{
+	display:block;
+	padding-bottom:0.2em;
+	padding-top:0.2em;
+}
+/*
 .forminfo{
-    padding-bottom: 0.5em;
+   padding-bottom: 0.5em;
 }
 .forminfo input{
-    margin-bottom: 0.5em;
+   margin-bottom: 0.5em;
+}*/
+#newsletter fieldset{
+	padding:0em;
+	margin:0em;
+	margin-bottom:1em;
+}
+#newsletter label{
+	display:inline;
 }
 #newsletter h1{
     margin-bottom:0.3em;
@@ -272,24 +295,48 @@ body {
 #contattaci h1{
     margin-bottom:0.3em;
 }
+#contattaci fieldset{
+	padding:0em;
+	margin:0em;
+	margin-top:1em;
+	margin-bottom:1em;
+}
+#contattaci label{
+	display:inline;
+}
 fieldset{
     padding:0.5em;
-	background-color:#f1f1f1;
+	background-color:#d9d9d9;
 	margin:0.5em;
+	border:none;
+}
+legend{
+	font-size:1.1em;
+	background-color:#333333;
+	color:white;
+	padding:0.3em 1em 0.3em 1em;
 }
 
 fieldset > *{
     margin:0.5em;
 }
-input{
+input, select{
+	//border:2px solid #262626;
 	border:none;
 	padding:0.3em;
+}
+
+.formfield input[type=submit], input[type=reset]{
+	border:none;
+	background-color:#333333;
+	color:white;
+	padding:0.3em 1em 0.3em 1em;
 }
 textarea{
 	border:none;
 	padding:0.5em;
 	resize:none;
-	width:100%;
+	width:95%;
 	margin-bottom:0.5em;
 }
 #prenotabiglietti h1{
@@ -297,7 +344,6 @@ textarea{
 	padding:0.5em;
 }
 /*Generale*/
-
 .col-1 {
     width: 25%;
 }

@@ -1,11 +1,14 @@
-<div id='content' class='container'>
+<div id='contentwhite' class='container'>
     <div class='col-4' id='newsletter'>
         <h1>Vuoi rimanere aggiornato sulle nostre mostre?</h1>
-        <p>Iscriviti alla nostra newsletter</p>
-        <form class="forminfo" action='./info-e-contatti' method='post'>
-            <label for="email">Email: </label>
+        
+        <form action='./info-e-contatti' method='post'>
+			<fieldset class="formfield">
+			<legend>Iscriviti alla nostra newsletter</legend>
+			<label for="email">Email</label>
             <input type='text' name='email' id='email'/>
             <input type='submit' value='Invia'/>
+			</fieldset>
         </form>
         *subscribe*
     </div>
@@ -20,22 +23,24 @@
         <h2>Dalla stazione dei treni</h2>
         <p>Facendo una piacevole passeggiata di un chilometro</p>
     </div>
-    <div class='col-4 col-xl-2 forminfo'>
+    <div class='col-4 col-xl-2 forminfo' id="contattaci">
         <h1>Come contattarci</h1>
         <h2>Email</h2>
         <p>museo.ferrari@info.it</p>
         <h2>Tel e Fax</h2>
         <p>0499221289</p>
-        <h2>Contattaci</h2>
         <form id="form" action='/info-e-contatti' method='post'>
-            <label for="nome">Nome: </label>
+            <fieldset class="formfield">
+			<legend>Contattaci</legend>
+			<label for="nome">Nome</label>
             <input type='text' name='nome' id='nome'/>
             <br/>		    
-            <label for="email">Email: </label>
+            <label for="email">Email</label>
             <input type='text' name='email' id='email'/>
             <br/>
             <textarea rows="4" cols="50" name="testo" form="form" placeholder="Scrivi qui il testo..."></textarea>
             <input type='submit' value='Invia'/>
+			</fieldset>
         </form>
     </div>
     <div class='col-4'>

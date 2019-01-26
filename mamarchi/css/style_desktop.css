@@ -237,13 +237,26 @@ body{
 background-color:white;
 padding:2em;
 }
-
+#contentwhite h1{
+    font-size:1.5em;
+}
+#contentwhite h2{
+    font-size:1.1em;
+    margin-top: 0.5em;
+}
+.formfield p{
+	padding-left:1em;
+}
+/*
 .forminfo{
 	padding-top: 0.5em;
 	padding-bottom: 0.5em;
 }
 .forminfo input{
 	margin-bottom: 0.5em;
+}*/
+#newsletter, #comeRaggiungerci, #contattaci{
+	padding:1em;
 }
 #newsletter h1{
 	margin-bottom:0.3em;
@@ -266,7 +279,9 @@ padding:2em;
 	width:33.33%;
     margin:auto;
 }
-
+.center{
+	text-align:center;
+}
 .col-xl-1 {width: 25%;}
 .col-xl-2 {width: 50%;}
 .col-xl-3 {width: 75%;}
