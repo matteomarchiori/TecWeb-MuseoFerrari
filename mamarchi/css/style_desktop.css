@@ -82,18 +82,23 @@ body{
 .dropdown:hover .dropdown-content {
     display: block;
 }
-
+#content h1{
+    font-size:1.5em;
+}
+#content h2{
+    font-size:1.1em;
+    margin-top: 0.5em;
+}
 #breadcrumbs{
     background-color:silver;
     padding: 0.5em;
 	color:black;
 }
 #formRicerca{
-	float:right;
-	/*border-radius: 0.4em;*/
-	border:3px solid #262626;
+	width:14em;
 }
 #formRicerca input[type=text]{
+	width:11em;
 	border:none;
 	margin:0.1em;
 	padding:0.5em;
@@ -126,8 +131,14 @@ body{
 #eventoprincipale h1{
     margin-bottom:0.5em;
 }
-
-
+.riquadro{
+	padding:2em;
+	background-color:white;
+	margin-bottom: 2em;
+}
+#elencoMostre ul {
+	padding:2em;
+}
 #presentazionegenerale{
     text-align:justify;
     xpadding:2em;
@@ -195,7 +206,10 @@ body{
 	margin-left:auto;
 	margin-right:auto;
 }
-
+#prenotabiglietti h1{
+	font-size:1.5em;
+	padding:0.3em;
+}
 /*FOOTER*/
 #footer{
     padding:2em;

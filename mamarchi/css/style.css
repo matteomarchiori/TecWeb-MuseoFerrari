@@ -76,7 +76,8 @@ body {
 #formRicerca{
     float:right;
     /*border-radius: 0.4em;*/
-    border:3px solid #262626;	
+    border:2px solid #262626;
+	margin-bottom:1em;
 }
 #formRicerca input[type=text]{
     border:none;
@@ -118,7 +119,6 @@ body {
 }
 /*MOSTRE*/
 .riquadro{
-	padding:2em;
 	background-color:white;
 	//border:1px solid lime;
 	margin-bottom: 2em;
@@ -128,7 +128,6 @@ body {
 }
 #elencoMostre ul {
 	list-style-type:none;
-	padding:2em;
 	background-color:white;
 	width: 50%;
     margin: auto;
@@ -178,10 +177,10 @@ body {
     padding:1em;
 }
 #content h1{
-    font-size:1.5em;
+    font-size:1.3em;
 }
 #content h2{
-    font-size:1.1em;
+    font-size:1em;
     margin-top: 0.5em;
 }
 #eventoprincipale p{
@@ -292,6 +291,10 @@ textarea{
 	resize:none;
 	width:100%;
 	margin-bottom:0.5em;
+}
+#prenotabiglietti h1{
+	font-size:1.3em;
+	padding:0.5em;
 }
 /*Generale*/
 
