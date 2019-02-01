@@ -225,7 +225,7 @@ body{
 	margin-top:auto;
 	margin-bottom:auto;
 }
-#toTop{
+#totop{
 	background-image:url('../img/header/toTop.svg');
 	position:fixed;
 	bottom: 2em;

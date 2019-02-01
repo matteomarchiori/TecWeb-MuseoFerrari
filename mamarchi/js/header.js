@@ -13,6 +13,7 @@ function setMobile(element){
 function mobile(){
     var burger = document.getElementById("hamburger");
     var menu = document.getElementById("menu");
+	//se si cava il && window.style.width<"768px" funsiona su mobile ma poi non si vede più il desktop
     if(burger.className === "" && window.style.width<"768px"){
         setMobile(burger);
         setMobile(menu);

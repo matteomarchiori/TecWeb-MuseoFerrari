@@ -152,7 +152,7 @@ body {
     margin-top: 0.8em;
 }
 
-#toTop{
+#totop{
     background-image:url('../img/header/toTop.svg');
     position:fixed;
     bottom: 2em;

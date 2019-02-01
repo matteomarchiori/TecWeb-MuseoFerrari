@@ -1,3 +1,5 @@
+//ARRAY CON: input,pattern della regexp,output e passare a una funzione unica
+//EVENTO DA USARE: onblur (opposto di onfocus), ciclo che associa a ogni input dell'array un onblur corrispondente
 function checkNome(input){
 	var patt = new RegExp('[a-zA-Z]{1,15}');
 	if(patt.test(input)){
@@ -78,7 +80,7 @@ function checkIndirizzo(input){
 
 function checkData(input){
 	//TODO
-	}
+	
 }
 
 function mostraErrore(input, testo){
@@ -90,7 +92,7 @@ function mostraErrore(input, testo){
 	p.appendChild(span);
 }
 
-function toglieErrore(input){
+function togliErrore(input){
 	var p = input.parentNode;
 
 	if(p.children.lenght > 2){
@@ -99,6 +101,7 @@ function toglieErrore(input){
 }
 
 function validazioneForm(){
+	alert("ocio al pocio");
 	var nome = document.getElementById("nome");
 	var cognome = document.getElementById("cognome");
 	var telefono = document.getElementById("telefono");
@@ -119,3 +122,6 @@ function validazioneForm(){
 
 	return risultatoTestNome && risultatoTestCognome && risultatoTestTelefono && risultatoTestEmail && risultatoTestComune && risultatoTestCitta && risultatoTestIndirizzo && risultatoTestData;
 }
+window.onload = function() {
+  validazioneForm();
+};

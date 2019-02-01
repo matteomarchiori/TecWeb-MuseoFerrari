@@ -101,4 +101,4 @@ if ($counter > 0) checkCounter($counter,$tabIndex);
 $header = str_replace("*linkinfo*","<li><a href='./info-e-contatti' tabindex=\"$tabIndex\" accesskey=\"i\">Info e Contatti</a></li>",$header);
 echo $header;
 require_once $page;
-require_once '../../html/common/footer.html';
+require_once 'footer.php';
