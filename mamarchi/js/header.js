@@ -4,6 +4,10 @@ function hasClass(element, className) {
 
 function removeClass(element, nomeClasse) {
     element.className = element.className.replace(new RegExp('\\b' + nomeClasse + '\\b'),'');
+	//ho aggiunto questo if perchè la replace lascia spazi
+	if(element.className === "  "){
+		element.className = ""
+	}
 }
 
 function setMobile(element){
@@ -13,11 +17,15 @@ function setMobile(element){
 function mobile(){
     var burger = document.getElementById("hamburger");
     var menu = document.getElementById("menu");
-	//se si cava il && window.style.width<"768px" funsiona su mobile ma poi non si vede più il desktop
-    if(burger.className === "" && window.style.width<"768px"){
+
+    if(burger.className === "" && window.innerWidth<830){
         setMobile(burger);
         setMobile(menu);
     }
+	else if(hasClass(burger, 'mobile') && window.innerWidth>=830){
+		removeClass(burger, 'mobile');
+		removeClass(menu, 'mobile');
+	}
 }
 
 var slideIndex = 0;
@@ -46,5 +54,8 @@ document.getElementById("hamburger").onclick = function(){
 }
 
 window.onload = function() {
+  mobile();
+};
+window.onresize = function() {
   mobile();
 };
