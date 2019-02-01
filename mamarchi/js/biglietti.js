@@ -1,7 +1,8 @@
 function checkCampo(input){
-	
-	if(!input[1].test(input[0].value)){
-
+	if(input[1].test(input[0].value)){
+		togliErrore(input[0]);
+	}
+	else{
 		mostraErrore(input[0], input[2]);
 	}
 }
