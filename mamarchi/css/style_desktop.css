@@ -10,29 +10,23 @@ body{
 
 #header{
     color:white;
-    background-color:#262626;
     min-height:7em;
 }
 
 #menu{
-    list-style-type:none;
     text-align:right;
     font-size:0.9em;
     margin-top:1.5em;
     margin-right:1em;
 	max-width:none;
 }
-#currentLink{
-    background-color:#cccccc;
-    padding:0.8em;/*non lo prende*/
-    color:black;
-}
+
 #menu > li{
     text-align:center;
     display:inline-block;
 }
+
 #menu li{/*è solo per il currentLink*/
-	text-align:initial;
 	display:unset;
 	margin:initial;
 	padding:0.8em;
@@ -40,81 +34,25 @@ body{
 }
 
 #menu > li:not(#currentLink){
-	text-align:initial;
-	display:unset;
-	margin:initial;
 	padding:initial;
-	border:none;
 }
+
 #menu > li:last-of-type {
   margin-bottom:auto;
 }
+
 #menu > li:first-of-type {
   margin-top:auto;
 }
+
 #menu li > a{
-    text-decoration:none;
-    color:white; 
     padding:0.6em;/*piccola diff tra li attivo e a*/
 }
-#menu li > a:hover:not(.no){/*class no se si vuole da aggiungere a header.php*/
-    box-shadow: inset 0 0 0 2px #ffffff;;
-    /*transition: all 1s;*/
-}
 
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {/*ul*/
-    display: none;
-    position: absolute;
-    z-index: 1;
-    margin-top:1em;
-	margin-bottom:auto;
-	margin-left:auto;
-    list-style-type: none;
-	min-width:13em;
-	text-align:left;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-#content h1{
-    font-size:1.5em;
-}
-#content h2{
-    font-size:1.1em;
-    margin-top: 0.5em;
-}
 #breadcrumbs{
-    background-color:silver;
     padding: 0.5em;
-	color:black;
-}
-#formRicerca{
-	width:14em;
-}
-#formRicerca input[type=text]{
-	width:11em;
-	border:none;
-	margin:0.1em;
-	padding:0.5em;
-	float:left;
-}
-#formRicerca input[type=submit]{
-	float:right;
-	border:none;
-	background-image:url('../img/header/search.svg');
-	width:2em;
-    height:2em;
-	margin:0.2em;
-	cursor: pointer;
 }
 #content{
-    xbackground-color:white;
 	background-color:#f1f1f1;
     padding:2em;
 }
@@ -124,6 +62,23 @@ body{
 #content h2{
     font-size:1.1em;
 }
+#contentwhite{
+    background-color:white;
+    padding:2em;
+}
+#contentwhite h1{
+    font-size:1.5em;
+}
+#contentwhite h2{
+    font-size:1.1em;
+}
+#formRicerca{
+	width:14em;
+}
+#formRicerca input[type=text]{
+	width:11em;
+}
+
 #eventoprincipale{
     text-align:justify;
     padding-right:2em;/*temporaneo*/
@@ -131,26 +86,8 @@ body{
 #eventoprincipale h1{
     margin-bottom:0.5em;
 }
-.riquadro{
-	padding:2em;
-	background-color:white;
-	margin-bottom: 2em;
-}
-#elencoMostre ul {
-	padding:2em;
-}
-#presentazionegenerale{
-    text-align:justify;
-    xpadding:2em;
-    padding-left:6em;
-    padding-right:6em;
-}
-#presentazionegenerale p{
-    margin-top:1em;
-}
 #eventiprossimi{
     text-align:justify;
-    /*padding:2em;*/
 }
 #eventiprossimi p{
     text-align:justify;
@@ -161,34 +98,36 @@ body{
     padding-left:1em;
     padding-right:1em;  
 }
-#eventiprossimi .treColonne img{
-    width:100%;
+
+/*MOSTRE*/
+.riquadro{
+	padding:2em;
+}
+#elencoMostre ul {
+	padding:2em;
+}
+#presentazionegenerale{
+    text-align:justify;
+    padding-left:6em;
+    padding-right:6em;
+}
+#presentazionegenerale p{
+    margin-top:1em;
 }
 
-#maps{
-	display:block;
-	width:80%;
-	height:20em;
-	margin:auto;
+.tablemodelli td{
+    padding:0.5em;
 }
 
 .tablemodelli th{
-    background-color:silver;
-    text-align: left;
     padding: 0.5em;
-}
-.tablemodelli td{
-	background-color:white;
-    padding:0.5em;
 }
 
 .infomodello{
 	margin-bottom:0.9em;
     padding-right:2em;
 }
-.fotomodello{
-	xmargin-top:2.2em;
-}
+
 .pulsantePag a{
 	text-decoration:none;
 }
@@ -197,34 +136,27 @@ body{
 	margin-top:2em;
 }
 #next, #back, #current{
-	color:white;
-	text-align:center;
-	width:60%;
-	background-color:#262626;
-	padding:0.5em;
-	margin:0.5em;
-	margin-left:auto;
-	margin-right:auto;
+	width:50%;
 }
+
 #prenotabiglietti h1{
 	font-size:1.5em;
 	padding:0.3em;
 }
-/*FOOTER*/
-#footer{
-    padding:2em;
-    text-align:center;
-	color:white;
-    background-color:#262626;
+
+.formfield p{
+	padding-left:1em;
 }
-#footer img{
-	width:40%;
-	margin-top:0.8em;
+
+#newsletter, #comeRaggiungerci, #contattaci{
+	padding:1em;
 }
-#footer p{
-	margin-top:auto;
-	margin-bottom:auto;
+
+#maps{
+	width:80%;
+	height:20em;
 }
+
 #totop{
 	background-image:url('../img/header/toTop.svg');
 	position:fixed;
@@ -233,47 +165,23 @@ body{
     width:3em;
     height:3em;
 }
-#contentwhite{
-background-color:white;
-padding:2em;
+
+/*FOOTER*/
+#footer img{
+	width:40%;
+	margin-top:0.8em;
 }
-#contentwhite h1{
-    font-size:1.5em;
-}
-#contentwhite h2{
-    font-size:1.1em;
-    margin-top: 0.5em;
-}
-.formfield p{
-	padding-left:1em;
-}
-/*
-.forminfo{
-	padding-top: 0.5em;
-	padding-bottom: 0.5em;
-}
-.forminfo input{
-	margin-bottom: 0.5em;
-}*/
-#newsletter, #comeRaggiungerci, #contattaci{
-	padding:1em;
-}
-#newsletter h1{
-	margin-bottom:0.3em;
-}
-#comeRaggiungerci h1{
-	margin-bottom:0.3em;
-}
-#contattaci h1{
-	margin-bottom:0.3em;
+#footer p{
+	margin-top:auto;
+	margin-bottom:auto;
 }
 
 .desktopnone{
     display: none;
 }
-.container{
+/*.container{
     overflow:hidden;
-}
+}*/
 
 .treColonne {
 	width:33.33%;

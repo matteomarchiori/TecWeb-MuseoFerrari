@@ -10,7 +10,6 @@
 body {
     max-width: 1200px;
     min-width: 264px;
-    /*background-color: #e60000;*/
 }
 
 #header {
@@ -31,25 +30,34 @@ body {
     display: none;
 }
 
+#hamburger.mobile {
+    display: block;
+}
+
+#menu.mobile.show {
+    display: block;
+}
+
+#menu.mobile {
+    display: none;
+}
+
 #currentLink{
     background-color:#cccccc;
     color:black;
 }
-
 #menu {
     list-style-type: none;
     margin:auto;
     max-width:80%;
 }
-
-#menu  li {
+#menu li {
     text-align: center;
     margin: 0.5em;
     padding: 0.5em;
     border: 2px solid white;
 }
-
-#menu li:last-of-type {
+#menu > li:last-of-type {
     margin-bottom: 1em;
 }
 #menu > li:first-of-type {
@@ -59,20 +67,34 @@ body {
     text-decoration:none;
     color:white; 
 }
-.dropdown-content {
-    list-style-type: none;
-    margin-top:-0.5em;
-    margin-bottom:-0.5em;
-    margin-left:20%;
-}
 
 #breadcrumbs {
-    background-color:silver;
+    background-color:#cccccc;
     padding-top: 0.3em;
     padding-left: 0.3em;
     padding-bottom: 0.3em;
+    color:black;
 }
-
+#content {
+    padding:1em;
+}
+#content h1{
+    font-size:1.3em;
+}
+#content h2{
+    font-size:1em;
+    margin-top: 0.5em;
+}
+#contentwhite {
+    padding:1em;
+}
+#contentwhite h1{
+    font-size:1.3em;
+}
+#contentwhite h2{
+    font-size:1em;
+    margin-top: 0.5em;
+}
 #formRicerca{
     float:right;
     /*border-radius: 0.4em;*/
@@ -120,7 +142,6 @@ body {
 /*MOSTRE*/
 .riquadro{
 	background-color:white;
-	//border:1px solid lime;
 	margin-bottom: 2em;
 }
 #elencoMostre{
@@ -139,71 +160,15 @@ body {
     margin-top: 0.3em;
 }
 
-/*FOOTER*/
-#footer {
-    padding:2em;
-    text-align:center;
-    background-color:#262626;
-	color:white;
-}
-
 .immagineprincipale{
     width:100%;
     margin-top: 0.8em;
 }
 
-#totop{
-    background-image:url('../img/header/toTop.svg');
-    position:fixed;
-    bottom: 2em;
-    right: 2em;
-    width:2.8em;
-    height:2.8em;
-}
-
-#hamburger.mobile {
-    display: block;
-}
-
-#menu.mobile.show {
-    display: block;
-}
-
-#menu.mobile {
-    display: none;
-}
-
-#content {
-    padding:1em;
-}
-#content h1{
-    font-size:1.3em;
-}
-#content h2{
-    font-size:1em;
-    margin-top: 0.5em;
-}
-#contentwhite {
-    padding:1em;
-}
-#contentwhite h1{
-    font-size:1.3em;
-}
-#contentwhite h2{
-    font-size:1em;
-    margin-top: 0.5em;
-}
 #eventoprincipale p{
     margin-top:0.5em;
 }
-#maps{
-    display:block;
-    margin:auto;
-    margin-top:1.0em;
-    margin-bottom:1.0em;
-    width:90%;
-    height:15em;
-}
+
 
 .tablemodelli{
     width:100%;
@@ -217,7 +182,7 @@ body {
 	border-bottom:2px solid #262626;
 }
 .tablemodelli th{
-    background-color:silver;
+    background-color:#cccccc;
     text-align: left;
     padding: 0.4em;
 	border-bottom:2px solid #262626;
@@ -235,20 +200,10 @@ body {
     margin-left:auto;
     margin-right:auto;
 }
-#footer img{
-    width:6em;
-}
-#footer p{
-    margin-top:1.5em;
-    margin-bottom:1.5em;
-}
-.container {
-    overflow: hidden;
-}
 
-.container > * {
-    float: left;
-    display:inline-block;
+#prenotabiglietti h1{
+	font-size:1.3em;
+	padding:0.5em;
 }
 
 .error{
@@ -271,13 +226,6 @@ label{
 	padding-bottom:0.2em;
 	padding-top:0.2em;
 }
-/*
-.forminfo{
-   padding-bottom: 0.5em;
-}
-.forminfo input{
-   margin-bottom: 0.5em;
-}*/
 #newsletter fieldset{
 	padding:0em;
 	margin:0em;
@@ -306,7 +254,7 @@ label{
 }
 fieldset{
     padding:0.5em;
-	background-color:#d9d9d9;
+	background-color:#cccccc;
 	margin:0.5em;
 	border:none;
 }
@@ -332,6 +280,7 @@ input, select{
 	color:white;
 	padding:0.3em 1em 0.3em 1em;
 }
+
 textarea{
 	border:none;
 	padding:0.5em;
@@ -339,11 +288,49 @@ textarea{
 	width:95%;
 	margin-bottom:0.5em;
 }
-#prenotabiglietti h1{
-	font-size:1.3em;
-	padding:0.5em;
+
+#maps{
+    display:block;
+    margin:auto;
+    margin-top:1.0em;
+    margin-bottom:1.0em;
+    width:90%;
+    height:15em;
+}
+
+#totop{
+    background-image:url('../img/header/toTop.svg');
+    position:fixed;
+    bottom: 2em;
+    right: 2em;
+    width:2.8em;
+    height:2.8em;
+}
+
+/*FOOTER*/
+#footer {
+    padding:2em;
+    text-align:center;
+    background-color:#262626;
+	color:white;
+}
+#footer img{
+    width:6em;
+}
+#footer p{
+    margin-top:1.5em;
+    margin-bottom:1.5em;
 }
 /*Generale*/
+.container {
+    overflow: hidden;
+}
+
+.container > * {
+    float: left;
+    display:inline-block;
+}
+
 .col-1 {
     width: 25%;
 }
