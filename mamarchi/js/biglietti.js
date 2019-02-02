@@ -8,16 +8,17 @@ function checkCampo(input){
 }
 
 function mostraErrore(input, testo){
-	togliErrore(input);
-	var p = input.parentNode;
-	var span = document.createElement("span");
-	span.className = "col-4 error";
-	span.appendChild(document.createTextNode(testo));
-	p.appendChild(span);
+    togliErrore(input);
+	var p = input.parentNode.parentNode;
+	var paragraph = document.createElement("p");
+	paragraph.className = "error";
+    paragraph.setAttribute("id","javascript");
+	paragraph.appendChild(document.createTextNode(testo));
+	p.appendChild(paragraph);
 }
 
 function togliErrore(input){
-	var p = input.parentNode;
+	var p = input.parentNode.parentNode;
 	if(p.children.length > 2){
 		p.removeChild(p.children[2]);
 	}
