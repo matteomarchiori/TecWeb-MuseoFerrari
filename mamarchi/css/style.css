@@ -13,7 +13,7 @@ body {
 }
 
 #header {
-    background-color: #262626;
+    background-color: #333333;
 }
 
 #logo {
@@ -98,12 +98,12 @@ body {
 #formRicerca{
     float:right;
     /*border-radius: 0.4em;*/
-    border:2px solid #262626;
+    border:2px solid #333333;
 	margin-bottom:1em;
 }
 #formRicerca input[type=text]{
     border:none;
-    width:7.3em;
+    width:8.2em;
     margin:0.1em;
     padding:0.5em;
     float:left;
@@ -174,18 +174,18 @@ body {
     width:100%;
     margin-top: 0.5em; 
 	border-collapse:collapse;
-	border-top:2px solid #262626;
+	border-top:2px solid #333333;
 }
 .tablemodelli td{
     background-color:white;
     padding:0.4em;
-	border-bottom:2px solid #262626;
+	border-bottom:2px solid #333333;
 }
 .tablemodelli th{
     background-color:#cccccc;
     text-align: left;
     padding: 0.4em;
-	border-bottom:2px solid #262626;
+	border-bottom:2px solid #333333;
 }
 .pulsantePag a{
     text-decoration:none;
@@ -194,7 +194,7 @@ body {
     color:white;
     text-align:center;
     width:45%;
-    background-color:#262626;
+    background-color:#333333;
     padding:0.5em;
     margin:0.5em;
     margin-left:auto;
@@ -310,7 +310,7 @@ textarea{
 #footer {
     padding:2em;
     text-align:center;
-    background-color:#262626;
+    background-color:#333333;
 	color:white;
 }
 #footer img{
