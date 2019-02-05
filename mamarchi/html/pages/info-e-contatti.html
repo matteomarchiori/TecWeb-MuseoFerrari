@@ -4,10 +4,12 @@
         
         <form id="formNews"action='./info-e-contatti' method='post'>
 			<fieldset class="formfield">
-			<legend>Iscriviti alla nostra newsletter</legend>
-			<label for="email">Email</label>
-            <input type='text' name='email' id='email'/>
-            <input type='submit' value='Invia'/>
+    			<legend>Iscriviti alla nostra newsletter</legend>
+                <div>
+    			    <label for="email">Email</label>
+                    <input type='text' name='email' id='email' onblur="validazione(this)"/>
+                </div>
+                <input type='submit' value='Invia'/>
 			</fieldset>
         </form>
         *subscribe*
@@ -31,14 +33,18 @@
         <p>0499221289</p>
         <form id="formContattaci" action='/info-e-contatti' method='post'>
             <fieldset class="formfield">
-			<legend>Contattaci</legend>
-			<label for="nome">Nome</label>
-            <input type='text' name='nome' id='nome'/>
-			<br/>
-            <label for="email">Email</label>
-            <input type='text' name='email' id='email'/>
-            <textarea rows="4" cols="50" name="testo" form="form" placeholder="Scrivi qui il testo..."></textarea>
-            <input type='submit' value='Invia'/>
+    			<legend>Contattaci</legend>
+    			<div>
+                    <label for="nome">Nome</label>
+                    <input type='text' name='nome' id='nome' onblur="validazione(this)"/>
+    			</div>
+                <br/>
+                <div>
+                    <label for="email">Email</label>
+                    <input type='text' name='email' id='email' onblur="validazione(this)"/>
+                </div>
+                <textarea rows="4" cols="50" name="testo" form="form" placeholder="Scrivi qui il testo..."></textarea>
+                <input type='submit' value='Invia'/>
 			</fieldset>
         </form>
     </div>
