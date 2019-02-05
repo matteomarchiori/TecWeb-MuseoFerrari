@@ -3,7 +3,7 @@
 # TODO
 ## Matteo (DOC)
 - Sito
-  - php biglietti
+  - php biglietti  (Aggiungere possibilità di acquistare più biglietti nello stesso ordine)
   - ajax date mostre
   - varie robe che sai te (ecmascript 3)
 - Relazione
