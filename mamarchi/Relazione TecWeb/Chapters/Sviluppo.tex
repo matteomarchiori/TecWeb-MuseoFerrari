@@ -10,13 +10,25 @@ La struttura del sito è stata creata adottando il linguaggio XHTML per garantir
 La completa separazione tra struttura e presentazione è stata raggiunta utilizzando tre diversi fogli di stile uno per i dispositivi mobile uno per il desktop e uno per la stampa delle pagine del sito. Abbiamo adottato un strategia mobile first realizzando quindi prima l'aspetto mobile e integrando in seguito il layout desktop. Per questo motivo il primo foglio di stile relativo al layout mobile,\textit{style.css} è quello il più ricco, mentre \textit{style\_desktop.css} contiene solo regole per adattare il sito ad un layout desktop. In entrambi i layout abbiamo utilizzato uno schema a colonne per disporre il contenuto nelle pagine, abbiamo comunque cercato di minimizzare il numero di colonne per non complicare l'aspetto generale del sito che vuole essere il più lineare possibile.
 
 \subsection{MySQL e PHP}
-
+	Il lato server è una parte molto importante e consiste nell'elaborazione dei dati che saranno poi inviati al
+	client. Il database che utilizziamo è stato sviluppato per la gestione delle seguenti informazioni:
+	\begin{itemize}
+		\item auto esposte 
+		\item biglietti
+		\item eventi
+		\item utenti.
+	\end{itemize}
+	Come DBMS abbiamo deciso di utilizzare MySQL e come engine di storage InnoDB che
+	ci garantisce un buon compromesso
+	tra dimensioni massime (64TB) e la sicurezza nel mantenere la consistenza dei dati. 
+	...
 \subsection{JavaScript}
-All'interno del progetto JavaScript è stato utilizzato per compiti rilevanti ma non fondamentali. Tale scelta trova giustificazione nel fatto che il sito deve restare usufruibile anche nel caso in cui venga consultato da dispositivi che non supportano JavaScript, o che hanno disabilitato gli script lato client.\\
-Pertanto i compiti che gli sono affidati sono i sequenti:
-\begin{itemize}
-	\item gestione dinamica della navbar ad "\textit{hamburger}";
-	\item controllo dei dati in input nei form della pagina "\textit{Biglietti}";
-	\item controllo dei dati in input nei form della pagina "\textit{Info e Contatti}".
-\end{itemize}
-Per gli ultimi due punti, il controllo dei dati non è unico: viene effettuato anche lato server attraverso controlli in PHP, per garantire la correttezza dei dati qualora JavaScript fosse disabilitato.
+	Particolare attenzione è stata data a JavaScript, esso è linguaggio di scripting di tipo client side che permette una
+	maggiore accessibilità e dinamismo. \`E stato utilizzato per compiti rilevanti ma non fondamentali. Tale scelta trova giustificazione nel fatto che il sito deve restare usufruibile anche nel caso in cui venga consultato da dispositivi che non supportano JavaScript, o che hanno disabilitato gli script lato client.\\
+	Pertanto i compiti che gli sono affidati sono i seguenti:
+	\begin{itemize}
+		\item gestione dinamica della navbar ad "\textit{hamburger}";
+		\item controllo dei dati in input nei form della pagina "\textit{Biglietti}";
+		\item controllo dei dati in input nei form della pagina "\textit{Info e Contatti}".
+	\end{itemize}
+	Per gli ultimi due punti, il controllo dei dati non è unico: viene effettuato anche lato server attraverso controlli in PHP, per garantire la correttezza dei dati qualora JavaScript fosse disabilitato.
