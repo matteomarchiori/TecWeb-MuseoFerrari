@@ -85,7 +85,6 @@ switch ($last_uri_parts[0]){
 $tabIndex = 1;
 $header = str_replace("*title*","Pagina non trovata",$header);
 $header = str_replace("*breadcrumbs*","Pagina non trovata",$header);
-$header = str_replace("*student*",$student,$header);
 $header = str_replace("*linkhome*","<li><a href='./' xml:lang='en' tabindex=\"$tabIndex\" accesskey=\"h\">Home</a></li>",$header,$counter);
 if ($counter > 0) checkCounter($counter,$tabIndex);
 $header = str_replace("*linkmostre*","<li><a href='./mostre' tabindex=\"$tabIndex\" accesskey=\"m\">Mostre</a></li>",$header,$counter);
