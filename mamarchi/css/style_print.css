@@ -28,8 +28,13 @@ h1{
 #eventiprossimi p{
     padding-bottom:1em;
 }
-
-
+legend{margin:0;padding:0;color:black;}
+input, select{
+    border:1px solid black;
+}
+.formfield p, .formfield input[type=submit],.formfield input[type=reset] {
+    display:none;
+}
 
 #footer{
 	margin-top:3em;
