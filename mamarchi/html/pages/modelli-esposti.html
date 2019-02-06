@@ -1,26 +1,46 @@
-<div id='content'>
-    <div class='container'>
-        <h1>Modelli esposti</h1>
-        <div class='col-4 col-xl-4'>
-            <form id='formRicerca' method='post' action='./modelli-esposti?pagina=1'>
-                <input id='inpTextRic' type='text' placeholder='Ricerca modello...' name='ric' tabindex='7'>
-                <input tabindex='8' type='submit' value=''>
-            </form>
-            *error*
-        </div>
-    </div>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
 
-    *modelliesposti*
-    *nessunrisultato*
-    <div class='container'>
-        <div class='col-4 pulsantePag'>
-            *paginaback*
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>*title*</title>
+        <meta name="title" content="*title*" />
+        <meta name="description" content="*description*" />
+        <meta name="keywords" content="*keywords*" />
+        <meta name="language" content="italian it" />
+        <meta name="author" content="Marco Chilese, Samuele Gardin, Matteo Marchiori, Giovanni Peron" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link rel="stylesheet" type="text/css" href="./css/style.css" />
+        <link rel="stylesheet" type="text/css" href="./css/style_desktop.css" media="screen and (min-width: 830px)" />
+        <link rel="stylesheet" type="text/css" href="./css/style_print.css" media="print"/>
+
+    </head>
+
+    <body>
+        <div id='content'>
+            <div class='container'>
+                <div class='col-4 col-xl-4'>
+                    <form id='formRicerca' method='post' action='./modelli-esposti?pagina=1'>
+                        <input id='inpTextRic' type='text' placeholder='Ricerca modello...' name='ric' tabindex='7'/>
+                        <input tabindex='8' type='submit' value=''/>
+                    </form>
+                    *error*
+                </div>
+            </div>
+            *modelliesposti*
+            *nessunrisultato*
+            <div class='container'>
+                <div class='col-4 pulsantePag'>
+                    *paginaback*
+                </div>
+                <div class='col-4 pulsantePag'>
+                    *paginacorrente*
+                </div>
+                <div class='col-4 pulsantePag'>
+                    *paginanext*
+                </div>
+            </div>
         </div>
-        <div class='col-4 pulsantePag'>
-            *paginacorrente*
-        </div>
-        <div class='col-4 pulsantePag'>
-            *paginanext*
-        </div>
-    </div>
-</div>
+    </body>
+</html>

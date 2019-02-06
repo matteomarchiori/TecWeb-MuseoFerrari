@@ -37,5 +37,10 @@ function validazione(input){
 			var email = [input, patt, "Il campo Email inserito non è corretto. Rispettare il formato indicato."];
 			checkCampo(email);
 			break;
+		case 'emailNewsletter':
+			var patt = new RegExp('^[a-zA-Z0-9.:_-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$');
+			var email = [input, patt, "Il campo Email inserito non è corretto. Rispettare il formato indicato."];
+			checkCampo(email);
+			break;
 	}
 }

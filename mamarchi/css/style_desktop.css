@@ -76,7 +76,7 @@ body{
 	width:14em;
 }
 #formRicerca input[type=text]{
-	width:11.2em;
+	width:11em;
 }
 
 #eventoprincipale{
@@ -104,7 +104,7 @@ body{
 	padding:2em;
 }
 #elencoMostre ul {
-	padding:2em;
+	padding:1em;
 }
 #presentazionegenerale{
     text-align:justify;
