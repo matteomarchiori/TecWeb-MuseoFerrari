@@ -15,6 +15,9 @@ switch ($last_uri_parts[0]){
     case "biglietti":
 		$footer = str_replace("*scriptbiglietti*",'<script type="text/javascript" src="./js/biglietti.js"></script>',$footer);
 		break;
+	case "info-e-contatti":
+		$footer = str_replace("*scriptbiglietti*",'<script type="text/javascript" src="./js/info-e-contatti.js"></script>',$footer);
+		break;
 	default:
 		$footer = str_replace("*scriptbiglietti*",'',$footer);
 		break;

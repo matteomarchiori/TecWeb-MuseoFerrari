@@ -3,10 +3,33 @@
 \subsection{Progettazione}
 
 \subsection{Design}
-
+Per quanto riguarda i principi di design, il gruppo ha cercato di mantenere l'aspetto il più possibile semplice, pulito e ordinato. Il sito presenta un layout per desktop e un altro per i dispositivi mobile. Il primo è stato pensato per mantenere un aspetto standard per tutte le tipologie di schermo, infatti abbiamo scelto di limitare la larghezza della sezione principale in modo da rendere piacevole la lettura anche agli utenti con schermi dal rapporto larghezza/altezza più alti. Il layout mobile invece è stato progettato per raggiungere una larghezza minima di 264px, a queste condizioni restrittive il menù principale viene nascosto e diventa utilizzabile attraverso un hamburger button. Il contenuto viene disposto in un unica colonna prestando particolare attenzione a mantenere la giusta dimensione del testo. Il contenuto di tutte le pagine è stato strutturato in modo da fornire solo le informazioni strettamente necessarie allo scopo della pagina stessa, cercando di disporle nella maniera più comprensibile possibile seguendo costantemente un ordinamento basato sull'importanza dell'informazione rispetto all'argomento relativo ala pagina. È stato scelto un menù di navigazione Sia per il layout desktop che per il layout mobile abbiamo selezionato pochi colori prestando attenzione a disporli con lo scopo di creare un adeguato contrasto in modo da facilitare la lettura degli utenti. 
 \subsection{HTML e CSS}
+La struttura del sito è stata creata adottando il linguaggio XHTML per garantire una compatibilità stabile e consolidata con tutti i browser e minimizzare il rischio di possibili problemi di accessibilità dati da HTML5.
+Ancora scrivere di html.
+\\
+La completa separazione tra struttura è stata mantenuta utilizzando tre diversi fogli di stile uno per il mobile uno per il desktop e uno per la stampa delle pagine del sito. Abbiamo adottato un strategia mobile first realizzando quindi prima l'aspetto mobile e integrando in seguito il layout desktop. Per questo motivo il primo foglio di stile relativo al layout mobile style.css è quello il più ricco, mentre style desktop.css contiene solo regole per adattare il sito ad un layout desktop. In entrambi i layout abbiamo utilizzato uno schema a colonne per disporre il contenuto nelle pagine, abbiamo comunque cercato di minimizzare il numero di colonne per non complicare l'aspetto generale del sito che vuole essere il più lineare possibile.
 
 \subsection{MySQL e PHP}
-
+	Il lato server è una parte molto importante e consiste nell'elaborazione dei dati che saranno poi inviati al
+	client. Il database che utilizziamo è stato sviluppato per la gestione delle seguenti informazioni:
+	\begin{itemize}
+		\item auto esposte 
+		\item biglietti
+		\item eventi
+		\item utenti.
+	\end{itemize}
+	Come DBMS abbiamo deciso di utilizzare MySQL e come engine di storage InnoDB che
+	ci garantisce un buon compromesso
+	tra dimensioni massime (64TB) e la sicurezza nel mantenere la consistenza dei dati. 
+	...
 \subsection{JavaScript}
-
+	Particolare attenzione è stata data a JavaScript, esso è linguaggio di scripting di tipo client side che permette una
+	maggiore accessibilità e dinamismo. \`E stato utilizzato per compiti rilevanti ma non fondamentali. Tale scelta trova giustificazione nel fatto che il sito deve restare usufruibile anche nel caso in cui venga consultato da dispositivi che non supportano JavaScript, o che hanno disabilitato gli script lato client.\\
+	Pertanto i compiti che gli sono affidati sono i seguenti:
+	\begin{itemize}
+		\item gestione dinamica della navbar ad "\textit{hamburger}";
+		\item controllo dei dati in input nei form della pagina "\textit{Biglietti}";
+		\item controllo dei dati in input nei form della pagina "\textit{Info e Contatti}".
+	\end{itemize}
+	Per gli ultimi due punti, il controllo dei dati non è unico: viene effettuato anche lato server attraverso controlli in PHP, per garantire la correttezza dei dati qualora JavaScript fosse disabilitato.
