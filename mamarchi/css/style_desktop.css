@@ -28,13 +28,17 @@ body{
 
 #menu li{/*è solo per il currentLink*/
 	display:unset;
-	margin:initial;
+	/*margin:initial;*/
+    margin:-3px;
 	padding:0.8em;
 	border:none;
 }
 
 #menu > li:not(#currentLink){
-	padding:initial;
+	/*padding:initial;*/
+    padding-left: 0.2em;
+    padding-right: 0.2em;
+    background-color: #f1f1f1;
 }
 
 #menu > li:last-of-type {
