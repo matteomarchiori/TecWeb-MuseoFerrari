@@ -1,7 +1,20 @@
 \section{Accessibilità}
 \subsection{Colori}
-La gamma cromatica utilizzata nel sito web sviluppato è stata ristretta in modo tale da garantire un buon contrasto tra contesto e testo. In questo modo, il sito risulta accessibile anche alle categorie di utenti con difficoltà visive.\\
+La gamma cromatica utilizzata nel sito web sviluppato è stata ristretta in modo tale da garantire un buon contrasto tra contesto e testo. Per arrivare alle nostre conclusioni per quanto riguarda i colori ci siamo
+serviti di un estensione per Google Chrome, \textit{Colorblindly}. Ci ha permesso di testare il nostro sito
+con i quattro tipi di daltonismo più diffusi: protanopia, deuteranopia, tritanopia e acromatopsia. In questo modo, il sito risulta accessibile a tutte le categorie di utenti con difficoltà visive.\\
 Dove possibile, inoltre, si adottano colori definiti \textit{web safe}\footnote{\url{https://www.color-hex.com/216-web-safe-colors/}}, in modo tale da garantire una corretta visualizzazione del sito su un maggior numero di dispositivi.
+
+\subsection{Scelte progettuali}
+In corso d'opera abbiamo fatto delle modifiche per raggiungere il più alto livello di accessibilità possibile.
+Per rappresentare i dati tecnici delle auto esposte subito avevamo optato per la rappresentazione in forma
+tabellare, ma ci siamo presto resi conto che poteva essere un ostacolo per uno screen-reader, quindi abbiamo
+scelto la rappresentazione attraverso elenco. \\
+La navbar nativamente era di colore giallo come il logo, ma dopo alcuni test ci siamo resi conto che non era
+la scelta ideale per un utente con problemi di acromatopsia, quindi abbiamo usato il grigio e il nero. \\
+Avevamo dato per scontato che mettendo la mappa del luogo del museo fosse chiaro dove recarsi, ma non avevamo
+pensato che uno screen-reader poteva aver problemi a leggerla, quindi l'abbiamo aggiunta per esteso.
+
 
 \subsection{Navigazione nel sito}
 La navigazione nel sito è garantita, in primo luogo, da una semplice \textit{navbar} che non include sottomenù, come illustrato in §\ref{design}. Sono direttamente visibili e accessibili tutte le pagine del sito web:
@@ -37,8 +50,8 @@ Per rendere efficiente la navigazione all'interno del sito anche ad utenti con d
 È stato inoltre inserito un bottone che consente di tornare facilmente in testa alla pagina.
 
 \subsection{Mobile}
-...\\
-...\\
+Per cercare di rendere il sito compatibile con la maggior parte dei dispositivi mobile (Smartphone, tablet...)
+abbiamo deciso di implementare l'accessibilità con CSS puro.\\ ...
 
 \subsection{Test accessibilità}
 Con lo scopo di verificare e accertarsi che i livelli di accessibilità raggiunti fossero soddisfacenti sono stati effettuati dei test. Tali test non hanno il presupposto di essere esaustivi, ma piuttosto informativi.\\
