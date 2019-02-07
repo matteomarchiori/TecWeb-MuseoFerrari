@@ -5,11 +5,8 @@
     if($database){
         $modelli = file_get_contents(dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . "html" . DIRECTORY_SEPARATOR . "pages" . DIRECTORY_SEPARATOR . "modelli-esposti.html");
         $righeVisibili=10;
-        $checked=true;
         if(isset($_POST["ric"])){
             $search = $_POST['ric'];
-            if(!preg_match('/^[A-Za-z0-9]+$/',$search))
-                $checked=false;   
         }
         else
             $search="";
@@ -19,7 +16,7 @@
             $pagina=1;
         $offset=($pagina*$righeVisibili)-$righeVisibili;
         $automobili = Database::selectAutoModels($search,$righeVisibili,$offset);
-        if(isset($automobili) && $checked){
+        if(isset($automobili)){
             $modelliPagina="";
             $nRighe=count($automobili);
             $nPagine=ceil($nRighe/$righeVisibili);
@@ -44,34 +41,25 @@
             }
             $modelli = str_replace("*modelliesposti*",$modelliPagina,$modelli);
             if($pagina>1) 
-                $modelli = str_replace("*paginaback*","<a href='./modelli-esposti?pagina=".($pagina-1)."' tabindex='8' accesskey='p'><div id='back'><p>INDIETRO</p></div></a>",$modelli);
+                $modelli = str_replace("*paginaback*","<div id='back'><a href='./modelli-esposti?pagina=".($pagina-1)."' tabindex='8' accesskey='p'>INDIETRO</a></div>",$modelli);
             else 
                 $modelli = str_replace("*paginaback*","",$modelli);
             $modelli = str_replace("*paginacorrente*","<div id='current'><p>$pagina</p></div>",$modelli);
             if($pagina<=$nPagine) 
-                $modelli = str_replace("*paginanext*","<a href='./modelli-esposti?pagina=".($pagina+1)."' tabindex='9' accesskey='n'><div id='next'><p>AVANTI</p></div></a>",$modelli);
+                $modelli = str_replace("*paginanext*","<div id='next'><a href='./modelli-esposti?pagina=".($pagina+1)."' tabindex='9' accesskey='n'>AVANTI</a></div>",$modelli);
             else 
                 $modelli = str_replace("*paginanext*","",$modelli);
             $modelli = str_replace("*nessunrisultato*","",$modelli);
             $modelli = str_replace("*error*","",$modelli);
             echo $modelli;
         }
-        else if($checked){
+        else{
             $modelli = str_replace("*modelliesposti*","",$modelli);
             $modelli = str_replace("*error*","",$modelli);
             $modelli = str_replace("*paginaback*","",$modelli);
             $modelli = str_replace("*paginacorrente*","",$modelli);
             $modelli = str_replace("*paginanext*","",$modelli);
             $modelli = str_replace("*nessunrisultato*",'<p class="error">Nessun modello corrispondente alla ricerca: "'.$search.'"</p><a href="./modelli-esposti?pagina=1">Torna alla pagina modelli esposti</a>',$modelli);
-            echo $modelli;
-        }
-        else{
-            $modelli = str_replace("*modelliesposti*","",$modelli);
-            $modelli = str_replace("*paginaback*","",$modelli);
-            $modelli = str_replace("*paginacorrente*","",$modelli);
-            $modelli = str_replace("*paginanext*","",$modelli);
-            $modelli = str_replace("*nessunrisultato*",'',$modelli);
-            $modelli = str_replace("*error*",'<p class="error">Il testo inserito per la ricerca non è valido.</p><a href="./modelli-esposti?pagina=1">Torna alla pagina modelli esposti</a>',$modelli);
             echo $modelli;
         }
     }

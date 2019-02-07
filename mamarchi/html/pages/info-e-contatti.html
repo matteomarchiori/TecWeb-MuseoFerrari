@@ -17,7 +17,12 @@
 
             <div class='col-4 col-xl-2' id='comeRaggiungerci'>
                 <h1>Come raggiungerci</h1>
-                <p>Ci troviamo a pochi passi dalla zona di Padova Fiere ed è facilmete raggiungibile.</p>
+                <p>
+                    Torre Archimede Via Trieste, 63, 35121 Padova PD
+                </p>
+                <p>
+                    Ci troviamo a pochi passi dalla zona di Padova Fiere ed è facilmete raggiungibile.
+                </p>
                 <h2>Con i mezzi pubblici</h2>
                 <p>Autobus: 101, 10</p>
                 <h2>In bici</h2>
@@ -38,12 +43,14 @@
                             <label for="nome">Nome</label>
                             <input type='text' name='nome' id='nome' onblur="validazione(this)"/>
             			</div>
-                        <br/>
                         <div>
                             <label for="email">Email</label>
                             <input type='text' name='email' id='email' onblur="validazione(this)"/>
                         </div>
-                        <textarea rows="4" cols="50" name="testo" placeholder="Scrivi qui il testo..."></textarea>
+                        <div>
+                            <label for="testo">Inserisci qui il testo della tua email</label>
+                            <textarea id="testo" rows="4" cols="50" name="testo"></textarea>
+                        </div>
                         <input type='submit' value='Invia'/>
         			</fieldset>
                 </form>
