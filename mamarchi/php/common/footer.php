@@ -6,7 +6,7 @@ $last_uri_parts[0] = substr($last_uri_parts[0], strrpos($last_uri_parts[0], '/')
 
 //se bisogna mettere il tabindex sul bottone to top
 if ($counter > 0) checkCounter($counter,$tabIndex);
-$footer = str_replace("*bottonetotop*","<a href=\"#header\" tabindex=\"$tabIndex\"><span id=\"totop\">Torna</span></a>",$footer,$counter);
+$footer = str_replace("*bottonetotop*","<a href=\"#header\" tabindex=\"$tabIndex\"><span id=\"totop\">Torna su</span></a>",$footer,$counter);
 
 
 switch ($last_uri_parts[0]){

@@ -121,19 +121,25 @@ a:visited{
 }
 #formRicerca input[type=text]{
     border:none;
-    width:8.2em;
+    width:7em;
     margin:0.1em;
     padding:0.5em;
     float:left;
 }
 #formRicerca input[type=submit]{
-    float:right;
+    /*float:right;
     border:none;
     background-image:url('../img/header/search.svg');
     width:2em;
     height:2em;
     margin:0.2em;
+    cursor: pointer;*/
+    background-color:#333333;
+    color:white;
+    height:2em;
+    margin:0.2em;
     cursor: pointer;
+    border:none;
 }
 .infomodello ul{
     list-style-type:none;
