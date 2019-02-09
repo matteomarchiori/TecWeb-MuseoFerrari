@@ -71,18 +71,14 @@ class Database {
             return $currentEvent[0];
         return null;
     }
-	public static function getIdCurrentEvent() {
-        $query = "SELECT ID FROM Evento WHERE Tipo=\"corrente\" ORDER BY DataInizio LIMIT 1;";
-        $rows= Database::selectRows($query);
-		return $rows[0];
-    }
-	
+    
 	public static function selectEventById($id) {
-		if(!is_numeric($id)) return null;//perchè è un numero ma arriva da una string
+		if(!is_numeric($id)) return null;
         $query = "SELECT * FROM Evento WHERE ID=$id LIMIT 1;";
         $rows= Database::selectRows($query);
 		return $rows[0];
     }
+    
 	public static function selectEventsLessOne($id) {
         if(!is_numeric($id)) return null;
         $query = "SELECT * FROM Evento WHERE ID!=$id ORDER BY DataInizio LIMIT 3;";

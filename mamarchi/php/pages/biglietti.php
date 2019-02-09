@@ -77,6 +77,13 @@ function checkData($giorno, $mese, $anno) {
     return false;
 }
 
+function checkDataMostra($mostra,$data){
+    $db = Database::selectEventById($mostra);
+    $dataInizio = $db['DataInizio'];
+    $dataFine = $db['DataFine'];
+    return checkBoundLimit(strtotime($data), strtotime($dataInizio), strtotime($dataFine));
+}
+
 function checkBoundLimit($element, $min, $max) {
     return $min <= $element && $element <= $max;
 }
@@ -191,12 +198,6 @@ if ($database) {
             }
         }
 
-        foreach ($dateFields as $selector) {
-            if (!isset($_POST[$selector['id']]) || empty($_POST[$selector['id']])) {
-                $page = str_replace("*error" . $selector['id'] . "*", "<p class=\"col4 error\">Il campo " . $selector['label'] . " è richiesto. Si prega di inserirlo.</p>", $page);
-            }
-        }
-
         $page = str_replace("*stato*", createStati($stati), $page);
         $page = str_replace("*nbiglietti*", createOptionsNumber('nbiglietti', MINBIGLIETTI, MAXBIGLIETTI), $page);
 
@@ -216,6 +217,12 @@ if ($database) {
         if (!checkData($_POST['giornomostra'], $_POST['mesemostra'], $_POST['annomostra'])) {
             $page = str_replace("*errordatamostra*", "<p class=\"col4 error\">La data della mostra non è coerente. Non esiste il giorno indicato nel mese indicato. Si prega di correggere la data.</p>", $page);
             $check[] = false;
+        }
+        else{
+            if(!checkDataMostra($_POST['mostra'],$_POST['annomostra'].'-'.$_POST['mesemostra'].'-'.$_POST['giornomostra'])){
+                $page = str_replace("*errordatamostra*", "<p class=\"col4 error\">La data selezionata non rientra nel periodo della mostra selezionata. Si prega di correggere la data.</p>", $page);
+                $check[] = false;
+            }
         }
 
         if (in_array(false, $check) == false) {
@@ -305,9 +312,6 @@ if ($database) {
     $page = str_replace("*mesenascita*", createOptionsNumber("mesenascita", 1, 12), $page);
     $page = str_replace("*giornonascita*", createOptionsNumber("giornonascita", 1, 31), $page);
     $page = str_replace("*errordatanascita*", "", $page);
-    $page = str_replace("*errorgiornonascita*", "", $page);
-    $page = str_replace("*errormesenascita*", "", $page);
-    $page = str_replace("*errorannonascita*", "", $page);
 
     $page = str_replace("*stato*", createStati($stati), $page);
     $page = str_replace("*errorstato*", "", $page);
@@ -316,9 +320,6 @@ if ($database) {
     createMostre($datamostre, $page);
     $page = str_replace("*errormostra*", "", $page);
     $page = str_replace("*errordatamostra*", "", $page);
-    $page = str_replace("*errorgiornomostra*", "", $page);
-    $page = str_replace("*errormesemostra*", "", $page);
-    $page = str_replace("*errorannomostra*", "", $page);
 
     $page = str_replace("*nbiglietti*", createOptionsNumber('nbiglietti', MINBIGLIETTI, MAXBIGLIETTI), $page);
     $page = str_replace("*errornbiglietti*", "", $page);

@@ -41,19 +41,38 @@ var dateFields = [
 ];
 
 
-function mostraErrore(input, testo) {
-    togliErrore(input);
-    var p = input.parentNode.parentNode;
+function checkData(giorno, mese, anno) {
+    data = anno + '-' + mese + '-' + giorno;
+    var regexp = new RegExp('^[1|2][0-9]{3,3}-([1-9]|1[0|1|2])-([1-9]|[1|2][0-9]|3[0|1])$');
+    if (regexp.test(data)) {
+        if (giorno === 31 && (mese === 4 || mese === 6 || mese === 9 || mese === 11))
+            return false;
+        if (giorno > 29 && mese === 2)
+            return false;
+        if (giorno === 29 && mese === 2 && !(anno % 4 === 0 && (anno % 100 !== 0 || anno % 400 === 0)))
+            return false;
+        return true;
+    }
+    return false;
+}
+
+function checkBoundLimit(element, min, max) {
+    return min <= element && element <= max;
+}
+
+
+function mostraErrore(container, testo) {
+    togliErrore(container);
     var paragraph = document.createElement("p");
     paragraph.className = "col4 error";
     paragraph.appendChild(document.createTextNode(testo));
-    p.appendChild(paragraph);
+    container.appendChild(paragraph);
 }
 
-function togliErrore(input) {
-    var p = input.parentNode.parentNode;
-    if (p.children.length > 2) {
-        p.removeChild(p.children[2]);
+function togliErrore(container) {
+    var figli = container.childNodes;
+    if(figli[figli.length-1].className==="col4 error"){
+        container.removeChild(figli[figli.length-1]);
     }
 }
 
@@ -62,9 +81,9 @@ function validazione(input) {
     i.onblur = function () {
         var result = input.regexp.test(i.value);
         if (result)
-            togliErrore(i);
+            togliErrore(i.parentNode.parentNode);
         else
-            mostraErrore(i, input.output);
+            mostraErrore(i.parentNode.parentNode, input.output);
     };
 }
 
@@ -85,7 +104,19 @@ function ripristina(form){
 window.onload = function () {
     for (var i = 0; i < inputs.length; i++)
         validazione(inputs[i]);
-
+    
+    var giornonascita = document.getElementById("giornonascita");
+    var mesenascita = document.getElementById("mesenascita");
+    var annonascita = document.getElementById("annonascita");
+    
+    giornonascita.onchange = function(){
+        var gn = giornonascita.options[giornonascita.selectedIndex].value;
+        var mn = mesenascita.options[mesenascita.selectedIndex].value;
+        var an = annonascita.options[annonascita.selectedIndex].value;
+        if(checkData(gn,mn,an)) togliErrore(giornonascita.parentNode.parentNode.parentNode);
+        else mostraErrore(giornonascita.parentNode.parentNode.parentNode,"Ciaoooo");
+    };
+    
     var reset = document.getElementById("reset");
     reset.addEventListener("click",function(event){
         ripristina(document.getElementById("formBiglietti"));

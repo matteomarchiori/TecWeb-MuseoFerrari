@@ -6,7 +6,7 @@
 		$mostre = file_get_contents(dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . "html" . DIRECTORY_SEPARATOR . "pages" . DIRECTORY_SEPARATOR . "mostre.html");
 	}
 	if(!isset($_GET['event'])){
-		$id=Database::getIdCurrentEvent();
+		$id=Database::selectCurrentEvent();
 		$idMostraVisibile=$id['ID'];
 	}
 	else{

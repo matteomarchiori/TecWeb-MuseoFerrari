@@ -317,9 +317,11 @@ legend{
 fieldset > *{
     margin:0.5em;
 }
+
 input, select{
 	border:none;
 	padding:0.3em;
+    background-color:white;
 }
 
 .formfield input[type=submit], input[type=reset]{
