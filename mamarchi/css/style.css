@@ -239,9 +239,12 @@ a:visited{
     color:white;
 }
 
+#prenotabiglietti p, #prenotabiglietti h1{
+    padding:0.5em;
+}
+
 #prenotabiglietti h1{
 	font-size:1.3em;
-	padding:0.5em;
 }
 
 .error{

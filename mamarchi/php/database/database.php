@@ -5,8 +5,8 @@ namespace Database;
 class Database {
 
     const HOST_DB = "localhost";
-    const USERNAME = "root";
-    const PASSWORD = "root";
+    const USERNAME = "matteo";
+    const PASSWORD = "password1324354";
     const DB_NAME = "museo-ferrari";
 
     private static $connection;

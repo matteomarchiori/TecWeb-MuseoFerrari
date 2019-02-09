@@ -1,6 +1,7 @@
 <div class="container" id="contentwhite">
     <div id="prenotabiglietti" class="col-4">
         <h1>Prenota ora i tuoi biglietti</h1>
+        <p>Tutti i campi con il simbolo (*) sono obbligatori.</p>
         <form action="./biglietti" method="POST">
             <div class="container">
 				<div class="col-4 col-xl-2">
@@ -8,7 +9,7 @@
 						<legend>Nominativo</legend>
 						<div class="container formfield">
 							<div class="col-4 col-xl-2">
-								<label for="nome">Nome</label>
+								<label for="nome">Nome (*)</label>
 								<input type="text" name="nome" id="nome" size="15" maxlength="20"  value="*nome*" *disabled* />
 							</div>
 							<p class="col-4 col-xl-2">Inserire il nome senza spazi e con sole lettere alfabetiche.</p>
@@ -16,7 +17,7 @@
 						</div>
 						<div class="container formfield">
 							<div class="col-4 col-xl-2">
-								<label for="cognome">Cognome</label>
+								<label for="cognome">Cognome (*)</label>
 								<input type="text" name="cognome" id="cognome" size="15" maxlength="20"  value="*cognome*" *disabled*/>
 							</div>
 							<p class="col-4 col-xl-2">Inserire il cognome senza spazi e con sole lettere alfabetiche.</p>
@@ -30,14 +31,14 @@
 						<div class="container formfield">
 							<div class="col-4 container">
 								<div class="col-4 treColonne center">
-									<label for="giornonascita">Giorno</label>
+									<label for="giornonascita">Giorno (*)</label>
 									
 										<select name="giornonascita" id="giornonascita" *disabled*>
 											*giornonascita*
 										</select>
 								</div>
 								<div class="col-4 treColonne center">
-									<label for="mesenascita">Mese</label>
+									<label for="mesenascita">Mese (*)</label>
 									
 										<select name="mesenascita" id="mesenascita" *disabled*>
 											*mesenascita*
@@ -45,7 +46,7 @@
 									
 								</div>
 								<div class="col-4 treColonne center">
-									<label for="annonascita">Anno</label>
+									<label for="annonascita">Anno (*)</label>
 									
 										<select name="annonascita" id="annonascita" *disabled*>
 											*annonascita*
@@ -60,7 +61,7 @@
 						</div>
 						<div class="container formfield">
 							<div class="col-4 col-xl-2">
-								<label for="comune">Comune</label>
+								<label for="comune">Comune (*)</label>
 								<input type="text" name="comune" id="comune" size="15" maxlength="20"  value="*comune*" *disabled*/>
 							</div>
 							<p class="col-4 col-xl-2">Inserire il comune senza spazi e con sole lettere alfabetiche.</p>
@@ -75,7 +76,7 @@
 						<legend>Dati di contatto</legend>
 						<div class="container formfield">
 							<div class="col-4 col-xl-2">
-								<label for="telefono">Telefono</label>
+								<label for="telefono">Telefono (*)</label>
 								<input type="text" name="telefono" id="telefono" size="15" maxlength="15"  value="*telefono*" *disabled*/>
 							</div>
 							<p class="col-4 col-xl-2">Inserire il numero di telefono con sole cifre, senza spazi.</p>
@@ -83,7 +84,7 @@
                             </div>
 						<div class="container formfield">
 							<div class="col-4 col-xl-2">
-								<label for="email">Email</label>
+								<label for="email">Email (*)</label>
 								<input type="text" name="email" id="email" size="15" maxlength="50"  value="*email*" *disabled*/>
 							</div>
 							<p class="col-4 col-xl-2">Inserire l'email nel formato casella@dominio.</p>
@@ -96,7 +97,7 @@
 						<legend>Dati relativi all'abitazione</legend>
 						<div class="container formfield">
 							<div class="col-4">
-								<label for="stato">Stato</label>
+								<label for="stato">Stato (*)</label>
 								<select name="stato" id="stato" *disabled*>
 									*stato*
 								</select>
@@ -105,7 +106,7 @@
 						</div>
 						<div class="container formfield">
 							<div class="col-4 col-xl-2">
-								<label for="indirizzo">Indirizzo</label>
+								<label for="indirizzo">Indirizzo (*)</label>
 								<input type="text" name="indirizzo" id="indirizzo" size="15"  value="*indirizzo*" *disabled*/>
 							</div>
 							<p class="col-4 col-xl-2">Inserire l'indirizzo con il nome della via e il numero civico.</p>
@@ -113,7 +114,7 @@
 						</div>
 						<div class="container formfield">
 							<div class="col-4 col-xl-2">
-								<label for="citta">Città</label>
+								<label for="citta">Città (*)</label>
 								<input type="text" name="citta" id="citta" size="15"  value="*citta*" *disabled*/>
 							</div>
 							<p class="col-4 col-xl-2">Inserire la città senza spazi e con sole lettere alfabetiche.</p>
@@ -128,7 +129,7 @@
 						<legend>Biglietti</legend>
 						<div class="container formfield">
 							<div class="col-4">
-								<label for="mostra">Mostra</label>
+								<label for="mostra">Mostra (*)</label>
 								<select name="mostra" id="mostra" *disabled*>
 									*mostre*
 								</select>
@@ -136,13 +137,13 @@
 							*errormostra*
 							<div class="col-4 container">
 								<div class="col-4 treColonne center">
-								<label for="giornomostra">Giorno</label>
+								<label for="giornomostra">Giorno (*)</label>
 								<select name="giornomostra" id="giornomostra" *disabled*>
 									*giornimostre*
 								</select>
 								</div>
 								<div class="col-4 treColonne center">
-								<label for="mesemostra">Mese</label>
+								<label for="mesemostra">Mese (*)</label>
 								
 								<select name="mesemostra" id="mesemostra" *disabled*>
 									*mesimostre*
@@ -150,7 +151,7 @@
 								
 								</div>
 								<div class="col-4 treColonne center">
-								<label for="annomostra">Anno</label>
+								<label for="annomostra">Anno (*)</label>
 								
 								<select name="annomostra" id="annomostra" *disabled*>
 									*annimostre*
@@ -163,7 +164,7 @@
 							*errormesemostra*
 							*errorgiornomostra*
 							<div class="col-4">
-								<label for="nbiglietti">Numero di biglietti</label>
+								<label for="nbiglietti">Numero di biglietti (*)</label>
 								<select name="nbiglietti" id="nbiglietti" *disabled*>
 									*nbiglietti*
 								</select>
