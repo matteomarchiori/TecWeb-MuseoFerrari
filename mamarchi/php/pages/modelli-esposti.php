@@ -41,12 +41,13 @@
             }
             $modelli = str_replace("*modelliesposti*",$modelliPagina,$modelli);
             if($pagina>1) 
-                $modelli = str_replace("*paginaback*","<div id='back'><a href='./modelli-esposti?pagina=".($pagina-1)."' tabindex='8' accesskey='p'>INDIETRO</a></div>",$modelli);
+                $modelli = str_replace("*paginaback*","<div id='back'><a href='./modelli-esposti?pagina=".($pagina-1)."' tabindex='8'>INDIETRO</a></div>",$modelli);
             else 
                 $modelli = str_replace("*paginaback*","",$modelli);
             $modelli = str_replace("*paginacorrente*","<div id='current'><p>$pagina</p></div>",$modelli);
             if($pagina<=$nPagine) 
-                $modelli = str_replace("*paginanext*","<div id='next'><a href='./modelli-esposti?pagina=".($pagina+1)."' tabindex='9' accesskey='n'>AVANTI</a></div>",$modelli);
+                $modelli = str_replace("*paginanext*","<div id='next'><a href='./modelli-esposti?pagina=".($pagina+1)."' tabindex='9'
+                >AVANTI</a></div>",$modelli);
             else 
                 $modelli = str_replace("*paginanext*","",$modelli);
             $modelli = str_replace("*nessunrisultato*","",$modelli);
@@ -63,12 +64,3 @@
             echo $modelli;
         }
     }
-    // dubbio su id= eventoprincipale lo riciclo? che sia class? ma file diversi.
-
-    /*tabindex fino a 6 con l'header
-    * 7 il find
-    * ACCESSKEY MAP:
-    * 8 INDIETRO -> (previous) n
-    * 9 AVANTI -> (next) p
-    */
-
