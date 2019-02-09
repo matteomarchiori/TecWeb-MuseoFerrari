@@ -145,9 +145,12 @@ body{
 	width:50%;
 }
 
+#prenotabiglietti p, #prenotabiglietti h1{
+	padding:0.3em;
+}
+
 #prenotabiglietti h1{
 	font-size:1.5em;
-	padding:0.3em;
 }
 
 .formfield p{
@@ -164,10 +167,6 @@ body{
 }
 
 #totop{
-	background-image:url('../img/header/toTop.svg');
-	position:fixed;
-	bottom: 2em;
-	right: 2em;
     width:3em;
     height:3em;
 }
