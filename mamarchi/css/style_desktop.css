@@ -50,6 +50,9 @@ body{
 
 #menu li > a{
     padding:0.6em;/*piccola diff tra li attivo e a*/
+    display:inline;
+    width:unset;
+    height:unset;
 }
 
 #breadcrumbs{
@@ -142,12 +145,9 @@ body{
 	width:50%;
 }
 
-#prenotabiglietti p, #prenotabiglietti h1{
-    padding:0.3em;
-}
-
 #prenotabiglietti h1{
 	font-size:1.5em;
+	padding:0.3em;
 }
 
 .formfield p{
