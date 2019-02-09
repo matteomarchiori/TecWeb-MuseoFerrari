@@ -1,22 +1,23 @@
 var now = new Date();
-var MINANNONASCITA = now.getFullYear()-100;
-var MAXANNONASCITA = now.getFullYear()-18;
+var MINANNONASCITA = now.getFullYear() - 100;
+var MAXANNONASCITA = now.getFullYear() - 18;
 var MINBIGLIETTI = 1;
 var MAXBIGLIETTI = 8;
 
 var stati = [
-    {id: 'it', nome:'Italia'},
-    {id: 'fr', nome:'France'},
-    {id: 'uk', nome:'United Kingdom'}
+    {id: 'it', nome: 'Italia'},
+    {id: 'fr', nome: 'France'},
+    {id: 'uk', nome: 'United Kingdom'}
 ];
 
 var regExpStati = '^';
 var nstati = stati.length;
-for(var i=0;i<nstati;i++){
-    regExpStati+='['+stati[i]['id']+']';
-    if(i!==nstati-1) regExpStati+='|';
+for (var i = 0; i < nstati; i++) {
+    regExpStati += '[' + stati[i]['id'] + ']';
+    if (i !== nstati - 1)
+        regExpStati += '|';
 }
-regExpStati+='$';
+regExpStati += '$';
 
 var inputs = [
     {id: 'nome', regexp: new RegExp('^[a-zA-Z]{1,15}$'), output: 'Il campo Nome inserito non è corretto. Rispettare il formato indicato.'},
@@ -27,7 +28,7 @@ var inputs = [
     {id: 'citta', regexp: new RegExp('^[a-zA-Z]{1,15}$'), output: 'Il campo Città inserito non è corretto. Rispettare il formato indicato.'},
     {id: 'indirizzo', regexp: new RegExp('^[a-zA-Z]{1,10}\s[a-zA-Z]{1,30}\s[0-9]{1,4}$'), output: 'Il campo Indirizzo inserito non è corretto. Rispettare il formato indicato.'},
     {id: 'stato', regexp: new RegExp(regExpStati), output: 'Il campo Stato selezionato non è tra quelli indicati. Selezionarlo tra quelli indicati.'},
-    {id: 'nbiglietti', regexp: new RegExp('^[' + MINBIGLIETTI + '-' + MAXBIGLIETTI + ']$'),  output: 'Il numero di biglietti selezionato non è tra quelli indicati. Selezionarlo tra quelli indicati.'}
+    {id: 'nbiglietti', regexp: new RegExp('^[' + MINBIGLIETTI + '-' + MAXBIGLIETTI + ']$'), output: 'Il numero di biglietti selezionato non è tra quelli indicati. Selezionarlo tra quelli indicati.'}
 ];
 
 var dateFields = [
@@ -67,7 +68,27 @@ function validazione(input) {
     };
 }
 
+function ripristina(form){
+    var elements = form.elements;
+    for (var i = 0; i < elements.length; i++) {
+        switch (elements[i].type) {
+            case "text":
+                elements[i].value = "";
+                break;
+            case "checkbox":
+                elements[i].checked = false;
+                break;
+        }
+    }
+}
+
 window.onload = function () {
     for (var i = 0; i < inputs.length; i++)
         validazione(inputs[i]);
+
+    var reset = document.getElementById("reset");
+    reset.addEventListener("click",function(event){
+        ripristina(document.getElementById("formBiglietti"));
+        event.returnValue = false;
+    });
 };
