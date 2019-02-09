@@ -38,7 +38,7 @@ $inputs = [
     ['id' => 'email', 'regexp' => '/^[a-zA-Z0-9.:_-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$/', 'output' => 'Il campo Email inserito non è corretto. Rispettare il formato indicato.'],
     ['id' => 'comune', 'regexp' => '/^[a-zA-Z]{1,15}$/', 'output' => 'Il campo Comune inserito non è corretto. Rispettare il formato indicato.'],
     ['id' => 'citta', 'regexp' => '/^[a-zA-Z]{1,15}$/', 'output' => 'Il campo Città inserito non è corretto. Rispettare il formato indicato.'],
-    ['id' => 'indirizzo', 'regexp' => '/^[a-zA-Z]{1,30}\s[0-9]{1,4}$/', 'output' => 'Il campo Indirizzo inserito non è corretto. Rispettare il formato indicato.'],
+    ['id' => 'indirizzo', 'regexp' => '/^[a-zA-Z]{1,10}\s[a-zA-Z]{1,30}\s[0-9]{1,4}$/', 'output' => 'Il campo Indirizzo inserito non è corretto. Rispettare il formato indicato.'],
     ['id' => 'stato', 'regexp' => $regexpStati, 'output' => 'Il campo Stato selezionato non è tra quelli indicati. Selezionarlo tra quelli indicati.'],
     ['id' => 'nbiglietti', 'regexp' => '/^[' . MINBIGLIETTI . '-' . MAXBIGLIETTI . ']$/', 'output' => 'Il numero di biglietti selezionato non è tra quelli indicati. Selezionarlo tra quelli indicati.']
 ];
@@ -325,6 +325,7 @@ if ($database) {
 
     if (!empty($_POST['newsletter']))
         $page = str_replace("*newsletter*", "checked=\"checked\"", $page);
+    $page = str_replace("*newsletter*", "", $page);
 
     $page = str_replace("*status*", "", $page);
 

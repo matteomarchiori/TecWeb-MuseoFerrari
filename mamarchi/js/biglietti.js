@@ -25,7 +25,7 @@ var inputs = [
     {id: 'email', regexp: new RegExp('^[a-zA-Z0-9.:_-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$'), output: 'Il campo Email inserito non è corretto. Rispettare il formato indicato.'},
     {id: 'comune', regexp: new RegExp('^[a-zA-Z]{1,15}$'), output: 'Il campo Comune inserito non è corretto. Rispettare il formato indicato.'},
     {id: 'citta', regexp: new RegExp('^[a-zA-Z]{1,15}$'), output: 'Il campo Città inserito non è corretto. Rispettare il formato indicato.'},
-    {id: 'indirizzo', regexp: new RegExp('^[a-zA-Z]{1,30}\s[0-9]{1,4}$'), output: 'Il campo Indirizzo inserito non è corretto. Rispettare il formato indicato.'},
+    {id: 'indirizzo', regexp: new RegExp('^[a-zA-Z]{1,10}\s[a-zA-Z]{1,30}\s[0-9]{1,4}$'), output: 'Il campo Indirizzo inserito non è corretto. Rispettare il formato indicato.'},
     {id: 'stato', regexp: new RegExp(regExpStati), output: 'Il campo Stato selezionato non è tra quelli indicati. Selezionarlo tra quelli indicati.'},
     {id: 'nbiglietti', regexp: new RegExp('^[' + MINBIGLIETTI + '-' + MAXBIGLIETTI + ']$'),  output: 'Il numero di biglietti selezionato non è tra quelli indicati. Selezionarlo tra quelli indicati.'}
 ];
