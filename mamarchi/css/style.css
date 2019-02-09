@@ -355,6 +355,12 @@ textarea{
     height:2.8em;
     color: transparent;
 }
+
+#saltamenu, #saltamenu a{
+    font-size:0;
+    width:0;
+}
+
 #comeRaggiungerci p:first-of-type{
     margin-bottom:1em;
 }

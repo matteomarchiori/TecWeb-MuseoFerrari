@@ -82,11 +82,9 @@ switch ($last_uri_parts[0]){
  * b -> biglietti
  * i -> info
  */
-$tabIndex = 1;
+$tabIndex = 2;
 $header = str_replace("*title*","Pagina non trovata",$header);
 $header = str_replace("*breadcrumbs*","Pagina non trovata",$header);
-$header = str_replace("*saltamenu*","<li><a href='' tabindex=\"$tabIndex\">Home</a></li>",$header,$counter);
-if ($counter > 0) checkCounter($counter,$tabIndex);
 $header = str_replace("*linkhome*","<li><a href='./' xml:lang='en' tabindex=\"$tabIndex\">Home</a></li>",$header,$counter);
 if ($counter > 0) checkCounter($counter,$tabIndex);
 $header = str_replace("*linkmostre*","<li><a href='./mostre' tabindex=\"$tabIndex\">Mostre</a></li>",$header,$counter);
