@@ -68,14 +68,14 @@ body{
 #content h2{
     font-size:1.1em;
 }
-#contentwhite{
+#content.contentwhite{
     background-color:white;
     padding:2em;
 }
-#contentwhite h1{
+#content.contentwhite h1{
     font-size:1.5em;
 }
-#contentwhite h2{
+#content.contentwhite h2{
     font-size:1.1em;
 }
 #formRicerca{
@@ -172,10 +172,6 @@ body{
 }
 
 /*FOOTER*/
-#footer img{
-	width:40%;
-	margin-top:0.8em;
-}
 #footer p{
 	margin-top:auto;
 	margin-bottom:auto;

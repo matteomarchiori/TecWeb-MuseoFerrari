@@ -101,16 +101,7 @@ a:visited{
     font-size:1em;
     margin-top: 0.5em;
 }
-#contentwhite {
-    padding:1em;
-}
-#contentwhite h1{
-    font-size:1.3em;
-}
-#contentwhite h2{
-    font-size:1em;
-    margin-top: 0.5em;
-}
+
 #formRicerca label {
    background-color:#333333;
     color:white;
@@ -375,9 +366,7 @@ textarea{
     background-color:#333333;
 	color:white;
 }
-#footer img{
-    width:6em;
-}
+
 #footer p{
     margin-top:1.5em;
     margin-bottom:1.5em;
