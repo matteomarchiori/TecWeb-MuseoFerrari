@@ -81,7 +81,10 @@ function checkDataMostra($mostra,$data){
     $db = Database::selectEventById($mostra);
     $dataInizio = $db['DataInizio'];
     $dataFine = $db['DataFine'];
-    return checkBoundLimit(strtotime($data), strtotime($dataInizio), strtotime($dataFine));
+    $inizio = strtotime($dataInizio);
+    $adesso = strtotime("now");
+    if($adesso<$inizio) $inizio = $adesso;
+    return checkBoundLimit(strtotime($data), $inizio, strtotime($dataFine));
 }
 
 function checkBoundLimit($element, $min, $max) {
