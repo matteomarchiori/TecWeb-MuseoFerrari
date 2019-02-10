@@ -1,6 +1,6 @@
 <?php
 
-$footer = file_get_contents("../../html/common/footer.html");
+$footer = file_get_contents(dirname(dirname(__DIR__)).DIRECTORY_SEPARATOR."html".DIRECTORY_SEPARATOR."common".DIRECTORY_SEPARATOR."footer.html");
 $last_uri_parts = explode('?', $_SERVER['REQUEST_URI'], 2);
 $last_uri_parts[0] = substr($last_uri_parts[0], strrpos($last_uri_parts[0], '/')+1);
 

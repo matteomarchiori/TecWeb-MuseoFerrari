@@ -37,12 +37,10 @@ function mostraErrore(container, testo) {
 
 function validazione(input, check) {
     var i = document.getElementById(input.id);
-    var result = input.regexp.test(i.value);
-    if (result) {
-        check[input.id] = true;
+    check[input.id] = input.regexp.test(i.value);
+    if (check[input.id]) {
         togliErrore(i.parentNode.parentNode);
     } else {
-        check[input.id] = false;
         mostraErrore(i.parentNode.parentNode, input.output);
     }
 }
@@ -59,11 +57,10 @@ function validazioneData(giorno, mese, anno, errore, check) {
     var g = giorno.options[giorno.selectedIndex].value;
     var m = mese.options[mese.selectedIndex].value;
     var a = anno.options[anno.selectedIndex].value;
-    if (checkData(g, m, a)) {
-        check[giorno.id] = true;
+    check[giorno.id] = checkData(g, m, a);
+    if(check[giorno.id]){
         togliErrore(container);
     } else {
-        check[giorno.id] = false;
         mostraErrore(container, errore);
     }
 }
@@ -78,6 +75,71 @@ function validazioneDataOnChange(giorno, mese, anno, errore, check) {
     anno.onchange = function () {
         validazioneData(giorno, mese, anno, errore, check);
     };
+}
+
+function createMese(n) {
+    switch (n) {
+        case 0:
+            return "Gennaio";
+        case 1:
+            return "Febbraio";
+        case 2:
+            return "Marzo";
+        case 3:
+            return "Aprile";
+        case 4:
+            return "Maggio";
+        case 5:
+            return "Giugno";
+        case 6:
+            return "Luglio";
+        case 7:
+            return "Agosto";
+        case 8:
+            return "Settembre";
+        case 9:
+            return "Ottobre";
+        case 10:
+            return "Novembre";
+        case 11:
+            return "Dicembre";
+    }
+}
+
+function validazioneDataMostra(giorno, mese, anno, check){
+    var container = giorno.parentNode.parentNode.parentNode;
+    var g = giorno.options[giorno.selectedIndex].value;
+    var m = mese.options[mese.selectedIndex].value;
+    var a = anno.options[anno.selectedIndex].value;
+    var data = new Date(g+"-"+m+"-"+a);
+    var now = new Date();
+    var mostra = document.getElementById("mostra");
+    var idmostra = mostra.options[mostra.selectedIndex].value;
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function(){
+        if(request.readyState == 4 && request.status == 200){
+            var response = JSON.parse(request.responseText);
+            var dataInizio = new Date(response["DataInizio"]);
+            var dataFine = new Date(response["DataFine"]);
+            var inizio = dataInizio.getTime();
+            var adesso = now.getTime();
+            if(adesso>inizio){
+                inizio = adesso;
+                dataInizio = new Date();
+            }
+            check[giorno.id] = checkBoundLimit(data.getTime(), inizio, dataFine.getTime());
+            if(check[giorno.id]){
+                togliErrore(container);
+            }
+            else{
+                var errore = "Non è possibile prenotare per il giorno selezionato. Selezionare una data compresa tra il "+dataInizio.getDate()+" "+createMese(dataInizio.getMonth())+" "+dataInizio.getFullYear()+" e il "+dataFine.getDate()+" "+createMese(dataFine.getMonth())+" "+dataFine.getFullYear()+".";
+                mostraErrore(container,errore);
+            }
+        }
+    };
+    request.open("get","/php/request/mostra.php?id="+idmostra,true);
+    request.setRequestHeader("Content-Type", "application/json");
+    request.send();
 }
 
 function ripristina(form, check) {
@@ -105,7 +167,6 @@ function ripristina(form, check) {
 }
 
 window.onload = function () {
-    var now = new Date();
     var MINBIGLIETTI = 1;
     var MAXBIGLIETTI = 8;
 
@@ -155,7 +216,7 @@ window.onload = function () {
     var annomostra = document.getElementById("annomostra");
     var erroremostra = "La data della mostra non è coerente. Non esiste il giorno indicato nel mese indicato. Si prega di correggere la data.";
     validazioneDataOnChange(giornomostra, mesemostra, annomostra, erroremostra, check);
-
+    
     var form = document.getElementById("formBiglietti");
     form.onsubmit = function () {
         for (i = 0; i < inputs.length; i+=1){
@@ -163,6 +224,9 @@ window.onload = function () {
         }
         validazioneData(giornonascita, mesenascita, annonascita, errorenascita, check);
         validazioneData(giornomostra, mesemostra, annomostra, erroremostra, check);
+        if(check["giornomostra"]){
+            validazioneDataMostra(giornomostra, mesemostra, annomostra, check);
+        }
         var send = true;
         for (i in check) {
             if (!check[i]) {
