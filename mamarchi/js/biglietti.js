@@ -14,7 +14,7 @@ var regExpStati = '^';
 var nstati = stati.length;
 for (var i = 0; i < nstati; i++) {
     regExpStati += '[' + stati[i]['id'] + ']';
-    if (i !== nstati - 1)
+    if (i != nstati - 1)
         regExpStati += '|';
 }
 regExpStati += '$';
@@ -32,12 +32,12 @@ var inputs = [
 ];
 
 var dateFields = [
-    {id: 'giornonascita', label: 'Giorno di nascita'},
-    {id: 'mesenascita', label: 'Mese di nascita'},
-    {id: 'annonascita', label: 'Anno di nascita'},
-    {id: 'giornomostra', label: 'Giorno della mostra'},
-    {id: 'mesemostra', label: 'Mese della mostra'},
-    {id: 'annomostra', label: 'Anno della mostra'}
+    {id: 'giornonascita'},
+    {id: 'mesenascita'},
+    {id: 'annonascita'},
+    {id: 'giornomostra'},
+    {id: 'mesemostra'},
+    {id: 'annomostra'}
 ];
 
 
@@ -45,11 +45,11 @@ function checkData(giorno, mese, anno) {
     data = anno + '-' + mese + '-' + giorno;
     var regexp = new RegExp('^[1|2][0-9]{3,3}-([1-9]|1[0|1|2])-([1-9]|[1|2][0-9]|3[0|1])$');
     if (regexp.test(data)) {
-        if (giorno === 31 && (mese === 4 || mese === 6 || mese === 9 || mese === 11))
+        if (giorno == 31 && (mese == 4 || mese == 6 || mese == 9 || mese == 11))
             return false;
-        if (giorno > 29 && mese === 2)
+        if (giorno > 29 && mese == 2)
             return false;
-        if (giorno === 29 && mese === 2 && !(anno % 4 === 0 && (anno % 100 !== 0 || anno % 400 === 0)))
+        if (giorno == 29 && mese == 2 && !(anno % 4 == 0 && (anno % 100 != 0 || anno % 400 == 0)))
             return false;
         return true;
     }
@@ -87,6 +87,30 @@ function validazione(input) {
     };
 }
 
+function validazioneData(giorno, mese, anno, errore){
+    var container = giorno.parentNode.parentNode.parentNode;
+    var g = giorno.options[giorno.selectedIndex].value;
+    var m = mese.options[mese.selectedIndex].value;
+    var a = anno.options[anno.selectedIndex].value;
+    giorno.onchange = function(){
+        g = giorno.options[giorno.selectedIndex].value;
+        if(checkData(g,m,a)) togliErrore(container);
+        else mostraErrore(container,errore);
+    };
+    
+    mese.onchange = function(){
+        m = mese.options[mese.selectedIndex].value;
+        if(checkData(g,m,a)) togliErrore(container);
+        else mostraErrore(container,errore);
+    };
+    
+    anno.onchange = function(){
+        a = anno.options[anno.selectedIndex].value;
+        if(checkData(g,m,a)) togliErrore(container);
+        else mostraErrore(container,errore);
+    };
+}
+
 function ripristina(form){
     var elements = form.elements;
     for (var i = 0; i < elements.length; i++) {
@@ -108,14 +132,14 @@ window.onload = function () {
     var giornonascita = document.getElementById("giornonascita");
     var mesenascita = document.getElementById("mesenascita");
     var annonascita = document.getElementById("annonascita");
+    var errore = "La data di nascita non è coerente. Non esiste il giorno indicato nel mese indicato. Si prega di correggere la data.";
+    validazioneData(giornonascita,mesenascita,annonascita,errore);
     
-    giornonascita.onchange = function(){
-        var gn = giornonascita.options[giornonascita.selectedIndex].value;
-        var mn = mesenascita.options[mesenascita.selectedIndex].value;
-        var an = annonascita.options[annonascita.selectedIndex].value;
-        if(checkData(gn,mn,an)) togliErrore(giornonascita.parentNode.parentNode.parentNode);
-        else mostraErrore(giornonascita.parentNode.parentNode.parentNode,"Ciaoooo");
-    };
+    var giornomostra = document.getElementById("giornomostra");
+    var mesemostra = document.getElementById("mesemostra");
+    var annomostra = document.getElementById("annomostra");
+    errore = "La data della mostra non è coerente. Non esiste il giorno indicato nel mese indicato. Si prega di correggere la data.";
+    validazioneData(giornomostra,mesemostra,annomostra,errore);
     
     var reset = document.getElementById("reset");
     reset.addEventListener("click",function(event){
