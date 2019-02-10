@@ -1,9 +1,15 @@
 \section{Accessibilità}
 \subsection{Colori}
 La gamma cromatica utilizzata nel sito web sviluppato è stata ristretta in modo tale da garantire un buon contrasto tra contesto e testo. Per arrivare alle nostre conclusioni per quanto riguarda i colori ci siamo
-serviti di un estensione per Google Chrome, \textit{Colorblindly}. Ci ha permesso di testare il nostro sito
-con i quattro tipi di daltonismo più diffusi: protanopia, deuteranopia, tritanopia e acromatopsia. In questo modo, il sito risulta accessibile a tutte le categorie di utenti con difficoltà visive.\\
-Dove possibile, inoltre, si adottano colori definiti \textit{web safe}\footnote{\url{https://www.color-hex.com/216-web-safe-colors/}}, in modo tale da garantire una corretta visualizzazione del sito su un maggior numero di dispositivi.
+serviti di un estensione per Google Chrome, \textit{Colorblindly}. Ci ha permesso di testare il nostro sito con i quattro tipi di daltonismo più diffusi: protanopia, deuteranopia, tritanopia e acromatopsia. In questo modo, il sito risulta accessibile a tutte le categorie di utenti con difficoltà visive.\\
+Dove possibile, inoltre, si adottano colori definiti \textit{web safe}\footnote{\url{https://www.color-hex.com/216-web-safe-colors/}}, in modo tale da garantire una corretta visualizzazione del sito su un maggior numero di dispositivi.\\
+Per verificare l'adeguatezza del contrasto dei colori usati per il testo ci siamo serviti dello strumento \textit{Colour Contrast Analyser}. Con quest'ultimo è stato possibile verificare che ogni abbinamento tra colore di sfono e colore del testo rispestasse un rapporto di contrasto tale da essere conforme con i seguenti criteri:
+\begin{itemize}
+	\item 1.4.3 Contrast (Minimum)
+	\item 1.4.6 Contrast (Enhanced)
+	\item 1.4.11 Non-text Contrast
+\end{itemize} 
+presenti nelle linee guida WCAG 2.1.\footnote{\url{https://www.w3.org/TR/WCAG21/}} 
 
 \subsection{Immagini}
 Le immagini all'interno del sito sono tutte accompagnate dall'attributo \textit{alt} al quale è stata assegnata una descrizione esaustiva dell'immagine. Ciò rende le immagini accessibili anche alle categorie di utenti con difetti visivi, poiché lo screen-reader si avvarrà di tali descrizioni.
@@ -16,7 +22,7 @@ scelto la rappresentazione attraverso elenco. \\
 La navbar nativamente era di colore giallo come il logo, ma dopo alcuni test ci siamo resi conto che non era
 la scelta ideale per un utente con problemi di acromatopsia, quindi abbiamo usato il grigio e il nero. \\
 Avevamo dato per scontato che mettendo la mappa del luogo del museo fosse chiaro dove recarsi, ma non avevamo
-pensato che uno screen-reader avrebbe potuto aver problemi nell'interpretarla correttamente, è stata quindi aggiunta per esteso.
+pensato che uno screen-reader avrebbe potuto aver problemi nell'interpretarla correttamente, è stato quindi aggiunto all'interno della pagina in questione l'indicazione testuale dell'indirizzo del museo.
 
 
 \subsection{Navigazione nel sito}
@@ -55,7 +61,8 @@ Per rendere efficiente la navigazione all'interno del sito anche ad utenti con d
 
 \subsection{Mobile}
 Per cercare di rendere il sito compatibile con la maggior parte dei dispositivi mobile (Smartphone, tablet...)
-abbiamo deciso di implementare l'accessibilità con CSS puro.\\ ...
+abbiamo deciso di implementare l'accessibilità con CSS puro.
+\\ ...
 
 \subsection{Test accessibilità}
 Con lo scopo di verificare e accertarsi che i livelli di accessibilità raggiunti fossero soddisfacenti sono stati effettuati dei test. Tali test non hanno il presupposto di essere esaustivi, ma piuttosto informativi.\\
@@ -85,3 +92,22 @@ Riportiamo di seguito i test effettuati sulla home page del sito per quanto rigu
 		\caption{Test daltonismo tritanopia}
 	\end{center}
 \end{figure}
+\subsubsection{Contrasto colori}
+La seguente tabella espone i risultati ottenuti con lo strumento \textit{Colour Contrast Analyser} relativi ad ogni abbinamento tra colore di sfondo e colore del testo presente nel sito. Tutte le coppie di colori scelti rispettano i criteri 1.4.3 Contrast (Minimum), 1.4.6 Contrast (Enhanced) e 1.4.11 Non-text Contrast, presenti nelle linee guida WCAG 2.1.
+
+{\renewcommand{\arraystretch}{1.5}%
+\begin{table}[]
+	\begin{tabular}{c|c|c|l}
+		\hline
+		\rowcolor[HTML]{F1F1F1} 
+		Colore di sfondo & Colore del testo                                             & Contrast ratio & \multicolumn{1}{c}{\cellcolor[HTML]{F1F1F1}Utilizzo nel sito}                          \\ \hline
+		\#333333         & \#FFFFFF                                                     & 12.6 : 1       & Simbolo hamburger del menù di navigazione, footer, label o legend, pulsanti            \\ \hline
+		\#CCCCCC         & \#000000                                                     & 13.1 : 1       & Pagina corrente nel menù di navigazione, form delle pagine biglietti e info e contatti \\ \hline
+		\#F1F1F1         & \#000000                                                     & 18.6 : 1       & Pagine non visitate nel menù di navigazione                                            \\ \hline
+		\#F1F1F1         & \begin{tabular}[c]{@{}c@{}}\#800080 \\ (purple)\end{tabular} & 8.3 : 1        & Pagine visitate nel menù di navigazione                                                \\ \hline
+		\#FFFFFF         & \#000000                                                     & 21 : 1         & Testo delle pagine del sito                                                            \\ \hline
+		\#FFFFFF         & \begin{tabular}[c]{@{}c@{}}\#0000FF \\ (blue)\end{tabular}   & 8.6 : 1        & Link non visitati nel sito ad esmpio nella pagina mostre                               \\ \hline
+		\#FFFFFF         & \begin{tabular}[c]{@{}c@{}}\#800080 \\ (purlpe)\end{tabular} & 9.4 : 1        & Link visitati nel sito ad esempio nella pagina mostre                               \\ \hline   				                              
+	\end{tabular}
+\end{table}
+}
