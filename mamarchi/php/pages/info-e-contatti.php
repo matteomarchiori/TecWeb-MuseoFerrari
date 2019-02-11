@@ -1,16 +1,108 @@
 <?php
+
+require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . "email" . DIRECTORY_SEPARATOR . "email.php";
+use Email\Email;
+
 require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . "database" . DIRECTORY_SEPARATOR . "database.php";
 use Database\Database;
-$database = new Database();
-if($database){
-    $info = file_get_contents(dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . "html" . DIRECTORY_SEPARATOR . "pages" . DIRECTORY_SEPARATOR . "info-e-contatti.html");
-    if(isset($_POST['email'])){
-      $email = $_POST['email'];
-      $newsletter = Database::newsletter($email);
-      if($newsletter) $info = str_replace("*subscribe*","<p>Grazie per esserti iscritto alla nostra newsletter.</p>",$info);
-      else $info = str_replace("*subscribe*","<p>L'iscrizione non e' andata a buon fine. Contattaci tramite l'apposito form.</p>",$info);
+
+$inputsMessage = [
+    ['id' => 'nome', 'regexp' => '/^[a-zA-Z]{1,15}$/', 'output' => 'Il campo Nome inserito non è corretto. Rispettare il formato indicato.'],
+    ['id' => 'email', 'regexp' => '/^[a-zA-Z0-9.:_-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$/', 'output' => 'Il campo Email inserito non è corretto. Rispettare il formato indicato.']
+];
+
+$inputNewsletter = ['id' => 'emailNewsletter', 'regexp' => '/^[a-zA-Z0-9.:_-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$/', 'output' => 'Il campo Email inserito non è corretto. Rispettare il formato indicato.'];
+
+function validazione($input, $value, &$info) {
+    $info = str_replace("*" . $input['id'] . "*", $_POST[$input['id']], $info);
+    if (!preg_match($input['regexp'], $value)) {
+        $info = str_replace("*error" . $input['id'] . "*", '<p class="col4 error">' . $input['output'] . '</p>', $info);
+        return false;
+    } else {
+        $info = str_replace("*error" . $input['id'] . "*", '', $info);
+        return true;
     }
-    else $info = str_replace("*subscribe*","",$info);
+}
+
+$database = new Database();
+if ($database) {
+    $info = file_get_contents(dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . "html" . DIRECTORY_SEPARATOR . "pages" . DIRECTORY_SEPARATOR . "info-e-contatti.html");
+    if (isset($_POST['inviaNewsletter'])) {
+        if (!isset($_POST['emailNewsletter']) || empty($_POST['emailNewsletter'])) {
+            $info = str_replace("*erroremailNewsletter*", "<p class=\"col4 error\">Il campo Email è richiesto. Si prega di inserirlo.</p>", $info);
+        }
+
+        $check = validazione($inputNewsletter, $_POST['emailNewsletter'], $info);
+
+        if ($check) {
+            $error = false;
+            if (Database::newsletter($_POST['emailNewsletter'])){
+                $email = new Email();
+                if(isset($email)){
+                    $subject = 'Iscrizione alla newsletter effettuata';
+                    $message = "Buongiorno " . $_POST['emailNewsletter'] . ",\n\n"
+                            . "Le comunichiamo che la sua iscrizione alla newsletter "
+                            . "è stata effettuata con successo.\n\n"
+                            . "Cordiali saluti\n"
+                            . "-- \n"
+                            . "Museo Ferrari";
+                    $to = $_POST['email'];
+                    $error = !$email::sendEmail($subject, $message, $to, "");
+                    if(!$error)
+                        $info = str_replace("*statusnewsletter*", "<p class=\"col-4 status\" id=\"statusNewsletter\">Grazie per esserti iscritto alla nostra newsletter.</p>", $info);
+                }else
+                    $error=true;
+            }
+            else
+                $error = true;
+        } else
+            $error = false;
+        if ($error)
+            $info = str_replace("*statusnewsletter*", "<p class=\"col-4 error\" id=\"statusNewsletter\">L'iscrizione non è andata a buon fine oppure è stata fatta in precedenza. Contattaci tramite l'apposito <a href=\"/mamarchi/info-e-contatti#formContattaci\">form di contatto</a>.</p>", $info);
+    }
+    
+    if (isset($_POST['inviaMessaggio'])) {
+        foreach ($inputsMessage as $input) {
+            if (!isset($_POST[$input['id']]) || empty($_POST[$input['id']])) {
+                $info = str_replace("*error" . $input['id'] . "*", "<p class=\"col4 error\">Il campo " . $input['id'] . " è richiesto. Si prega di inserirlo.</p>", $info);
+            }
+        }
+
+        foreach ($inputsMessage as $input)
+            $check[] = validazione($input, $_POST[$input['id']], $info);
+        
+        if(isset($_POST['testo']))
+            $info = str_replace("*testo*", $_POST['testo'], $info);
+
+        if (in_array(false, $check) == false) {
+            $error = false;
+            $email = new Email();
+            if (isset($email)) {
+                $subject = 'Messaggio da parte di '.$_POST['nome'];
+                $message = "Nome: ".$_POST['nome']."\n"
+                        . "Email: ".$_POST['email']."\n\n"
+                        . "Messaggio: ".$_POST['testo'];
+                $to = "museoferrariunipd@gmail.com";
+                $error = !$email::sendEmail($subject, $message, $to, "");
+                if(!$error)
+                        $info = str_replace("*statusmessaggio*", "<p class=\"col-4 status\" id=\"statusMessaggio\">Il messaggio è stato inviato correttamente.</p>", $info);
+                $info = str_replace("*disabled*", "disabled=\"disabled\"", $info);
+            }
+        } else
+            $error = false;
+        if ($error)
+            $info = str_replace("*statusmessaggio*", "<p class=\"col-4 error\" id=\"statusMessaggio\">Si è verificato un errore non previsto. Puoi sempre scrivere un'email a <a href='mailto:museoferrariunipd@gmail.com'>museoferrariunipd@gmail.com</a>.</p>", $info);
+    }
+
+    $info = str_replace("*statusnewsletter*", "", $info);
+    $info = str_replace("*erroremailNewsletter*", "", $info);
+    $info = str_replace("*statusmessaggio*", "", $info);
+    $info = str_replace("*errornome*", "", $info);
+    $info = str_replace("*erroremail*", "", $info);
+    $info = str_replace("*disabled*", "", $info);
+    $info = str_replace("*nome*", "", $info);
+    $info = str_replace("*email*", "", $info);
+    $info = str_replace("*testo*", "", $info);
     echo $info;
 }
 ?>

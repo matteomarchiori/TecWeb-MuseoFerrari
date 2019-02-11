@@ -156,10 +156,11 @@ function ripristina(form, check) {
                 break;
         }
     }
-    var p = document.getElementsByTagName("p");
+    var p = form.getElementsByTagName("p");
     for (i = 0; i < p.length; i+=1) {
         if (p[i].className == "col4 error") {
             p[i].parentNode.removeChild(p[i]);
+            i-=1;
         }
     }
     for (i in check) {

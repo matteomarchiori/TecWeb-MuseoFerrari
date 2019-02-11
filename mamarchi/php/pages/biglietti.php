@@ -1,12 +1,15 @@
 <?php
 
 require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . "email" . DIRECTORY_SEPARATOR . "email.php";
+
 use Email\Email;
 
 require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . "qrcode" . DIRECTORY_SEPARATOR . "qrcode.php";
+
 use MyQRCode\MyQRCode;
 
 require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . "database" . DIRECTORY_SEPARATOR . "database.php";
+
 use Database\Database;
 
 define("MINANNONASCITA", date("Y") - 100);
@@ -264,7 +267,8 @@ if ($database) {
                         $qrcode->encode();
                         $error = !$email::sendEmailWithAttachment($subject, $message, $to, $toName, $attachment, $attachmentName);
                         unlink($attachment);
-                        $page = str_replace("*status*", "<p class=\"col-4 status\">La sua prenotazione è stata inviata correttamente. Controlli la sua casella di posta elettronica.</p>", $page);
+                        if (!$error)
+                            $page = str_replace("*status*", "<p class=\"col-4 status\" id=\"status\">La sua prenotazione è stata inviata correttamente. Controlli la sua casella di posta elettronica.</p>", $page);
                         $page = str_replace("*disabled*", "disabled=\"disabled\"", $page);
                     } else
                         $error = true;
@@ -276,7 +280,7 @@ if ($database) {
             $error = false;
 
         if ($error)
-            $page = str_replace("*status*", "<p class=\"col-4 error\">Si è verificato un errore nell'invio della prenotazione. La preghiamo di contattarci usando l'apposito <a href=\"/info-e-contatti#form\">form di contatto</a></p>", $page);
+            $page = str_replace("*status*", "<p class=\"col-4 error\" id=\"status\">Si è verificato un errore nell'invio della prenotazione. La preghiamo di contattarci usando l'apposito <a href=\"/mamarchi/info-e-contatti#formContattaci\">form di contatto</a>.</p>", $page);
     }
 
     $page = str_replace("*nome*", "", $page);

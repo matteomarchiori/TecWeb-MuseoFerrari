@@ -277,8 +277,8 @@ label{
 	padding-top:0.2em;
 }
 #newsletter fieldset{
-	padding:0em;
-	margin:0em;
+	padding:0;
+	margin:0;
 	margin-bottom:1em;
     width: 50%;
 }
@@ -295,8 +295,8 @@ label{
     margin-bottom:0.3em;
 }
 #contattaci fieldset{
-	padding:0em;
-	margin:0em;
+	padding:0;
+	margin:0;
 	margin-top:1em;
 	margin-bottom:1em;
 }
