@@ -12,27 +12,27 @@ class Database {
     private static $connection;
 
     public function __construct() {
-        if (!Database::isConnected()) {
-            Database::$connection = new \mysqli(static::HOST_DB, static::USERNAME, static::PASSWORD, static::DB_NAME);
-            Database::$connection->set_charset('utf8');
+        if (!self::isConnected()) {
+            self::$connection = new \mysqli(static::HOST_DB, static::USERNAME, static::PASSWORD, static::DB_NAME);
+            self::$connection->set_charset('utf8');
         }
-        return Database::isConnected();
+        return self::isConnected();
     }
 
     public static function disconnect() {
-        if (Database::isConnected())
-            Database::$connection->close();
+        if (self::isConnected())
+            self::$connection->close();
     }
 
     public static function isConnected() {
-        if (isset(Database::$connection) && !Database::$connection->connect_errno)
+        if (isset(self::$connection) && !self::$connection->connect_errno)
             return true;
         return false;
     }
 
     private static function selectRows($query) {
-        if (Database::isConnected()) {
-            $result = Database::$connection->query($query);
+        if (self::isConnected()) {
+            $result = self::$connection->query($query);
             if ($result->num_rows == 0)
                 return null;
             return $result->fetch_all(MYSQLI_ASSOC);
@@ -41,9 +41,9 @@ class Database {
     }
 
     private static function insertUpdateDelete($query) {
-        if (Database::isConnected()) {
-            Database::$connection->query($query);
-            if (Database::$connection->affected_rows > 0)
+        if (self::isConnected()) {
+            self::$connection->query($query);
+            if (self::$connection->affected_rows > 0)
                 return true;
             return false;
         }
@@ -51,28 +51,28 @@ class Database {
     }
 
     public static function selectEvents($type, $limit) {
-        $type = Database::$connection->real_escape_string($type);
+        $type = self::$connection->real_escape_string($type);
         if(!is_int($limit)) return null;
         $query = "SELECT * FROM Evento WHERE Tipo=\"$type\" ORDER BY DataInizio LIMIT $limit;";
-        return Database::selectRows($query);
+        return self::selectRows($query);
     }
 
     public static function selectAutoModels($model, $limit, $offset) {
-        $model = Database::$connection->real_escape_string($model);
+        $model = self::$connection->real_escape_string($model);
         if(!is_int($limit)) return null;
         if(!is_int($offset)) return null;
         $query = "SELECT * FROM AutoEsposte WHERE Modello LIKE \"%$model%\" LIMIT $limit OFFSET $offset;";
-        return Database::selectRows($query);
+        return self::selectRows($query);
     }
     
     public static function selectNumberAutoModels($model) {
-        $model = Database::$connection->real_escape_string($model);
+        $model = self::$connection->real_escape_string($model);
         $query = "SELECT COUNT(*) as count FROM AutoEsposte WHERE Modello LIKE \"%$model%\";";
-        return Database::selectRows($query)[0]['count'];
+        return self::selectRows($query)[0]['count'];
     }
 
     public static function selectCurrentEvent() {
-        $currentEvent = Database::selectEvents("corrente", 1);
+        $currentEvent = self::selectEvents("corrente", 1);
         if (isset($currentEvent))
             return $currentEvent[0];
         return null;
@@ -81,7 +81,7 @@ class Database {
 	public static function selectEventById($id) {
 		if(!is_numeric($id)) return null;
         $query = "SELECT * FROM Evento WHERE ID=$id LIMIT 1;";
-        $rows = Database::selectRows($query);
+        $rows = self::selectRows($query);
         if(isset($rows))
             return $rows[0];
         return null;
@@ -90,54 +90,54 @@ class Database {
 	public static function selectEventsLessOne($id) {
         if(!is_numeric($id)) return null;
         $query = "SELECT * FROM Evento WHERE ID!=$id ORDER BY DataInizio LIMIT 3;";
-        return Database::selectRows($query);
+        return self::selectRows($query);
     }
     
     public static function selectUser($email) {
-        $email = Database::$connection->real_escape_string($email);
+        $email = self::$connection->real_escape_string($email);
         $query = "SELECT ID FROM Utente WHERE Email = \"$email\";";
-        $users = Database::selectRows($query);
+        $users = self::selectRows($query);
         if (isset($users))
             return $users[0];
         return null;
     }
 
     public static function newsletter($email) {
-        $email = Database::$connection->real_escape_string($email);
+        $email = self::$connection->real_escape_string($email);
         $query = "SELECT Email FROM Utente WHERE Email = \"$email\";";
-        $user = Database::selectRows($query);
+        $user = self::selectRows($query);
         if (isset($user))
             $query = "UPDATE Utente SET NewsLetter=true WHERE Email = \"$email\";";
         else
             $query = "INSERT INTO Utente (Email, NewsLetter) VALUES (\"$email\", true);";
-        return Database::insertUpdateDelete($query);
+        return self::insertUpdateDelete($query);
     }
 
     public static function registerUser($nome, $cognome, $datanascita, $comunenascita, $telefono, $email, $stato, $indirizzo, $citta, $newsletter) {
-        $nome = Database::$connection->real_escape_string($nome);
-        $cognome = Database::$connection->real_escape_string($cognome);
-        $datanascita = Database::$connection->real_escape_string($datanascita);
-        $comunenascita = Database::$connection->real_escape_string($comunenascita);
-        $email = Database::$connection->real_escape_string($email);
-        $stato = Database::$connection->real_escape_string($stato);
-        $indirizzo = Database::$connection->real_escape_string($indirizzo);
-        $citta = Database::$connection->real_escape_string($citta);
+        $nome = self::$connection->real_escape_string($nome);
+        $cognome = self::$connection->real_escape_string($cognome);
+        $datanascita = self::$connection->real_escape_string($datanascita);
+        $comunenascita = self::$connection->real_escape_string($comunenascita);
+        $email = self::$connection->real_escape_string($email);
+        $stato = self::$connection->real_escape_string($stato);
+        $indirizzo = self::$connection->real_escape_string($indirizzo);
+        $citta = self::$connection->real_escape_string($citta);
         $newsletter = is_bool($newsletter);
         if($newsletter) $newsletter = "true";
         else $newsletter = "false";
         if(!is_numeric($telefono)) return null;
         $query = "INSERT INTO Utente (Nome, Cognome, DataNascita, ComuneNascita, Telefono, Email, Indirizzo, Citta, Stato, NewsLetter) VALUES (\"$nome\", \"$cognome\", \"$datanascita\", \"$comunenascita\", \"$telefono\", \"$email\", \"$indirizzo\", \"$citta\", \"$stato\", $newsletter);";
-        return Database::insertUpdateDelete($query);
+        return self::insertUpdateDelete($query);
     }
 
     public static function buyTickets($utente, $evento, $data, $biglietti) {
         
         if(!is_numeric($utente) || !is_numeric($evento) || !is_numeric($biglietti)) return null;
         
-        $data = Database::$connection->real_escape_string($data);
+        $data = self::$connection->real_escape_string($data);
         
         $query = "INSERT INTO Biglietti (Utente, Evento, Data, NrBiglietti) VALUES ($utente, $evento, \"$data\", $biglietti);";
-        return Database::insertUpdateDelete($query);
+        return self::insertUpdateDelete($query);
     }
 
 }
