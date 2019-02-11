@@ -1,26 +1,26 @@
 <div id='content'>
     <h1>Modelli esposti</h1>
-            <div class='container'>
-                <div class='col-4 col-xl-4'>
-                    <form id='formRicerca' method='post' action='./modelli-esposti?pagina=1'>
-                        <label for="inpTextRic">Ricerca modello</label>
-                        <input id='inpTextRic' type='text' name='ric' tabindex='7'/>
-                        <input tabindex='8' type='submit' value='Cerca'/>
-                    </form>
-                    *error*
-                </div>
-            </div>
-            *modelliesposti*
-            *nessunrisultato*
-            <div class='container'>
-                <div class='col-4 pulsantePag'>
-                    *paginaback*
-                </div>
-                <div class='col-4 pulsantePag'>
-                    *paginacorrente*
-                </div>
-                <div class='col-4 pulsantePag'>
-                    *paginanext*
-                </div>
-            </div>
+    <div class='container'>
+        <div class='col-4'>
+            <form id='formRicerca' method='post' action='./modelli-esposti?pagina=1'>
+                <label for="inpTextRic">Ricerca modello</label>
+                <input id='inpTextRic' type='text' name='ric' tabindex='7'/>
+                <input tabindex='8' type='submit' value='Cerca'/>
+            </form>
+            *error*
         </div>
+    </div>
+    *modelliesposti*
+    *nessunrisultato*
+    <div class='container'>
+        <div class='pulsantePag'>
+            *paginaback*
+        </div>
+        <div class='pulsantePag'>
+            *paginacorrente*
+        </div>
+        <div class='pulsantePag'>
+            *paginanext*
+        </div>
+    </div>
+</div>

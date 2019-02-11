@@ -137,7 +137,7 @@ function validazioneDataMostra(giorno, mese, anno, check){
             }
         }
     };
-    request.open("get","/php/request/mostra.php?id="+idmostra,true);
+    request.open("get","/mamarchi/php/request/mostra.php?id="+idmostra,true);
     request.setRequestHeader("Content-Type", "application/json");
     request.send();
 }
