@@ -1,1 +1,2 @@
-FallbackResource ./php/common/header.php
+DirectoryIndex /mamarchi/php/common/header.php
+FallbackResource /mamarchi/php/common/header.php
