@@ -25,15 +25,15 @@
 	$altriEventi=Database::selectEventsLessOne($idMostraVisibile);
 	//print_r($altriEventi);
 	
-	$mostre = str_replace("*linkmostra1*","<a href='./mostre?event=".$altriEventi[0][ID]."'>".$altriEventi[0]['Titolo']."</a>", $mostre);
+	$mostre = str_replace("*linkmostra1*","<a href='./mostre?event=".$altriEventi[0]['ID']."'>".$altriEventi[0]['Titolo']."</a>", $mostre);
 	$mostre = str_replace("*stato1*",getStato($altriEventi[0]['Tipo']), $mostre);//se torna null resta bianco
 	$mostre = str_replace("*datainiziomostra1*",date("d/m/Y", strtotime($altriEventi[0]['DataInizio'])), $mostre);
 	$mostre = str_replace("*datafinemostra1*",date("d/m/Y", strtotime($altriEventi[0]['DataFine'])), $mostre);
-	$mostre = str_replace("*linkmostra2*","<a href='./mostre?event=".$altriEventi[1][ID]."'>".$altriEventi[1]['Titolo']."</a>", $mostre);
+	$mostre = str_replace("*linkmostra2*","<a href='./mostre?event=".$altriEventi[1]['ID']."'>".$altriEventi[1]['Titolo']."</a>", $mostre);
 	$mostre = str_replace("*stato2*",getStato($altriEventi[1]['Tipo']), $mostre);//se torna null resta bianco
 	$mostre = str_replace("*datainiziomostra2*",date("d/m/Y", strtotime($altriEventi[1]['DataInizio'])), $mostre);
 	$mostre = str_replace("*datafinemostra2*",date("d/m/Y", strtotime($altriEventi[1]['DataFine'])), $mostre);
-	$mostre = str_replace("*linkmostra3*","<a href='./mostre?event=".$altriEventi[2][ID]."'>".$altriEventi[2]['Titolo']."</a>", $mostre);
+	$mostre = str_replace("*linkmostra3*","<a href='./mostre?event=".$altriEventi[2]['ID']."'>".$altriEventi[2]['Titolo']."</a>", $mostre);
 	$mostre = str_replace("*stato3*",getStato($altriEventi[2]['Tipo']), $mostre);//se torna null resta bianco
 	$mostre = str_replace("*datainiziomostra3*",date("d/m/Y", strtotime($altriEventi[2]['DataInizio'])), $mostre);
 	$mostre = str_replace("*datafinemostra3*",date("d/m/Y", strtotime($altriEventi[2]['DataFine'])), $mostre);

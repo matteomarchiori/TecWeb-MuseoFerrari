@@ -8,20 +8,21 @@
         if(isset($_POST["ric"])){
             $search = $_POST['ric'];
         }
-        else
+        else{
             $search="";
+        }
         if(isset($_GET['pagina']))
             $pagina=$_GET['pagina'];
         else 
             $pagina=1;
         $offset=($pagina*$righeVisibili)-$righeVisibili;
-        $automobili = Database::selectAutoModels($search,$righeVisibili,$offset);
-        if(isset($automobili)){
+        $nAutomobili = Database::selectNumberAutoModels($search);
+        if(isset($nAutomobili)){
             $modelliPagina="";
-            $nRighe=count($automobili);
-            $nPagine=ceil($nRighe/$righeVisibili);
+            $nPagine=ceil($nAutomobili/$righeVisibili);
+            $automobili = Database::selectAutoModels($search,$righeVisibili,$offset);
             $fileModello = file_get_contents(dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . "html" . DIRECTORY_SEPARATOR . "pages" . DIRECTORY_SEPARATOR . "modello-esposto.html");
-            for($auto=0;$auto<$nRighe;$auto++){
+            for($auto=0;$auto<count($automobili);$auto++){
                 $modello = $fileModello;
                 $modello = str_replace("*modello*",$automobili[$auto]['Modello'],$modello);
                 $modello = str_replace("*annoproduzione*",$automobili[$auto]['Anno'],$modello);
@@ -45,7 +46,7 @@
             else 
                 $modelli = str_replace("*paginaback*","",$modelli);
             $modelli = str_replace("*paginacorrente*","<div id='current'><p>$pagina</p></div>",$modelli);
-            if($pagina<=$nPagine) 
+            if($pagina<$nPagine) 
                 $modelli = str_replace("*paginanext*","<div id='next'><a href='./modelli-esposti?pagina=".($pagina+1)."' tabindex='9'
                 >AVANTI</a></div>",$modelli);
             else 

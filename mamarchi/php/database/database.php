@@ -64,10 +64,16 @@ class Database {
         $query = "SELECT * FROM AutoEsposte WHERE Modello LIKE \"%$model%\" LIMIT $limit OFFSET $offset;";
         return Database::selectRows($query);
     }
+    
+    public static function selectNumberAutoModels($model) {
+        $model = Database::$connection->real_escape_string($model);
+        $query = "SELECT COUNT(*) as count FROM AutoEsposte WHERE Modello LIKE \"%$model%\";";
+        return Database::selectRows($query)[0]['count'];
+    }
 
     public static function selectCurrentEvent() {
         $currentEvent = Database::selectEvents("corrente", 1);
-        if (isset($currentEvent) && $currentEvent)
+        if (isset($currentEvent))
             return $currentEvent[0];
         return null;
     }
@@ -75,8 +81,10 @@ class Database {
 	public static function selectEventById($id) {
 		if(!is_numeric($id)) return null;
         $query = "SELECT * FROM Evento WHERE ID=$id LIMIT 1;";
-        $rows= Database::selectRows($query);
-		return $rows[0];
+        $rows = Database::selectRows($query);
+        if(isset($rows))
+            return $rows[0];
+        return null;
     }
     
 	public static function selectEventsLessOne($id) {
@@ -89,7 +97,7 @@ class Database {
         $email = Database::$connection->real_escape_string($email);
         $query = "SELECT ID FROM Utente WHERE Email = \"$email\";";
         $users = Database::selectRows($query);
-        if (isset($users) && $users)
+        if (isset($users))
             return $users[0];
         return null;
     }
