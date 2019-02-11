@@ -257,11 +257,11 @@ a:visited{
 }
 
 .error{
-    color:#f00;
+    color:#990000;
 }
 
 .status{
-    color:#00AA53;
+    color:#009900;
 }
 
 .formfield > *{
