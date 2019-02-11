@@ -47,14 +47,14 @@ Oltre a ciò, sotto l'intestazione del sito è presente l'indicazione testuale s
 		\caption{Dettaglio: \textit{breadcrumbs}.}
 	\end{center}
 \end{figure}\\
-Per quanto concerne i link presenti nel sito, è stato fatto in modo che link "\textit{visitati}" e "ancora da visitare" siano facilmente distinguibili. Un esempio è visibile nella figura \ref{fig:linkVisitatiDaVisitare}.
+Per quanto concerne i link presenti nel sito, è stato fatto in modo che link "\textit{visitati}" e "ancora da visitare" siano facilmente distinguibili. Un esempio è visibile di seguito.
 \begin{figure}[h]
 	\begin{center}
 		\includegraphics[scale=1.5]{Images/linkVisitatiDaVisitare.png}
 		\caption{Dettaglio: link da visitare e visitati. Il link centrale è stato già visitato mentre il primo e l'ultimo risultano ancora da esplorare.}
-		\label{fig:linkVisitatiDaVisitare}
 	\end{center}
-\end{figure}\\
+\end{figure}
+
 Per rendere efficiente la navigazione all'interno del sito anche ad utenti con difficoltà visive, è stato fatto uso di \textit{tabindex} per consentire un'agile navigazione all'interno del sito. Ogni immagine è inoltre accompagnata da un \textit{alt} che descrive in modo soddisfacente l'immagine in oggetto.\\
 È stato deciso di non introdurre \textit{accesskey} poiché gli shortcut stabiliti avrebbero potuto entrare in conflitto con i comandi definiti di default dai browser.\\
 È stato inoltre inserito un bottone che consente di tornare facilmente in testa alla pagina.
@@ -67,38 +67,41 @@ abbiamo deciso di implementare l'accessibilità con CSS puro.
 \subsection{Test accessibilità}
 Con lo scopo di verificare e accertarsi che i livelli di accessibilità raggiunti fossero soddisfacenti sono stati effettuati dei test. Tali test non hanno il presupposto di essere esaustivi, ma piuttosto informativi.\\
 Nei prossimi paragrafi mostriamo, con l'ausilio di alcuni screenshot, i risultati ottenuti.\\
-...\\
 ...
 \subsubsection{Test daltonismo}
 Riportiamo di seguito i test effettuati sulla home page del sito per quanto riguardano i difetti visivi relativi alla cecità completa o parziale ai colori, noti come daltonismo.
-\begin{figure}[!h]
+\begin{figure}[H]
 	\begin{center}
 		\includegraphics[scale=0.15]{Images/original.png}
 		\includegraphics[scale=0.15]{Images/protanopia.png}
 		\caption{Test daltonismo protanopia}
 	\end{center}
 \end{figure}
-\begin{figure}[!h]
+
+\begin{figure}[H]
 	\begin{center}
 		\includegraphics[scale=0.15]{Images/original.png}
 		\includegraphics[scale=0.15]{Images/deuteranopia.png}
 		\caption{Test daltonismo deuteranopia}
 	\end{center}
 \end{figure}
-\begin{figure}[!h]
+
+\begin{figure}[h!]
 	\begin{center}
 		\includegraphics[scale=0.15]{Images/original.png}
 		\includegraphics[scale=0.15]{Images/tritanopia.png}
 		\caption{Test daltonismo tritanopia}
 	\end{center}
 \end{figure}
-\begin{figure}[!h]
+
+\begin{figure}[h!]
 	\begin{center}
 		\includegraphics[scale=0.144]{Images/original.png}
 		\includegraphics[scale=0.144]{Images/acromatopsia.png}
 		\caption{Test daltonismo acromatopsia}
 	\end{center}
 \end{figure}
+
 \subsubsection{Contrasto colori}
 La seguente tabella espone i risultati ottenuti con lo strumento \textit{Colour Contrast Analyser} relativi ad ogni abbinamento tra colore di sfondo e colore del testo presente nel sito. Tutte le coppie di colori scelti rispettano i criteri 1.4.3 Contrast (Minimum), 1.4.6 Contrast (Enhanced) e 1.4.11 Non-text Contrast, presenti nelle linee guida WCAG 2.1.
 
@@ -109,7 +112,7 @@ La seguente tabella espone i risultati ottenuti con lo strumento \textit{Colour 
 		\hline
 		\rowcolor[HTML]{F1F1F1} 
 		\textbf{Colore di sfondo} & \textbf{Colore del testo} & \textbf{Contrast ratio} & \multicolumn{1}{c}{\cellcolor[HTML]{F1F1F1}\textbf{Utilizzo nel sito}}\\ 
-		\endfirsthead
+		\endhead
 		\hline
 		\#333333& \#FFFFFF & 12.6 : 1 & Simbolo hamburger del menù di navigazione, footer, label o legend, pulsanti\\ 
 		\hline
