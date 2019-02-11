@@ -111,8 +111,9 @@ function validazioneDataMostra(giorno, mese, anno, check){
     var g = giorno.options[giorno.selectedIndex].value;
     var m = mese.options[mese.selectedIndex].value;
     var a = anno.options[anno.selectedIndex].value;
-    var data = new Date(g+"-"+m+"-"+a);
+    var data = new Date(a+"-"+m+"-"+g);
     var now = new Date();
+    var today = new Date(now.getFullYear()+"-"+(now.getMonth()+1)+"-"+now.getDate());
     var mostra = document.getElementById("mostra");
     var idmostra = mostra.options[mostra.selectedIndex].value;
     var request = new XMLHttpRequest();
@@ -122,7 +123,7 @@ function validazioneDataMostra(giorno, mese, anno, check){
             var dataInizio = new Date(response["DataInizio"]);
             var dataFine = new Date(response["DataFine"]);
             var inizio = dataInizio.getTime();
-            var adesso = now.getTime();
+            var adesso = today.getTime();
             if(adesso>inizio){
                 inizio = adesso;
                 dataInizio = new Date();
