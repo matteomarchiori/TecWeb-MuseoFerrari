@@ -252,7 +252,7 @@ if ($database) {
                         $mail->addAddress($_POST['email'], $_POST['nome'] . ' ' . $_POST['cognome']);
                         $mail->addCC('museoferrariunipd@gmail.com');
                         $qrcode = $user['ID'] . $_POST['mostra'] . $_POST['annomostra'] . $_POST['mesemostra'] . $_POST['giornomostra'] . $_POST['nbiglietti'];
-
+                        
                         $tmpdir = dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . "img" . DIRECTORY_SEPARATOR . "tmp" . DIRECTORY_SEPARATOR;
 
                         QRCode::png($qrcode, $tmpdir . $_POST['email'] . ".png", QR_ECLEVEL_L, 3);
@@ -266,12 +266,12 @@ if ($database) {
                                 . "Le comunichiamo che la sua prenotazione "
                                 . "è stata effettuata con successo.\n\n"
                                 . "Dati della prenotazione:\n"
-                                . "Mostra - " . $mostre[$_POST['mostra']]['Titolo'] . "\n"
+                                . "Mostra - " . Database::selectEventById($_POST['mostra'])['Titolo'] . "\n"
                                 . "Data della mostra - " . $_POST['giornomostra'] . " " . createMese($_POST['mesemostra'])
                                 . " " . $_POST['annomostra'] . "\n"
                                 . "Biglietti prenotati - " . $_POST['nbiglietti'] . "\n\n"
                                 . "Potrà procedere al pagamento direttamente alle casse del museo, presentando la stampa della prenotazione o il codice in allegato.\n\n"
-                                . "Cordiali saluti"
+                                . "Cordiali saluti\n"
                                 . "-- \n"
                                 . "Museo Ferrari";
 

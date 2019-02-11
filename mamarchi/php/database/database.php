@@ -123,7 +123,11 @@ class Database {
     }
 
     public static function buyTickets($utente, $evento, $data, $biglietti) {
+        
+        if(!is_numeric($utente) || !is_numeric($evento) || !is_numeric($biglietti)) return null;
+        
         $data = Database::$connection->real_escape_string($data);
+        
         $query = "INSERT INTO Biglietti (Utente, Evento, Data, NrBiglietti) VALUES ($utente, $evento, \"$data\", $biglietti);";
         return Database::insertUpdateDelete($query);
     }
