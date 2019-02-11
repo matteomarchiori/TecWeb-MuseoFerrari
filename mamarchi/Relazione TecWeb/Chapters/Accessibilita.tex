@@ -73,22 +73,22 @@ Nei prossimi paragrafi mostriamo, con l'ausilio di alcuni screenshot, i risultat
 Riportiamo di seguito i test effettuati sulla home page del sito per quanto riguardano i difetti visivi relativi alla cecità completa o parziale ai colori, noti come daltonismo.
 \begin{figure}[!h]
 	\begin{center}
-		\includegraphics[scale=0.144]{Images/original.png}
-		\includegraphics[scale=0.144]{Images/protanopia.png}
+		\includegraphics[scale=0.15]{Images/original.png}
+		\includegraphics[scale=0.15]{Images/protanopia.png}
 		\caption{Test daltonismo protanopia}
 	\end{center}
 \end{figure}
 \begin{figure}[!h]
 	\begin{center}
-		\includegraphics[scale=0.144]{Images/original.png}
-		\includegraphics[scale=0.144]{Images/deuteranopia.png}
+		\includegraphics[scale=0.15]{Images/original.png}
+		\includegraphics[scale=0.15]{Images/deuteranopia.png}
 		\caption{Test daltonismo deuteranopia}
 	\end{center}
 \end{figure}
 \begin{figure}[!h]
 	\begin{center}
-		\includegraphics[scale=0.144]{Images/original.png}
-		\includegraphics[scale=0.144]{Images/tritanopia.png}
+		\includegraphics[scale=0.15]{Images/original.png}
+		\includegraphics[scale=0.15]{Images/tritanopia.png}
 		\caption{Test daltonismo tritanopia}
 	\end{center}
 \end{figure}
@@ -102,21 +102,32 @@ Riportiamo di seguito i test effettuati sulla home page del sito per quanto rigu
 \subsubsection{Contrasto colori}
 La seguente tabella espone i risultati ottenuti con lo strumento \textit{Colour Contrast Analyser} relativi ad ogni abbinamento tra colore di sfondo e colore del testo presente nel sito. Tutte le coppie di colori scelti rispettano i criteri 1.4.3 Contrast (Minimum), 1.4.6 Contrast (Enhanced) e 1.4.11 Non-text Contrast, presenti nelle linee guida WCAG 2.1.
 
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+
 {\renewcommand{\arraystretch}{1.5}%
-\begin{table}[]
-	\begin{tabular}{c|c|c|l}
+	\begin{longtable}[c]{|C{.14\textwidth}|C{.14\textwidth}|C{.13\textwidth}|m{.45\textwidth}|}
 		\hline
 		\rowcolor[HTML]{F1F1F1} 
-		Colore di sfondo & Colore del testo                                             & Contrast ratio & \multicolumn{1}{c}{\cellcolor[HTML]{F1F1F1}Utilizzo nel sito}                          \\ \hline
-		\#333333         & \#FFFFFF                                                     & 12.6 : 1       & Simbolo hamburger del menù di navigazione, footer, label o legend, pulsanti            \\ \hline
-		\#CCCCCC         & \#000000                                                     & 13.1 : 1       & Pagina corrente nel menù di navigazione, form delle pagine biglietti e info e contatti \\ \hline
-		\#F1F1F1         & \#000000                                                     & 18.6 : 1       & Pagine non visitate nel menù di navigazione                                            \\ \hline
-		\#F1F1F1         & \begin{tabular}[c]{@{}c@{}}\#800080 \\ (purple)\end{tabular} & 8.3 : 1        & Pagine visitate nel menù di navigazione                                                \\ \hline
-		\#FFFFFF         & \#000000                                                     & 21 : 1         & Testo delle pagine del sito                                                            \\ \hline
-		\#FFFFFF         & \begin{tabular}[c]{@{}c@{}}\#0000FF \\ (blue)\end{tabular}   & 8.6 : 1        & Link non visitati nel sito ad esmpio nella pagina mostre                               \\ \hline
-		\#FFFFFF         & \begin{tabular}[c]{@{}c@{}}\#800080 \\ (purlpe)\end{tabular} & 9.4 : 1        & Link visitati nel sito ad esempio nella pagina mostre                               \\ \hline 
-		\#CCCCCC         & \#990000                                                     & 5.6 : 1         & Messaggi d'errore nei form                                                            \\ \hline  
-		\#CCCCCC         & \#006600                                                     & 4.5 : 1         & Messaggio stato di invio nel form biglietti                                                            \\ \hline 				                              
-	\end{tabular}
-\end{table}
+		\textbf{Colore di sfondo} & \textbf{Colore del testo} & \textbf{Contrast ratio} & \multicolumn{1}{c}{\cellcolor[HTML]{F1F1F1}\textbf{Utilizzo nel sito}}\\ 
+		\endfirsthead
+		\hline
+		\#333333& \#FFFFFF & 12.6 : 1 & Simbolo hamburger del menù di navigazione, footer, label o legend, pulsanti\\ 
+		\hline
+		\#CCCCCC & \#000000 & 13.1 : 1 & Pagina corrente nel menù di navigazione, form delle pagine biglietti e info e contatti \\ 
+		\hline
+		\#F1F1F1 & \#000000 & 18.6 : 1 & Pagine non visitate nel menù di navigazione\\ 
+		\hline
+		\#F1F1F1 & \begin{tabular}[c]{@{}c@{}}\#800080 \\ (purple)\end{tabular} & 8.3 : 1  & Pagine visitate nel menù di navigazione\\ 
+		\hline
+		\#FFFFFF & \#000000  & 21 : 1 & Testo delle pagine del sito\\ 
+		\hline
+		\#FFFFFF & \begin{tabular}[c]{@{}c@{}}\#0000FF \\ (blue)\end{tabular} & 8.6 : 1 & Link non visitati nel sito ad esmpio nella pagina mostre\\ 
+		\hline
+		\#FFFFFF & \begin{tabular}[c]{@{}c@{}}\#800080 \\ (purlpe)\end{tabular} & 9.4 : 1 & Link visitati nel sito ad esempio nella pagina mostre\\ 
+		\hline 
+		\#CCCCCC & \#990000 & 5.6 : 1 & Messaggi d'errore nei form\\ 
+		\hline  
+		\#CCCCCC & \#006600  & 4.5 : 1  & Messaggio stato di invio nel form biglietti\\ 
+		\hline
+	\end{longtable}
 }
