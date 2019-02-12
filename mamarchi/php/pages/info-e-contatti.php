@@ -11,10 +11,10 @@ use Database\Database;
 
 $inputsMessage = [
     ['id' => 'nome', 'regexp' => '/^[a-zA-Z]{1,15}$/', 'output' => 'Il campo Nome inserito non è corretto. Rispettare il formato indicato.'],
-    ['id' => 'email', 'regexp' => '/^[a-zA-Z0-9.:_-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$/', 'output' => 'Il campo Email inserito non è corretto. Rispettare il formato indicato.']
+    ['id' => 'email', 'regexp' => '/^[a-zA-Z0-9.:_-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$/', 'output' => 'Il campo <span xml:lang="en">Email</span> inserito non è corretto. Rispettare il formato indicato.']
 ];
 
-$inputNewsletter = ['id' => 'emailNewsletter', 'regexp' => '/^[a-zA-Z0-9.:_-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$/', 'output' => 'Il campo Email inserito non è corretto. Rispettare il formato indicato.'];
+$inputNewsletter = ['id' => 'emailNewsletter', 'regexp' => '/^[a-zA-Z0-9.:_-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$/', 'output' => 'Il campo <span xml:lang="en">Email</span> inserito non è corretto. Rispettare il formato indicato.'];
 
 $database = new Database();
 if ($database) {
@@ -86,7 +86,7 @@ if ($database) {
         } else
             $error = false;
         if ($error)
-            $info = str_replace("*statusmessaggio*", "<p class=\"col-4 error\" id=\"statusMessaggio\">Si è verificato un errore non previsto. Puoi sempre scrivere un'email a <a href='mailto:museoferrariunipd@gmail.com'>museoferrariunipd@gmail.com</a>.</p>", $info);
+            $info = str_replace("*statusmessaggio*", "<p class=\"col-4 error\" id=\"statusMessaggio\">Si è verificato un errore non previsto. Puoi sempre scrivere un'<span xml:lang="en">email</span> a <a href='mailto:museoferrariunipd@gmail.com'>museoferrariunipd@gmail.com</a>.</p>", $info);
     }
 
     $info = str_replace("*statusnewsletter*", "", $info);
