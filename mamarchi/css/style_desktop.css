@@ -4,7 +4,7 @@ body{
 }
 
 #logo{
-	max-width:none;
+    max-width:100%;
     max-height:7em;
 }
 
