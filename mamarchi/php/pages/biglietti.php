@@ -221,7 +221,7 @@ if ($database) {
         if ($error) {
             if ($counter > 0)
                 Utilities::checkCounter($counter, $tabIndex);
-            $page = str_replace("*status*", "<p class=\"col-4 error\" id=\"status\">Si è verificato un errore nell'invio della prenotazione. La preghiamo di contattarci usando l'apposito <a tabindex='$tabIndex' href=\"/mamarchi/info-e-contatti#formContattaci\">form di contatto</a>.</p>", $page, $counter);
+            $page = str_replace("*status*", "<p class=\"col-4 error\" id=\"status\">Si è verificato un errore nell'invio della prenotazione. La preghiamo di contattarci usando l'apposito <a tabindex='$tabIndex' href=\"./info-e-contatti#formContattaci\">form di contatto</a>.</p>", $page, $counter);
         }
     }
 

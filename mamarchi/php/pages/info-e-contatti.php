@@ -56,7 +56,7 @@ if ($database) {
         } else
             $error = false;
         if ($error)
-            $info = str_replace("*statusnewsletter*", "<p class=\"col-4 error\" id=\"statusNewsletter\">L'iscrizione non è andata a buon fine oppure è stata fatta in precedenza. Contattaci tramite l'apposito <a href=\"/mamarchi/info-e-contatti#formContattaci\">form di contatto</a>.</p>", $info);
+            $info = str_replace("*statusnewsletter*", "<p class=\"col-4 error\" id=\"statusNewsletter\">L'iscrizione non è andata a buon fine oppure è stata fatta in precedenza. Contattaci tramite l'apposito <a href=\"./info-e-contatti#formContattaci\">form di contatto</a>.</p>", $info);
     }
     
     if (isset($_POST['inviaMessaggio'])) {
