@@ -22,7 +22,7 @@ body {
 
 #hamburger {
     background-image: url('../img/header/burger2.svg');
-    background-size: cover;/*me par che non serva*/
+    background-size: cover;
     width: 2em;
     height: 2em;
     margin: auto;
@@ -404,4 +404,8 @@ textarea{
 
 .col-4{
     width: 100%;
+}
+
+.pulsantePag{
+    width:100%;
 }
