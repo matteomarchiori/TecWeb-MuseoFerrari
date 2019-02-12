@@ -8,17 +8,17 @@
                 <div class="container formfield">
                     <div class="col-4 col-xl-2">
                         <label for="emailNewsletter">Email</label>
-                        <input type="text" name="emailNewsletter" size="23" maxlength="50" id="emailNewsletter" *disabled*/>
+                        <input tabindex='*tabindexemailnewsletter*' type="text" name="emailNewsletter" size="23" maxlength="50" id="emailNewsletter" *disabled*/>
                     </div>
                     <p class="col-4 col-xl-2">Inserire l'email nel formato casella@dominio.</p>
                     *erroremailNewsletter*
                 </div>
                 <div class="container formfield">
                     <div class="col-4 col-xl-2">
-                        <input type="submit" name="inviaNewsletter" id="inviaNewsletter" value="Invia"/>
+                        <input tabindex='*tabindexinvianewsletter*' type="submit" name="inviaNewsletter" id="inviaNewsletter" value="Invia"/>
                     </div>
                     <div class="col-4 col-xl-2">
-                        <input type="reset" name="resetNewsletter" id="resetNewsletter" value="Cancella"/>
+                        <input type="reset" tabindex='*tabindexresetnewsletter*' name="resetNewsletter" id="resetNewsletter" value="Cancella"/>
                     </div>
                     *statusnewsletter*
                 </div>
@@ -44,16 +44,16 @@
     <div class="col-4 col-xl-2 forminfo" id="contattaci">
         <h1>Come contattarci</h1>
         <h2>Email</h2>
-        <p><a href="mailto:museoferrariunipd@gmail.com">museoferrariunipd@gmail.com</a></p>
+        <p><a tabindex='*tabindexmailto*' href="mailto:museoferrariunipd@gmail.com">museoferrariunipd@gmail.com</a></p>
         <h2>Telefono e Fax</h2>
-        <p><a href="tel:+390499221289">0499221289</a></p>
+        <p><a tabindex='*tabindextel*' href="tel:+390499221289">0499221289</a></p>
         <form id="formContattaci" action="/mamarchi/info-e-contatti#statusMessaggio" method="post">
             <fieldset>
                 <legend>Contattaci</legend>
                 <div class="container formfield">
                     <div class="col-4 col-xl-2">
                         <label for="nome">Nome</label>
-                        <input type="text" name="nome" id="nome" size="20" maxlength="20" value="*nome*" *disabled*/>
+                        <input tabindex='*tabindexnome*' type="text" name="nome" id="nome" size="20" maxlength="20" value="*nome*" *disabled*/>
                     </div>
                     <p class="col-4 col-xl-2">Inserire il nome senza spazi e con sole lettere alfabetiche.</p>
                     *errornome*
@@ -61,7 +61,7 @@
                 <div class="container formfield">
                     <div class="col-4 col-xl-2">
                         <label for="email">Email</label>
-                        <input type="text" name="email" id="email" size="23" maxlength="50" value="*email*" *disabled*/>
+                        <input tabindex='*tabindexemail*' type="text" name="email" id="email" size="23" maxlength="50" value="*email*" *disabled*/>
                     </div>
                     <p class="col-4 col-xl-2">Inserire l'email nel formato casella@dominio.</p>
                     *erroremail*
@@ -69,15 +69,15 @@
                 <div class="container formfield">
                     <div class="col-4">
                         <label for="testo">Inserisci qui il testo della tua email</label>
-                        <textarea id="testo" rows="4" cols="50" name="testo" *disabled*>*testo*</textarea>
+                        <textarea tabindex='*tabindextesto*' id="testo" rows="4" cols="50" name="testo" *disabled*>*testo*</textarea>
                     </div>
                 </div>
                 <div class="container formfield">
                     <div class="col-4 col-xl-2">
-                        <input type="submit" name="inviaMessaggio" id="inviaMessaggio" value="Invia"/>
+                        <input tabindex='*tabindexinviamessaggio*' type="submit" name="inviaMessaggio" id="inviaMessaggio" value="Invia"/>
                     </div>
                     <div class="col-4 col-xl-2">
-                        <input type="reset" name="resetMessaggio" id="resetMessaggio" value="Cancella"/>
+                        <input type="reset" tabindex='*tabindexresetmessaggio*' name="resetMessaggio" id="resetMessaggio" value="Cancella"/>
                     </div>
                     *statusmessaggio*
                 </div>

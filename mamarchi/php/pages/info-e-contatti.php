@@ -19,6 +19,13 @@ $inputNewsletter = ['id' => 'emailNewsletter', 'regexp' => '/^[a-zA-Z0-9.:_-]+@[
 $database = new Database();
 if ($database) {
     $info = file_get_contents(dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . "html" . DIRECTORY_SEPARATOR . "pages" . DIRECTORY_SEPARATOR . "info-e-contatti.html");
+    
+    $tabindexes = ['emailnewsletter','invianewsletter','resetnewsletter','mailto','tel','nome','email','testo','inviamessaggio','resetmessaggio'];
+    foreach($tabindexes as $tabindice){
+        if ($counter > 0) Utilities::checkCounter($counter,$tabIndex);
+        $info = str_replace("*tabindex$tabindice*",$tabIndex,$info,$counter);
+    }
+    
     if (isset($_POST['inviaNewsletter'])) {
         
         Utilities::checkEmptyInput($inputNewsletter, $info);

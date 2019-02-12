@@ -1,15 +1,19 @@
 <?php
 
 require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . "common" . DIRECTORY_SEPARATOR . "utilities.php";
+
 use Utilities\Utilities;
 
 require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . "email" . DIRECTORY_SEPARATOR . "email.php";
+
 use Email\Email;
 
 require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . "qrcode" . DIRECTORY_SEPARATOR . "qrcode.php";
+
 use MyQRCode\MyQRCode;
 
 require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . "database" . DIRECTORY_SEPARATOR . "database.php";
+
 use Database\Database;
 
 define("MINANNONASCITA", date("Y") - 100);
@@ -128,8 +132,14 @@ $database = new Database();
 if ($database) {
     $page = file_get_contents(dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . "html" . DIRECTORY_SEPARATOR . "pages" . DIRECTORY_SEPARATOR . "biglietti.html");
 
+    $tabindexes = ['nome','cognome','giornonascita','mesenascita','annonascita','telefono','email','stato','indirizzo','citta','mostra','giornomostra','mesemostra','annomostra','biglietti','newsletter','invio','reset'];
+    foreach($tabindexes as $tabindice){
+        if ($counter > 0) Utilities::checkCounter($counter,$tabIndex);
+        $page = str_replace("*tabindex$tabindice*",$tabIndex,$page,$counter);
+    }
+    
     if (isset($_POST['invio'])) {
-        
+
         Utilities::checkEmptyInputs($inputs, $page);
 
         $page = str_replace("*stato*", createStati($stati), $page);
@@ -208,8 +218,11 @@ if ($database) {
         } else
             $error = false;
 
-        if ($error)
-            $page = str_replace("*status*", "<p class=\"col-4 error\" id=\"status\">Si è verificato un errore nell'invio della prenotazione. La preghiamo di contattarci usando l'apposito <a href=\"/mamarchi/info-e-contatti#formContattaci\">form di contatto</a>.</p>", $page);
+        if ($error) {
+            if ($counter > 0)
+                Utilities::checkCounter($counter, $tabIndex);
+            $page = str_replace("*status*", "<p class=\"col-4 error\" id=\"status\">Si è verificato un errore nell'invio della prenotazione. La preghiamo di contattarci usando l'apposito <a tabindex='$tabIndex' href=\"/mamarchi/info-e-contatti#formContattaci\">form di contatto</a>.</p>", $page, $counter);
+        }
     }
 
     $page = str_replace("*nome*", "", $page);

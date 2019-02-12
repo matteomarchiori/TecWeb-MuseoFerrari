@@ -16,7 +16,7 @@
                         <div class="container formfield">
                             <div class="col-4 col-xl-2">
                                 <label for="nome">Nome (*)</label>
-                                <input type="text" name="nome" id="nome" size="20" maxlength="20"  value="*nome*" *disabled* />
+                                <input tabindex="*tabindexnome*" type="text" name="nome" id="nome" size="20" maxlength="20"  value="*nome*" *disabled* />
                             </div>
                             <p class="col-4 col-xl-2">Inserire il nome senza spazi e con sole lettere alfabetiche.</p>
                             *errornome*
@@ -24,7 +24,7 @@
                         <div class="container formfield">
                             <div class="col-4 col-xl-2">
                                 <label for="cognome">Cognome (*)</label>
-                                <input type="text" name="cognome" id="cognome" size="20" maxlength="20"  value="*cognome*" *disabled*/>
+                                <input tabindex="*tabindexcognome*" type="text" name="cognome" id="cognome" size="20" maxlength="20"  value="*cognome*" *disabled*/>
                             </div>
                             <p class="col-4 col-xl-2">Inserire il cognome senza spazi e con sole lettere alfabetiche.</p>
                             *errorcognome*
@@ -38,23 +38,20 @@
                             <div class="col-4 container">
                                 <div class="treColonne center">
                                     <label for="giornonascita">Giorno (*)</label>
-
-                                    <select name="giornonascita" id="giornonascita" *disabled*>
+                                    <select tabindex="*tabindexgiornonascita*" name="giornonascita" id="giornonascita" *disabled*>
                                         *giornonascita*
                                     </select>
                                 </div>
                                 <div class="treColonne center">
                                     <label for="mesenascita">Mese (*)</label>
-
-                                    <select name="mesenascita" id="mesenascita" *disabled*>
+                                    <select tabindex="*tabindexmesenascita*" name="mesenascita" id="mesenascita" *disabled*>
                                         *mesenascita*
                                     </select>
 
                                 </div>
                                 <div class="treColonne center">
                                     <label for="annonascita">Anno (*)</label>
-
-                                    <select name="annonascita" id="annonascita" *disabled*>
+                                    <select tabindex="*tabindexannonascita*" name="annonascita" id="annonascita" *disabled*>
                                         *annonascita*
                                     </select>
 
@@ -65,7 +62,7 @@
                         <div class="container formfield">
                             <div class="col-4 col-xl-2">
                                 <label for="comune">Comune (*)</label>
-                                <input type="text" name="comune" id="comune" size="20" maxlength="20"  value="*comune*" *disabled*/>
+                                <input tabindex="*tabindexcomune*" type="text" name="comune" id="comune" size="20" maxlength="20"  value="*comune*" *disabled*/>
                             </div>
                             <p class="col-4 col-xl-2">Inserire il comune senza spazi e con sole lettere alfabetiche.</p>
                             *errorcomune*
@@ -80,7 +77,7 @@
                         <div class="container formfield">
                             <div class="col-4 col-xl-2">
                                 <label for="telefono">Telefono (*)</label>
-                                <input type="text" name="telefono" id="telefono" size="15" maxlength="15"  value="*telefono*" *disabled*/>
+                                <input tabindex="*tabindextelefono*" type="text" name="telefono" id="telefono" size="15" maxlength="15"  value="*telefono*" *disabled*/>
                             </div>
                             <p class="col-4 col-xl-2">Inserire il numero di telefono con sole cifre, senza spazi.</p>
                             *errortelefono*
@@ -88,7 +85,7 @@
                         <div class="container formfield">
                             <div class="col-4 col-xl-2">
                                 <label for="email">Email (*)</label>
-                                <input type="text" name="email" id="email" size="23" maxlength="50"  value="*email*" *disabled*/>
+                                <input tabindex="*tabindexemail*" type="text" name="email" id="email" size="23" maxlength="50"  value="*email*" *disabled*/>
                             </div>
                             <p class="col-4 col-xl-2">Inserire l'email nel formato casella@dominio.</p>
                             *erroremail*
@@ -101,7 +98,7 @@
                         <div class="container formfield">
                             <div class="col-4">
                                 <label for="stato">Stato (*)</label>
-                                <select name="stato" id="stato" *disabled*>
+                                <select tabindex="*tabindexstato*" name="stato" id="stato" *disabled*>
                                     *stato*
                                 </select>
                             </div>
@@ -110,7 +107,7 @@
                         <div class="container formfield">
                             <div class="col-4 col-xl-2">
                                 <label for="indirizzo">Indirizzo (*)</label>
-                                <input type="text" name="indirizzo" id="indirizzo" size="20" value="*indirizzo*" *disabled*/>
+                                <input tabindex="*tabindexindirizzo*" type="text" name="indirizzo" id="indirizzo" size="20" value="*indirizzo*" *disabled*/>
                             </div>
                             <p class="col-4 col-xl-2">Inserire l'indirizzo con il nome della via e il numero civico.</p>
                             *errorindirizzo*
@@ -118,7 +115,7 @@
                         <div class="container formfield">
                             <div class="col-4 col-xl-2">
                                 <label for="citta">Città (*)</label>
-                                <input type="text" name="citta" id="citta" size="20" value="*citta*" *disabled*/>
+                                <input tabindex="*tabindexcitta*" type="text" name="citta" id="citta" size="20" value="*citta*" *disabled*/>
                             </div>
                             <p class="col-4 col-xl-2">Inserire la città senza spazi e con sole lettere alfabetiche.</p>
                             *errorcitta*
@@ -133,7 +130,7 @@
                         <div class="container formfield">
                             <div class="col-4">
                                 <label for="mostra">Mostra (*)</label>
-                                <select name="mostra" id="mostra" *disabled*>
+                                <select tabindex="*tabindexmostra*" name="mostra" id="mostra" *disabled*>
                                     *mostre*
                                 </select>
                             </div>
@@ -141,14 +138,14 @@
                             <div class="col-4 container">
                                 <div class="treColonne center">
                                     <label for="giornomostra">Giorno (*)</label>
-                                    <select name="giornomostra" id="giornomostra" *disabled*>
+                                    <select tabindex="*tabindexgiornomostra*" name="giornomostra" id="giornomostra" *disabled*>
                                         *giornimostre*
                                     </select>
                                 </div>
                                 <div class="treColonne center">
                                     <label for="mesemostra">Mese (*)</label>
 
-                                    <select name="mesemostra" id="mesemostra" *disabled*>
+                                    <select tabindex="*tabindexmesemostra*" name="mesemostra" id="mesemostra" *disabled*>
                                         *mesimostre*
                                     </select>
 
@@ -156,7 +153,7 @@
                                 <div class="treColonne center">
                                     <label for="annomostra">Anno (*)</label>
 
-                                    <select name="annomostra" id="annomostra" *disabled*>
+                                    <select tabindex="*tabindexannomostra*" name="annomostra" id="annomostra" *disabled*>
                                         *annimostre*
                                     </select>
 
@@ -165,7 +162,7 @@
                             *errordatamostra*
                             <div class="col-4">
                                 <label for="nbiglietti">Numero di biglietti (*)</label>
-                                <select name="nbiglietti" id="nbiglietti" *disabled*>
+                                <select tabindex="*tabindexbiglietti*" name="nbiglietti" id="nbiglietti" *disabled*>
                                     *nbiglietti*
                                 </select>
                             </div>
@@ -179,7 +176,7 @@
                         <div class="container formfield">
                             <div class="col-4">
                                 <label for="newsletter">Desidero iscrivermi alla newsletter</label>
-                                <input type="checkbox" name="newsletter" id="newsletter" *newsletter* *disabled*/>
+                                <input tabindex="*tabindexnewsletter*" type="checkbox" name="newsletter" id="newsletter" *newsletter* *disabled*/>
                             </div>
                         </div>
                     </fieldset>
@@ -191,10 +188,10 @@
                         <legend>Invia o Cancella</legend>
                         <div class="container formfield">
                             <div class="col-4 col-xl-2">
-                                <input type="submit" name="invio" id="invio" value="Invia" *disabled*/>
+                                <input tabindex="*tabindexinvio*" type="submit" name="invio" id="invio" value="Invia" *disabled*/>
                             </div>
                             <div class="col-4 col-xl-2">
-                                <input type="reset" name="reset" id="reset" value="Cancella" *disabled*/>
+                                <input tabindex="*tabindexreset*" type="reset" name="reset" id="reset" value="Cancella" *disabled*/>
                             </div>
                             *status*
                         </div>
