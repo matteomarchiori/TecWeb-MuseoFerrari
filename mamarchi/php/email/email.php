@@ -56,7 +56,7 @@ class Email {
 
     public static function sendEmailWithAttachment($subject, $message, $to, $toName, $attachment, $attachmentName) {
         self::$sender->addAttachment($attachment, $attachmentName);
-        self::sendEmail($subject, $message, $to, $toName);
+        return self::sendEmail($subject, $message, $to, $toName);
     }
 
 }

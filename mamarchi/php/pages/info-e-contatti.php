@@ -21,7 +21,7 @@ if ($database) {
     $info = file_get_contents(dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . "html" . DIRECTORY_SEPARATOR . "pages" . DIRECTORY_SEPARATOR . "info-e-contatti.html");
     if (isset($_POST['inviaNewsletter'])) {
         
-        Utilities::checkEmptyInput($inputNewsletter);
+        Utilities::checkEmptyInput($inputNewsletter, $info);
         
         $check = Utilities::validazione($inputNewsletter, $_POST['emailNewsletter'], $info);
 
@@ -54,7 +54,7 @@ if ($database) {
     
     if (isset($_POST['inviaMessaggio'])) {
         
-        Utilities::checkEmptyInputs($inputsMessage);
+        Utilities::checkEmptyInputs($inputsMessage, $info);
         
         foreach ($inputsMessage as $input)
             $check[] = Utilities::validazione($input, $_POST[$input['id']], $info);

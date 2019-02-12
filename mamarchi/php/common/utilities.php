@@ -69,15 +69,15 @@ class Utilities {
         }
     }
 
-    public static function checkEmptyInput($input) {
+    public static function checkEmptyInput($input, &$page) {
         if (!isset($_POST[$input['id']]) || empty($_POST[$input['id']])) {
             $page = str_replace("*error" . $input['id'] . "*", "<p class=\"col4 error\">Il campo " . $input['id'] . " è richiesto. Si prega di inserirlo.</p>", $page);
         }
     }
 
-    public static function checkEmptyInputs($inputs) {
+    public static function checkEmptyInputs($inputs, &$page) {
         foreach ($inputs as $input) {
-            self::checkEmptyInput($input);
+            self::checkEmptyInput($input, $page);
         }
     }
 

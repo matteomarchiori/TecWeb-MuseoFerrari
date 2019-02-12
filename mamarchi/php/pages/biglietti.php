@@ -130,7 +130,7 @@ if ($database) {
 
     if (isset($_POST['invio'])) {
         
-        Utilities::checkEmptyInputs($inputs);
+        Utilities::checkEmptyInputs($inputs, $page);
 
         $page = str_replace("*stato*", createStati($stati), $page);
         $page = str_replace("*nbiglietti*", createOptionsNumber('nbiglietti', MINBIGLIETTI, MAXBIGLIETTI), $page);
