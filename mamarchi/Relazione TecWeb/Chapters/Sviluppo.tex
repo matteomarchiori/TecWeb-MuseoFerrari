@@ -24,7 +24,7 @@ Il lato server è una parte molto importante e consiste nell'elaborazione dei da
 	\item utenti.
 \end{itemize}
 Come DBMS abbiamo deciso di utilizzare MySQL e come engine di storage InnoDB che ci garantisce un buon compromesso tra dimensioni massime (64TB) e la sicurezza nel mantenere la consistenza dei dati.\\
-...
+Non è stato necessario costruire alcun trigger nel DBMS, non ne è stata vista la necessità data la semplicità del sito implementato.
 
 \subsection{JavaScript}
 Particolare attenzione è stata data a JavaScript, esso è linguaggio di scripting di tipo client side che permette una	maggiore accessibilità e dinamismo. È stato utilizzato per compiti rilevanti ma non fondamentali. Tale scelta trova giustificazione nel fatto che il sito deve restare usufruibile anche nel caso in cui venga consultato da dispositivi che non supportano JavaScript, o che hanno disabilitato gli script lato client.\\
