@@ -1,9 +1,9 @@
 \section{Accessibilità}
 \subsection{Colori}
 La gamma cromatica utilizzata nel sito web sviluppato è stata ristretta in modo tale da garantire un buon contrasto tra contesto e testo. Per arrivare alle nostre conclusioni per quanto riguarda i colori ci siamo
-serviti di un estensione per Google Chrome, \textit{Colorblindly}. Ci ha permesso di testare il nostro sito con i quattro tipi di daltonismo più diffusi: protanopia, deuteranopia, tritanopia e acromatopsia. In questo modo, il sito risulta accessibile a tutte le categorie di utenti con difficoltà visive.\\
-Dove possibile, inoltre, si adottano colori definiti \textit{web safe}\footnote{\url{https://www.color-hex.com/216-web-safe-colors/}}, in modo tale da garantire una corretta visualizzazione del sito su un maggior numero di dispositivi.\\
-Per verificare l'adeguatezza del contrasto dei colori usati per il testo ci siamo serviti dello strumento \textit{Colour Contrast Analyser}. Con quest'ultimo è stato possibile verificare che ogni abbinamento tra colore di sfono e colore del testo rispestasse un rapporto di contrasto tale da essere conforme con i seguenti criteri:
+serviti di un'estensione per Google Chrome, \textit{Colorblindly}. Ci ha permesso di testare il nostro sito con i quattro tipi di daltonismo più diffusi: protanopia, deuteranopia, tritanopia e acromatopsia. In questo modo, il sito risulta accessibile a tutte le categorie di utenti con difficoltà visive.\\
+Dove possibile si adottano colori definiti \textit{web safe}\footnote{\url{https://www.color-hex.com/216-web-safe-colors/}}, in modo tale da garantire una corretta visualizzazione del sito su un maggior numero di dispositivi.\\
+Per verificare l'adeguatezza del contrasto dei colori usati per il testo ci siamo serviti dello strumento \textit{Colour Contrast Analyser}. Con quest'ultimo è stato possibile verificare che ogni abbinamento tra colore di sfondo e colore del testo rispettasse un rapporto di contrasto tale da essere conforme ai seguenti criteri:
 \begin{itemize}
 	\item 1.4.3 Contrast (Minimum)
 	\item 1.4.6 Contrast (Enhanced)
@@ -12,7 +12,7 @@ Per verificare l'adeguatezza del contrasto dei colori usati per il testo ci siam
 presenti nelle linee guida WCAG 2.1.\footnote{\url{https://www.w3.org/TR/WCAG21/}} 
 
 \subsection{Immagini}
-Le immagini all'interno del sito sono tutte accompagnate dall'attributo \textit{alt} al quale è stata assegnata una descrizione esaustiva dell'immagine. Ciò rende le immagini accessibili anche alle categorie di utenti con difetti visivi, poiché lo screen-reader si avvarrà di tali descrizioni.
+Le immagini all'interno del sito sono tutte accompagnate dall'attributo \textit{alt} al quale è stata assegnata una descrizione esaustiva ma non eccessivamente dettagliata dell'immagine. Ciò rende le immagini accessibili anche alle categorie di utenti con difetti visivi, poiché lo screen-reader si avvarrà di tali descrizioni.
 
 \subsection{Scelte progettuali}
 In corso d'opera abbiamo fatto delle modifiche per raggiungere il più alto livello di accessibilità possibile.
@@ -55,12 +55,12 @@ Per quanto concerne i link presenti nel sito, è stato fatto in modo che link "\
 	\end{center}
 \end{figure}
 
-Per rendere efficiente la navigazione all'interno del sito anche ad utenti con difficoltà visive, è stato fatto uso di \textit{tabindex} per consentire un'agile navigazione all'interno del sito. Ogni immagine è inoltre accompagnata da un \textit{alt} che descrive in modo soddisfacente l'immagine in oggetto.\\
+Per rendere efficiente la navigazione all'interno del sito anche a utenti con difficoltà visive, è stato fatto uso di \textit{tabindex} per consentire un'agile navigazione all'interno del sito. Ogni immagine è inoltre accompagnata da un \textit{alt} che descrive in modo soddisfacente l'immagine in oggetto.\\
 È stato deciso di non introdurre \textit{accesskey} poiché gli shortcut stabiliti avrebbero potuto entrare in conflitto con i comandi definiti di default dai browser.\\
 È stato inoltre inserito un bottone che consente di tornare facilmente in testa alla pagina.
 
 \subsection{Mobile}
-Per cercare di rendere il sito compatibile con la maggior parte dei dispositivi mobile (Smartphone, tablet...)
+Per cercare di rendere il sito compatibile con la maggior parte dei dispositivi mobile (smartphone, tablet)
 abbiamo deciso di implementare l'accessibilità con CSS puro.\\
 Il sito in modalità mobile si presenta così:
 \begin{figure}[H]
@@ -84,7 +84,7 @@ Il sito in modalità mobile si presenta così:
 
 
 \subsection{Test accessibilità}
-Con lo scopo di verificare e accertarsi che i livelli di accessibilità raggiunti fossero soddisfacenti sono stati effettuati dei test. Tali test non hanno il presupposto di essere esaustivi, ma piuttosto informativi.\\
+Con lo scopo di verificare e accertarsi che i livelli di accessibilità raggiunti fossero soddisfacenti sono stati effettuati dei test. Tali test non hanno il presupposto di essere esaustivi, bensì informativi.\\
 Nei prossimi paragrafi mostriamo, con l'ausilio di alcuni screenshot, i risultati ottenuti.\\
 ...
 \subsubsection{Test daltonismo}
@@ -122,7 +122,7 @@ Riportiamo di seguito i test effettuati sulla home page del sito per quanto rigu
 \end{figure}
 
 \subsubsection{Contrasto colori}
-La seguente tabella espone i risultati ottenuti con lo strumento \textit{Colour Contrast Analyser} relativi ad ogni abbinamento tra colore di sfondo e colore del testo presente nel sito. Tutte le coppie di colori scelti rispettano i criteri 1.4.3 Contrast (Minimum), 1.4.6 Contrast (Enhanced) e 1.4.11 Non-text Contrast, presenti nelle linee guida WCAG 2.1.
+La seguente tabella espone i risultati ottenuti con lo strumento \textit{Colour Contrast Analyser} relativi a ogni abbinamento tra colore di sfondo e colore del testo presente nel sito. Tutte le coppie di colori scelti rispettano i criteri 1.4.3 Contrast (Minimum), 1.4.6 Contrast (Enhanced) e 1.4.11 Non-text Contrast, presenti nelle linee guida WCAG 2.1.
 
 \newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
 
