@@ -255,7 +255,10 @@ a:visited{
 #prenotabiglietti h1{
 	font-size:1.3em;
 }
-
+#prenotabiglietti ul{
+	margin-left:3em;
+	margin-bottom:0.5em;
+}
 .error{
     color:#990000;
 }
