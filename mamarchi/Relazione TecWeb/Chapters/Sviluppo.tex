@@ -12,6 +12,7 @@ Sia per il layout desktop, che per il layout mobile, sono stati selezionati poch
 
 \subsection{HTML e CSS}
 La struttura del sito è stata creata adottando il linguaggio XHTML per garantire una compatibilità stabile e consolidata con tutti i browser e minimizzare il rischio di possibili problemi di accessibilità dati da HTML5.\\
+I file presenti nel progetto, sebbene salvati con estensione .html, non sono completi, ma rappresentano dei pezzi di struttura della pagina. Dentro a tali pezzi sono presenti delle keyword identificate da due asterischi (*) posti all'inizio e alla fine di ciascuna keyword. Le keyword vengono processate lato server prima che la pagina venga restituita al client, e hanno diversi compiti, tra cui quello molto importante di evitare il più possibile sovrastruttura. Se un pezzo di struttura corrispondente a una parola chiave non ci deve essere, essa viene semplicemente cancellata.
 La completa separazione tra struttura e presentazione è stata raggiunta utilizzando tre diversi fogli di stile: uno per i dispositivi mobili, uno per il desktop ed uno per la stampa delle pagine del sito.\\
  Abbiamo adottato un strategia mobile first realizzando quindi prima l'aspetto mobile e integrando in seguito il layout desktop. Per questo motivo il primo foglio di stile relativo al layout mobile, \textit{style.css}, è quello il più ricco, mentre \textit{style\_desktop.css} contiene solo regole per adattare il sito ad un layout desktop. In entrambi i layout abbiamo utilizzato uno schema a colonne per disporre il contenuto nelle pagine. Si è cercato dunque di minimizzare il numero di colonne per non complicare l'aspetto generale del sito che vuole essere il più lineare e semplice. Per ottenere una disposizione migliore di alcuni elementi, il sistema prevede che ogni contenitore occupante un certo numero di colonne potesse ospitare a sua volta altri elementi occupanti un certo numero di colonne, in modo ricorsivo.
 
@@ -25,13 +26,23 @@ Il lato server è una parte molto importante e consiste nell'elaborazione dei da
 \end{itemize}
 Come DBMS abbiamo deciso di utilizzare MySQL e come engine di storage InnoDB che ci garantisce un buon compromesso tra dimensioni massime (64TB) e la sicurezza nel mantenere la consistenza dei dati.\\
 Non è stato necessario costruire alcun trigger nel DBMS, non ne è stata vista la necessità data la semplicità del sito implementato.
+Alcuni controlli di coerenza sono stati fatti direttamente lato server in PHP, di modo da assicurarsi che un utente già registrato per la prenotazione di biglietti potesse iscriversi successivamente alla newsletter del sito, oppure potesse comprare biglietti dopo esseri iscritto alla newsletter anche senza registrare completamente i dati anagrafici nella base di dati.
+Per quanto riguarda PHP il sito è stato progettato per essere molto dinamico nella costruzione del contenuto.
+Come da progettazione è stato adottato un modello con classi di utilità che forniscono molti metodi statici, ovvero classi per interagire con il database, inviare email e generare qrcode, mentre la gestione delle singole pagine avviene attraverso dei controller php che coordinano il modo in cui le richieste vengono elaborate.
+Vi è inoltre un unico file di partenza che funge da smistatore di richieste.
+Tutte le richieste vengono inoltrate da Apache verso questo file che si occupa di chiamare il controller corretto in base all'uri della risorsa richiesta.
+PHP elabora i pezzi di struttura html sostituendo le keyword menzionate sopra, in modo da avere dati aggiornati, dinamici ed evitando in parte il problema della sovrastruttura.
+Viene usato tale sistema per la segnalazione degli errori nella compilazione dei form all'utente e per mantenere i dati inseriti dopo l'invio della richiesta attraverso form html.
 
 \subsection{JavaScript}
 Particolare attenzione è stata data a JavaScript, esso è linguaggio di scripting di tipo client side che permette una	maggiore accessibilità e dinamismo. È stato utilizzato per compiti rilevanti ma non fondamentali. Tale scelta trova giustificazione nel fatto che il sito deve restare usufruibile anche nel caso in cui venga consultato da dispositivi che non supportano JavaScript, o che hanno disabilitato gli script lato client.\\
 Pertanto i compiti che gli sono affidati sono i seguenti:
 \begin{itemize}
-	\item gestione dinamica della navbar ad "\textit{hamburger}";
+	\item gestione dinamica della navbar a "\textit{burger}";
+	\item gestione dinamica della posizione dei bottoni \textit{avanti} e \textit{indietro} della pagina "\textit{Modelli Esposti}".
 	\item controllo dei dati in input nei form della pagina "\textit{Biglietti}";
 	\item controllo dei dati in input nei form della pagina "\textit{Info e Contatti}".
 \end{itemize}
+Per il primo punto qualora javascript fosse disabilitato il menù sarebbe comunque usufruibile, rimarrebbe semplicemente sempre aperto senza fornire il pulsante burger di apertura.
 Per gli ultimi due punti, il controllo dei dati non è unico: viene effettuato anche lato server attraverso controlli in PHP, per garantire la correttezza dei dati qualora JavaScript fosse disabilitato.
+Per il secondo punto non è stata posta un'alternativa a javascript, essendo la presenza dello stile dipendente dalla presenza di tutti i bottoni o meno, ma essendo un problema puramente estetico non si è vista la necessità di porre un'alternativa (la navigazione non viene compromessa e sono presenti ugualmente tutti gli strumenti disponibili).
