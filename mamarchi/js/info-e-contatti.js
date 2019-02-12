@@ -3,10 +3,10 @@ window.onload = function () {
     
     var inputsMessage = [
         {id: "nome", regexp: new RegExp("^[a-zA-Z]{1,15}$"), output: "Il campo Nome inserito non è corretto. Rispettare il formato indicato."},
-        {id: "email", regexp: new RegExp("^[a-zA-Z0-9.:_-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$"), output: "Il campo Email inserito non è corretto. Rispettare il formato indicato."}
+        {id: "email", regexp: new RegExp("^[a-zA-Z0-9.:_-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$"), output: "Il campo <span xml:lang="en">Email</span> inserito non è corretto. Rispettare il formato indicato."}
     ];
     
-    var inputNewsletter = {id: "emailNewsletter", regexp: new RegExp("^[a-zA-Z0-9.:_-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$"), output: "Il campo Email inserito non è corretto. Rispettare il formato indicato."};
+    var inputNewsletter = {id: "emailNewsletter", regexp: new RegExp("^[a-zA-Z0-9.:_-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$"), output: "Il campo <span xml:lang="en">Email</span> inserito non è corretto. Rispettare il formato indicato."};
     
     var checkMessaggio = {};
     var checkNewsletter = {};
