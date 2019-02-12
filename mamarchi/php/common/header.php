@@ -1,11 +1,7 @@
 <?php
 
-function checkCounter(&$counter,&$tabIndex){
-    if ($counter > 0) {
-        $counter = 0;
-        $tabIndex++;
-    }
-}
+require_once "utilities.php";
+use Utilities\Utilities;
 
 $header = file_get_contents(dirname(dirname(__DIR__)).DIRECTORY_SEPARATOR."html".DIRECTORY_SEPARATOR."common".DIRECTORY_SEPARATOR."header.html");
 $last_uri_parts = explode('?', $_SERVER['REQUEST_URI'], 2);
@@ -61,13 +57,13 @@ $tabIndex = 2;
 $header = str_replace("*title*","Pagina non trovata",$header);
 $header = str_replace("*breadcrumbs*","Pagina non trovata",$header);
 $header = str_replace("*linkhome*","<li><a href='./' xml:lang='en' tabindex=\"$tabIndex\">Home</a></li>",$header,$counter);
-if ($counter > 0) checkCounter($counter,$tabIndex);
+if ($counter > 0) Utilities::checkCounter($counter,$tabIndex);
 $header = str_replace("*linkmostre*","<li><a href='./mostre' tabindex=\"$tabIndex\">Mostre</a></li>",$header,$counter);
-if ($counter > 0) checkCounter($counter,$tabIndex);
+if ($counter > 0) Utilities::checkCounter($counter,$tabIndex);
 $header = str_replace("*linkmodelli*","<li><a href='./modelli-esposti?pagina=1' tabindex=\"$tabIndex\">Modelli esposti</a></li>",$header,$counter);
-if ($counter > 0) checkCounter($counter,$tabIndex);
+if ($counter > 0) Utilities::checkCounter($counter,$tabIndex);
 $header = str_replace("*linkbiglietti*","<li><a href='./biglietti' tabindex=\"$tabIndex\">Biglietti</a></li>",$header,$counter);
-if ($counter > 0) checkCounter($counter,$tabIndex);
+if ($counter > 0) Utilities::checkCounter($counter,$tabIndex);
 $header = str_replace("*linkinfo*","<li><a href='./info-e-contatti' tabindex=\"$tabIndex\">Info e Contatti</a></li>",$header,$counter);
 echo $header;
 require_once $page;

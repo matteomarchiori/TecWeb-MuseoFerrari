@@ -1,15 +1,15 @@
 <?php
 
-require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . "email" . DIRECTORY_SEPARATOR . "email.php";
+require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . "common" . DIRECTORY_SEPARATOR . "utilities.php";
+use Utilities\Utilities;
 
+require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . "email" . DIRECTORY_SEPARATOR . "email.php";
 use Email\Email;
 
 require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . "qrcode" . DIRECTORY_SEPARATOR . "qrcode.php";
-
 use MyQRCode\MyQRCode;
 
 require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . "database" . DIRECTORY_SEPARATOR . "database.php";
-
 use Database\Database;
 
 define("MINANNONASCITA", date("Y") - 100);
@@ -44,40 +44,6 @@ $inputs = [
     ['id' => 'nbiglietti', 'regexp' => '/^[' . MINBIGLIETTI . '-' . MAXBIGLIETTI . ']$/', 'output' => 'Il numero di biglietti selezionato non è tra quelli indicati. Selezionarlo tra quelli indicati.']
 ];
 
-$dateFields = [
-    ['id' => 'giornonascita', 'label' => 'Giorno di nascita'],
-    ['id' => 'mesenascita', 'label' => 'Mese di nascita'],
-    ['id' => 'annonascita', 'label' => 'Anno di nascita'],
-    ['id' => 'giornomostra', 'label' => 'Giorno della mostra'],
-    ['id' => 'mesemostra', 'label' => 'Mese della mostra'],
-    ['id' => 'annomostra', 'label' => 'Anno della mostra']
-];
-
-function validazione($input, $value, &$page) {
-    $page = str_replace("*" . $input['id'] . "*", $_POST[$input['id']], $page);
-    if (!preg_match($input['regexp'], $value)) {
-        $page = str_replace("*error" . $input['id'] . "*", '<p class="col4 error">' . $input['output'] . '</p>', $page);
-        return false;
-    } else {
-        $page = str_replace("*error" . $input['id'] . "*", '', $page);
-        return true;
-    }
-}
-
-function checkData($giorno, $mese, $anno) {
-    $data = $anno . '-' . $mese . '-' . $giorno;
-    if (preg_match('/^[1|2][0-9]{3,3}-([1-9]|1[0|1|2])-([1-9]|[1|2][0-9]|3[0|1])$/', $data)) {
-        if ($giorno == 31 && ($mese == 4 || $mese == 6 || $mese == 9 || $mese == 11))
-            return false;
-        if ($giorno > 29 && $mese == 2)
-            return false;
-        if ($giorno == 29 && $mese == 2 && !($anno % 4 == 0 && ($anno % 100 != 0 || $anno % 400 == 0)))
-            return false;
-        return true;
-    }
-    return false;
-}
-
 function checkDataMostra($mostra, $data) {
     $db = Database::selectEventById($mostra);
     $dataInizio = $db['DataInizio'];
@@ -86,11 +52,7 @@ function checkDataMostra($mostra, $data) {
     $adesso = strtotime("now");
     if ($adesso < $inizio)
         $inizio = $adesso;
-    return checkBoundLimit(strtotime($data), $inizio, strtotime($dataFine));
-}
-
-function checkBoundLimit($element, $min, $max) {
-    return $min <= $element && $element <= $max;
+    return Utilities::checkBoundLimit(strtotime($data), $inizio, strtotime($dataFine));
 }
 
 function createOptionsNumber($id, $min, $max) {
@@ -101,7 +63,7 @@ function createOptionsNumber($id, $min, $max) {
             $options .= " selected=\"selected\"";
         $options .= ">";
         if ($id == "mesenascita" || $id == "mesemostra")
-            $options .= createMese($i);
+            $options .= Utilities::getMonthName($i);
         else
             $options .= $i;
         $options .= "</option>";
@@ -155,35 +117,6 @@ function createMostre($mostredb, &$page) {
     $page = str_replace('*giornimostre*', $giorni, $page);
 }
 
-function createMese($n) {
-    switch ($n) {
-        case 1:
-            return "Gennaio";
-        case 2:
-            return "Febbraio";
-        case 3:
-            return "Marzo";
-        case 4:
-            return "Aprile";
-        case 5:
-            return "Maggio";
-        case 6:
-            return "Giugno";
-        case 7:
-            return "Luglio";
-        case 8:
-            return "Agosto";
-        case 9:
-            return "Settembre";
-        case 10:
-            return "Ottobre";
-        case 11:
-            return "Novembre";
-        case 12:
-            return "Dicembre";
-    }
-}
-
 function loadDataMostre($database) {
     $mostredb = array_merge(Database::selectEvents("corrente", 1), Database::selectEvents("futuro", 2));
     foreach ($mostredb as $mostra)
@@ -196,21 +129,17 @@ if ($database) {
     $page = file_get_contents(dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . "html" . DIRECTORY_SEPARATOR . "pages" . DIRECTORY_SEPARATOR . "biglietti.html");
 
     if (isset($_POST['invio'])) {
-
-        foreach ($inputs as $input) {
-            if (!isset($_POST[$input['id']]) || empty($_POST[$input['id']])) {
-                $page = str_replace("*error" . $input['id'] . "*", "<p class=\"col4 error\">Il campo " . $input['id'] . " è richiesto. Si prega di inserirlo.</p>", $page);
-            }
-        }
+        
+        Utilities::checkEmptyInputs($inputs);
 
         $page = str_replace("*stato*", createStati($stati), $page);
         $page = str_replace("*nbiglietti*", createOptionsNumber('nbiglietti', MINBIGLIETTI, MAXBIGLIETTI), $page);
 
         foreach ($inputs as $input)
-            $check[] = validazione($input, $_POST[$input['id']], $page);
+            $check[] = Utilities::validazione($input, $_POST[$input['id']], $page);
 
-        if (checkData($_POST['giornonascita'], $_POST['mesenascita'], $_POST['annonascita'])) {
-            if (!checkBoundLimit(strtotime($_POST['annonascita'] . '-' . $_POST['mesenascita'] . '-' . $_POST['giornonascita']), strtotime(MINANNONASCITA . "-1-1"), strtotime(MAXANNONASCITA . "-12-31"))) {
+        if (Utilities::checkData($_POST['giornonascita'], $_POST['mesenascita'], $_POST['annonascita'])) {
+            if (!Utilities::checkBoundLimit(strtotime($_POST['annonascita'] . '-' . $_POST['mesenascita'] . '-' . $_POST['giornonascita']), strtotime(MINANNONASCITA . "-1-1"), strtotime(MAXANNONASCITA . "-12-31"))) {
                 $page = str_replace("*errordatanascita*", "<p class=\"col4 error\">La data di nascita deve rispettare i limiti proposti. Si prega di correggerla.</p>", $page);
                 $check[] = false;
             }
@@ -219,7 +148,7 @@ if ($database) {
             $check[] = false;
         }
 
-        if (!checkData($_POST['giornomostra'], $_POST['mesemostra'], $_POST['annomostra'])) {
+        if (!Utilities::checkData($_POST['giornomostra'], $_POST['mesemostra'], $_POST['annomostra'])) {
             $page = str_replace("*errordatamostra*", "<p class=\"col4 error\">La data della mostra non è coerente. Non esiste il giorno indicato nel mese indicato. Si prega di correggere la data.</p>", $page);
             $check[] = false;
         } else {
@@ -247,7 +176,7 @@ if ($database) {
                             . "è stata effettuata con successo.\n\n"
                             . "Dati della prenotazione:\n"
                             . "Mostra - " . Database::selectEventById($_POST['mostra'])['Titolo'] . "\n"
-                            . "Data della mostra - " . $_POST['giornomostra'] . " " . createMese($_POST['mesemostra'])
+                            . "Data della mostra - " . $_POST['giornomostra'] . " " . Utilities::getMonthName($_POST['mesemostra'])
                             . " " . $_POST['annomostra'] . "\n"
                             . "Biglietti prenotati - " . $_POST['nbiglietti'] . "\n\n"
                             . "Potrà procedere al pagamento direttamente alle casse del museo, presentando la stampa della prenotazione o il codice in allegato.\n\n"

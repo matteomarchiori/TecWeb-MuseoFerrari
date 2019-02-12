@@ -1,5 +1,8 @@
 <?php
 
+require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . "common" . DIRECTORY_SEPARATOR . "utilities.php";
+use Utilities\Utilities;
+
 require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . "email" . DIRECTORY_SEPARATOR . "email.php";
 use Email\Email;
 
@@ -13,26 +16,14 @@ $inputsMessage = [
 
 $inputNewsletter = ['id' => 'emailNewsletter', 'regexp' => '/^[a-zA-Z0-9.:_-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$/', 'output' => 'Il campo Email inserito non è corretto. Rispettare il formato indicato.'];
 
-function validazione($input, $value, &$info) {
-    $info = str_replace("*" . $input['id'] . "*", $_POST[$input['id']], $info);
-    if (!preg_match($input['regexp'], $value)) {
-        $info = str_replace("*error" . $input['id'] . "*", '<p class="col4 error">' . $input['output'] . '</p>', $info);
-        return false;
-    } else {
-        $info = str_replace("*error" . $input['id'] . "*", '', $info);
-        return true;
-    }
-}
-
 $database = new Database();
 if ($database) {
     $info = file_get_contents(dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . "html" . DIRECTORY_SEPARATOR . "pages" . DIRECTORY_SEPARATOR . "info-e-contatti.html");
     if (isset($_POST['inviaNewsletter'])) {
-        if (!isset($_POST['emailNewsletter']) || empty($_POST['emailNewsletter'])) {
-            $info = str_replace("*erroremailNewsletter*", "<p class=\"col4 error\">Il campo Email è richiesto. Si prega di inserirlo.</p>", $info);
-        }
-
-        $check = validazione($inputNewsletter, $_POST['emailNewsletter'], $info);
+        
+        Utilities::checkEmptyInput($inputNewsletter);
+        
+        $check = Utilities::validazione($inputNewsletter, $_POST['emailNewsletter'], $info);
 
         if ($check) {
             $error = false;
@@ -62,14 +53,11 @@ if ($database) {
     }
     
     if (isset($_POST['inviaMessaggio'])) {
-        foreach ($inputsMessage as $input) {
-            if (!isset($_POST[$input['id']]) || empty($_POST[$input['id']])) {
-                $info = str_replace("*error" . $input['id'] . "*", "<p class=\"col4 error\">Il campo " . $input['id'] . " è richiesto. Si prega di inserirlo.</p>", $info);
-            }
-        }
-
+        
+        Utilities::checkEmptyInputs($inputsMessage);
+        
         foreach ($inputsMessage as $input)
-            $check[] = validazione($input, $_POST[$input['id']], $info);
+            $check[] = Utilities::validazione($input, $_POST[$input['id']], $info);
         
         if(isset($_POST['testo']))
             $info = str_replace("*testo*", $_POST['testo'], $info);
