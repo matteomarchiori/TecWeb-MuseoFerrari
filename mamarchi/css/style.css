@@ -148,7 +148,7 @@ a:visited{
     margin-bottom:0.5em;
     text-align:right;
 }
-.infomodello span{
+.infomodello ul li span:first-child{
     font-weight: bold;
     float:left;
 }
