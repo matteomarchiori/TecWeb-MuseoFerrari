@@ -17,7 +17,7 @@
             $pagina=1;
         $offset=($pagina*$righeVisibili)-$righeVisibili;
         $nAutomobili = Database::selectNumberAutoModels($search);
-        if(isset($nAutomobili)){
+        if(isset($nAutomobili) && $nAutomobili>0){
             $modelliPagina="";
             $nPagine=ceil($nAutomobili/$righeVisibili);
             $automobili = Database::selectAutoModels($search,$righeVisibili,$offset);
@@ -61,7 +61,7 @@
             $modelli = str_replace("*paginaback*","",$modelli);
             $modelli = str_replace("*paginacorrente*","",$modelli);
             $modelli = str_replace("*paginanext*","",$modelli);
-            $modelli = str_replace("*nessunrisultato*",'<p class="error">Nessun modello corrispondente alla ricerca: "'.$search.'"</p><a href="./modelli-esposti?pagina=1">Torna alla pagina modelli esposti</a>',$modelli);
+            $modelli = str_replace("*nessunrisultato*",'<p class="error">Nessun modello corrispondente alla ricerca: "'.$search.'"</p><a href="./modelli-esposti">Torna ai modelli esposti</a>',$modelli);
             echo $modelli;
         }
     }
