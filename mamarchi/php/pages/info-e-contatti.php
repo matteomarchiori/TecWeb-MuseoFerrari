@@ -86,7 +86,7 @@ if ($database) {
         } else
             $error = false;
         if ($error)
-            $info = str_replace("*statusmessaggio*", "<p class=\"col-4 error\" id=\"statusMessaggio\">Si è verificato un errore non previsto. Puoi sempre scrivere un'<span xml:lang="en">email</span> a <a href='mailto:museoferrariunipd@gmail.com'>museoferrariunipd@gmail.com</a>.</p>", $info);
+            $info = str_replace("*statusmessaggio*", "<p class=\"col-4 error\" id=\"statusMessaggio\">Si è verificato un errore non previsto. Puoi sempre scrivere un'<span xml:lang=\"en\">email</span> a <a href='mailto:museoferrariunipd@gmail.com'>museoferrariunipd@gmail.com</a>.</p>", $info);
     }
 
     $info = str_replace("*statusnewsletter*", "", $info);
