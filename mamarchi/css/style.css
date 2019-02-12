@@ -224,6 +224,19 @@ a:visited{
 .pulsantePag a{
     text-decoration:none;
 }
+
+#current p{
+    text-align:center;
+}
+
+.vuotoSinistro{
+    margin-left:33.3%;
+}
+
+.vuotoDestro{
+    margin-right:33.3%;
+}
+
 #next, #back{
     color:white;
     text-align:center;

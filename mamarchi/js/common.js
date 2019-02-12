@@ -241,6 +241,20 @@ function validazioneDataMostra(giorno, mese, anno, check){
     request.send();
 }
 
+function pulsanti(){
+    if(window.innerWidth >= 830){
+        var back = document.getElementById('pulsanteBack');
+        var numpagina = document.getElementById('numPagina');
+        var next = document.getElementById('pulsanteNext');
+        if(back===null && next===null){
+            numpagina.className += " vuotoSinistro vuotoDestro ";
+        }
+        else if(back===null){
+            numpagina.className += " vuotoSinistro ";
+        }
+    }
+}
+
 window.onresize = function () {
     mobile();
 };

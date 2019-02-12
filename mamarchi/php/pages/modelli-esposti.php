@@ -1,6 +1,10 @@
 <?php
     require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . "database" . DIRECTORY_SEPARATOR . "database.php";
     use Database\Database;
+    
+    require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . "common" . DIRECTORY_SEPARATOR . "utilities.php";
+    use Utilities\Utilities;
+    
     $database = new Database();
     if($database){
         $modelli = file_get_contents(dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . "html" . DIRECTORY_SEPARATOR . "pages" . DIRECTORY_SEPARATOR . "modelli-esposti.html");
@@ -18,6 +22,8 @@
         $offset=($pagina*$righeVisibili)-$righeVisibili;
         $nAutomobili = Database::selectNumberAutoModels($search);
         if(isset($nAutomobili) && $nAutomobili>0){
+            $modelli = str_replace("*opencontainer*","<div class='container'>",$modelli);
+            $modelli = str_replace("*closecontainer*","</div>",$modelli);
             $modelliPagina="";
             $nPagine=ceil($nAutomobili/$righeVisibili);
             $automobili = Database::selectAutoModels($search,$righeVisibili,$offset);
@@ -41,27 +47,33 @@
                 $modelliPagina.=$modello;
             }
             $modelli = str_replace("*modelliesposti*",$modelliPagina,$modelli);
-            if($pagina>1) 
-                $modelli = str_replace("*paginaback*","<div id='back'><a href='./modelli-esposti?pagina=".($pagina-1)."' tabindex='8'>INDIETRO</a></div>",$modelli);
-            else 
-                $modelli = str_replace("*paginaback*","",$modelli);
-            $modelli = str_replace("*paginacorrente*","<div id='current'><p>$pagina</p></div>",$modelli);
-            if($pagina<$nPagine) 
-                $modelli = str_replace("*paginanext*","<div id='next'><a href='./modelli-esposti?pagina=".($pagina+1)."' tabindex='9'
-                >AVANTI</a></div>",$modelli);
-            else 
-                $modelli = str_replace("*paginanext*","",$modelli);
+            if($pagina>1){
+                if ($counter > 0) Utilities::checkCounter($counter,$tabIndex);
+                $modelli = str_replace("*paginaback*","<div class='pulsantePag' id='pulsanteBack'><div id='back'><a href='./modelli-esposti?pagina=".($pagina-1)."' tabindex='$tabIndex'>INDIETRO</a></div></div>",$modelli,$counter);
+            }
+            $modelli = str_replace("*paginacorrente*","<div class='pulsantePag' id='numPagina'><div id='current'><p>$pagina</p></div></div>",$modelli);
+            if($pagina<$nPagine){
+                if ($counter > 0) Utilities::checkCounter($counter,$tabIndex);
+                $modelli = str_replace("*paginanext*","<div class='pulsantePag' id='pulsanteNext'><div id='next'><a href='./modelli-esposti?pagina=".($pagina+1)."' tabindex='$tabIndex'>AVANTI</a></div></div>",$modelli,$counter);
+            }
             $modelli = str_replace("*nessunrisultato*","",$modelli);
             $modelli = str_replace("*error*","",$modelli);
-            echo $modelli;
         }
         else{
-            $modelli = str_replace("*modelliesposti*","",$modelli);
-            $modelli = str_replace("*error*","",$modelli);
-            $modelli = str_replace("*paginaback*","",$modelli);
-            $modelli = str_replace("*paginacorrente*","",$modelli);
-            $modelli = str_replace("*paginanext*","",$modelli);
             $modelli = str_replace("*nessunrisultato*",'<p class="error">Nessun modello corrispondente alla ricerca: "'.$search.'"</p><a href="./modelli-esposti">Torna ai modelli esposti</a>',$modelli);
-            echo $modelli;
         }
+        $modelli = str_replace("*opencontainer*","",$modelli);
+        $modelli = str_replace("*closecontainer*","",$modelli);
+        $modelli = str_replace("*paginaback*","",$modelli);
+        $modelli = str_replace("*paginanext*","",$modelli);
+        $modelli = str_replace("*modelliesposti*","",$modelli);
+        $modelli = str_replace("*error*","",$modelli);
+        $modelli = str_replace("*paginaback*","",$modelli);
+        $modelli = str_replace("*paginacorrente*","",$modelli);
+        $modelli = str_replace("*paginanext*","",$modelli);
+        if ($counter > 0) Utilities::checkCounter($counter,$tabIndex);
+        $modelli = str_replace("*tabindextestocerca*",$tabIndex,$modelli,$counter);
+        if ($counter > 0) Utilities::checkCounter($counter,$tabIndex);
+        $modelli = str_replace("*tabindexcerca*",$tabIndex,$modelli,$counter);
+        echo $modelli;
     }

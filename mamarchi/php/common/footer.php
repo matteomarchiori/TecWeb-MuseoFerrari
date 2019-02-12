@@ -13,6 +13,9 @@ $footer = str_replace("*bottonetotop*","<p><a href=\"#header\" tabindex=\"$tabIn
 
 
 switch ($last_uri_parts[0]){
+    case "modelli-esposti":
+        $footer = str_replace("*script*",'<script type="text/javascript" src="./js/modelli-esposti.js"></script>',$footer);
+		break;
     case "biglietti":
 		$footer = str_replace("*script*",'<script type="text/javascript" src="./js/biglietti.js"></script>',$footer);
 		break;
