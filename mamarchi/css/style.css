@@ -7,6 +7,10 @@
     max-width:100%;
 }
 
+p{
+    text-align:left;
+}
+
 body {
     max-width: 1200px;
     min-width: 264px;
@@ -103,7 +107,7 @@ a:visited{
 }
 
 #formRicerca label {
-   background-color:#333333;
+    background-color:#333333;
     color:white;
     text-align:center;
 }
@@ -111,7 +115,7 @@ a:visited{
     float:right;
     /*border-radius: 0.4em;*/
     border:2px solid #333333;
-	margin-bottom:1em;
+    margin-bottom:1em;
 }
 #formRicerca input[type=text]{
     border:none;
@@ -171,16 +175,16 @@ a:visited{
 }
 /*MOSTRE*/
 .riquadro{
-	background-color:white;
-	margin-bottom: 2em;
+    background-color:white;
+    margin-bottom: 2em;
 }
 #elencoMostre{
-	text-align:center;
+    text-align:center;
 }
 #elencoMostre ul {
-	list-style-type:none;
-	background-color:white;
-	width: 50%;
+    list-style-type:none;
+    background-color:white;
+    width: 50%;
     margin: auto;
 }
 #elencoMostre li {
@@ -203,19 +207,19 @@ a:visited{
 .tablemodelli{
     width:100%;
     margin-top: 0.5em; 
-	border-collapse:collapse;
-	border-top:2px solid #333333;
+    border-collapse:collapse;
+    border-top:2px solid #333333;
 }
 .tablemodelli td{
     background-color:white;
     padding:0.4em;
-	border-bottom:2px solid #333333;
+    border-bottom:2px solid #333333;
 }
 .tablemodelli th{
     background-color:#cccccc;
     text-align: left;
     padding: 0.4em;
-	border-bottom:2px solid #333333;
+    border-bottom:2px solid #333333;
 }
 .pulsantePag a{
     text-decoration:none;
@@ -249,15 +253,15 @@ a:visited{
 }
 
 #prenotabiglietti p, #prenotabiglietti h1{
-	padding:0.5em;
+    padding:0.5em;
 }
 
 #prenotabiglietti h1{
-	font-size:1.3em;
+    font-size:1.3em;
 }
 #prenotabiglietti ul{
-	margin-left:3em;
-	margin-bottom:0.5em;
+    margin-left:3em;
+    margin-bottom:0.5em;
 }
 .error{
     color:#990000;
@@ -275,18 +279,18 @@ a:visited{
     max-width:100%;
 }
 label{
-	display:block;
-	padding-bottom:0.2em;
-	padding-top:0.2em;
+    display:block;
+    padding-bottom:0.2em;
+    padding-top:0.2em;
 }
 #newsletter fieldset{
-	padding:0;
-	margin:0;
-	margin-bottom:1em;
+    padding:0;
+    margin:0;
+    margin-bottom:1em;
     width: 50%;
 }
 #newsletter label{
-	display:inline;
+    display:inline;
 }
 #newsletter h1{
     margin-bottom:0.3em;
@@ -298,23 +302,23 @@ label{
     margin-bottom:0.3em;
 }
 #contattaci fieldset{
-	padding:0;
-	margin:0;
-	margin-top:1em;
-	margin-bottom:1em;
+    padding:0;
+    margin:0;
+    margin-top:1em;
+    margin-bottom:1em;
 }
 
 fieldset{
     padding:0.5em;
-	background-color:#cccccc;
-	margin:0.5em;
-	border:none;
+    background-color:#cccccc;
+    margin:0.5em;
+    border:none;
 }
 legend{
-	font-size:1.1em;
-	background-color:#333333;
-	color:white;
-	padding:0.3em 1em 0.3em 1em;
+    font-size:1.1em;
+    background-color:#333333;
+    color:white;
+    padding:0.3em 1em 0.3em 1em;
 }
 
 fieldset > *{
@@ -322,25 +326,25 @@ fieldset > *{
 }
 
 input, select{
-	border:none;
-	padding:0.3em;
+    border:none;
+    padding:0.3em;
     background-color:white;
 }
 
 .formfield input[type=submit], input[type=reset]{
-	border:none;
-	background-color:#333333;
-	color:white;
-	padding:0.3em 1em 0.3em 1em;
+    border:none;
+    background-color:#333333;
+    color:white;
+    padding:0.3em 1em 0.3em 1em;
     cursor:pointer;
 }
 
 textarea{
-	border:none;
-	padding:0.5em;
-	resize:none;
-	width:95%;
-	margin-bottom:0.5em;
+    border:none;
+    padding:0.5em;
+    resize:none;
+    width:95%;
+    margin-bottom:0.5em;
 }
 
 #maps{
@@ -376,7 +380,7 @@ textarea{
     padding:2em;
     text-align:center;
     background-color:#333333;
-	color:white;
+    color:white;
 }
 
 #footer p{
