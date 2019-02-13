@@ -44,7 +44,7 @@ if ($database) {
                             . "Cordiali saluti\n"
                             . "-- \n"
                             . "Museo Ferrari";
-                    $to = $_POST['email'];
+                    $to = $_POST['emailNewsletter'];
                     $error = !$email::sendEmail($subject, $message, $to, "");
                     if(!$error)
                         $info = str_replace("*statusnewsletter*", "<p class=\"col-4 status\" id=\"statusNewsletter\">Grazie per esserti iscritto alla nostra newsletter.</p>", $info);
