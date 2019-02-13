@@ -14,7 +14,7 @@ class Email {
     const HOST = 'smtp.gmail.com';
     const SMTPAUTH = true;
     const USERNAME = 'museoferrariunipd@gmail.com';
-    const PASSWORD = 'museoferrariunipd/tecweb';
+    const PASSWORD = 'Muse0Ferrar1/11';
     const SMTPSECURE = 'tls';
     const PORT = 587;
     const FROMMAIL = 'museoferrariunipd@gmail.com';
