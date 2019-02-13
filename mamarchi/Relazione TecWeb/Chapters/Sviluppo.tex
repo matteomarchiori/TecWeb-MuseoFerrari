@@ -23,8 +23,6 @@ La prima consente di impostare un file da cui far partire l'elaborazione nel cas
 La seconda viene normalmente usata nel caso di richieste a risorse inesistenti.
 Nel nostro caso la direttiva è stata usata in modo molto ampio: ogni risorsa richiesta che non è l'homepage ricade in questa seconda istruzione.
 Viene usata dal gruppo in questo modo per implementare il meccanismo tramite controller centrale delle richieste realizzato in un unico file PHP.
-L'idea iniziale era quella di fornire un aiuto all'utente nel caso volesse raggiungere una pagina attraverso la digitazione dell'url, poiché con questo meccanismo è possibile associare un numero indefinito di url a un'unica risorsa (basta aggiungere uno / e il nome corretto della risorsa alla fine dell'url per ottenere ugualmente la risorsa), e disaccoppiando il concetto di url da quello di percorso fisico della risorsa richiesta, privilegiando in tal modo l'utente, anche a discapito delle tre leggi del web di Tim B. Lee.
-In seguito l'idea è stata abbandonata a causa della richiesta di porre degli url relativi per le risorse nella consegna del progetto, poiché in tal caso l'url viene interpretato come path.\\Viene comunque mantenuto il controller a gestione centrale.
 
 \subsection{MySQL e PHP}
 Il lato server è una parte molto importante e consiste nell'elaborazione dei dati che saranno poi inviati al client. Il database che viene utilizzato è stato sviluppato per la gestione delle seguenti informazioni:
