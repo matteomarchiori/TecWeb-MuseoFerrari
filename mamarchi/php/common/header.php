@@ -59,7 +59,7 @@ $header = str_replace("*linkhome*","<li><a href='./' xml:lang='en' tabindex=\"$t
 if ($counter > 0) Utilities::checkCounter($counter,$tabIndex);
 $header = str_replace("*linkmostre*","<li><a href='./mostre' tabindex=\"$tabIndex\">Mostre</a></li>",$header,$counter);
 if ($counter > 0) Utilities::checkCounter($counter,$tabIndex);
-$header = str_replace("*linkmodelli*","<li><a href='./modelli-esposti?pagina=1' tabindex=\"$tabIndex\">Modelli esposti</a></li>",$header,$counter);
+$header = str_replace("*linkmodelli*","<li><a href='./modelli-esposti' tabindex=\"$tabIndex\">Modelli esposti</a></li>",$header,$counter);
 if ($counter > 0) Utilities::checkCounter($counter,$tabIndex);
 $header = str_replace("*linkbiglietti*","<li><a href='./biglietti' tabindex=\"$tabIndex\">Biglietti</a></li>",$header,$counter);
 if ($counter > 0) Utilities::checkCounter($counter,$tabIndex);
