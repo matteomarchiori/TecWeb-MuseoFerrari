@@ -4,12 +4,15 @@ body{
 }
 
 #logo{
-    max-width:100%;
-    max-height:7em;
+    max-height:6.5em;
+}
+
+#logocontainer{
+    max-height:6.5em;
 }
 
 #header{
-    min-height:7em;
+    min-height:6.5em;
 }
 
 #menu{

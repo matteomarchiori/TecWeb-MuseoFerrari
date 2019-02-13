@@ -21,7 +21,11 @@ body {
 }
 
 #logo {
-    max-width:10em;
+    max-height:5em;
+}
+
+#logocontainer{
+    max-height:5em;
 }
 
 #hamburger {
