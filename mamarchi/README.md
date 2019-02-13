@@ -1,8 +1,8 @@
 ﻿# TecWeb-MuseoFerrari
 
 # TODO
-test contrasto 
-link visitati anche nella nav bar e gestire tutti i link 
+test contrasto
+link visitati anche nella nav bar e gestire tutti i link
 campi obbligatori
 descrizioni nelle immagini
 traformre in lista le tabelle motivare in relazione
@@ -13,7 +13,7 @@ saltare intestazione
 
 ## Matteo (DOC)
 - Sito
-  - php biglietti che generi il pdf e che info e contatti invvi l'email
+  - php biglietti (Aggiungere possibilità di acquistare più biglietti nello stesso ordine)
   - ajax date mostre
   - varie robe che sai te (ecmascript 3)
   - pulsante toTop

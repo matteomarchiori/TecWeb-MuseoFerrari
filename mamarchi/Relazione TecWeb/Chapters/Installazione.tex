@@ -1,8 +1,17 @@
 \section{Installazione}
-In questa sezione si specifica i requisiti necessari per la corretta installazione del sito.
+In questa sezione vengono specificati i requisiti necessari per la corretta installazione del sito.
 \subsection{Requisiti}
 \begin{itemize}
-\item Server HTTP preferibilmente con Apache installato
-\item PHP versione 7.0 o superiore
-\item Un database engine compatibile ad esempio MariaDB
+\item Server HTTP Apache;
+\item PHP versione 7.0 o superiore;
+\item Un database engine compatibile, ad esempio MariaDB.
 \end{itemize}
+
+\subsection{Configurazione}
+\begin{itemize}
+\item Supporto alle istruzioni relative a DirectoryIndex e FallbackResource di Apache;
+\item Estensione mysqli di PHP.
+\end{itemize}
+Non è invece richiesta l'abilitazione del modulo rewrite di Apache.\\
+È possibile usare un server HTTP diverso da Apache, ma in tal caso bisogna fare in modo che tutte le richieste puntino al file header.php, in modo da preservare il comportamento del sito.
+In caso il sito venga spostato in una directory diversa, bisogna assicurarsi che le istruzioni DirectoryIndex e FallbackResource puntino al file header.php.
