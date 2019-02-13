@@ -24,7 +24,6 @@ body{
 }
 
 #menu li{
-    xtext-align:center;
 	display:initial;
     margin:-3px;
 	padding:0.8em;
@@ -34,11 +33,10 @@ body{
 #menu > li:not(#currentLink){
     padding-left: 0.2em;
     padding-right: 0.2em;
-    xbackground-color: #f1f1f1;
 }
 
 #menu > li:last-of-type, #menu > li:first-of-type {
-  margin-bottom:auto;
+	margin-bottom:auto;
 }
 
 #menu li > a{
@@ -96,37 +94,30 @@ body{
 .riquadro{
 	padding:2em;
 }
+
 #elencoMostre ul {
 	padding:1em;
 }
+
 #presentazionegenerale{
     padding-left:6em;
     padding-right:6em;
 }
+
 #presentazionegenerale p{
     margin-top:1em;
 }
-/*
-.tablemodelli td{
-    padding:0.5em;
-}
 
-.tablemodelli th{
-    padding: 0.5em;
-}
-*/
 .infomodello{
 	margin-bottom:0.9em;
     padding-right:2em;
 }
 
-.pulsantePag a{
-	xtext-decoration:none;
-}
 .pulsantePag{
 	width:33.3%;
 	margin-top:2em;
 }
+
 #next, #back, #current{
 	width:50%;
 }
@@ -146,6 +137,7 @@ body{
 #newsletter, #comeRaggiungerci, #contattaci{
 	padding:1em;
 }
+
 #newsletter fieldset{
     width:75%;
 }
@@ -174,9 +166,11 @@ body{
 	width:33.33%;
     margin:auto;
 }
+
 .center{
 	text-align:center;
 }
+
 .col-xl-1 {width: 25%;}
 .col-xl-2 {width: 50%;}
 .col-xl-3 {width: 75%;}
