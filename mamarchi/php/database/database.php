@@ -5,9 +5,9 @@ namespace Database;
 class Database {
 
     const HOST_DB = "localhost";
-    const USERNAME = "museoferrariunipd";
-    const PASSWORD = "Muse0Ferrar1/11";
-    const DB_NAME = "museo-ferrari";
+    const USERNAME = "gperon";
+    const PASSWORD = "ohjo3aiXohthooT2";
+    const DB_NAME = "gperon";
 
     private static $connection;
 
