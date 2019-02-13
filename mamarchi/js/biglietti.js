@@ -25,7 +25,7 @@ window.onload = function () {
         {id: "nome", regexp: new RegExp("^[a-zA-Z]{1,15}$"), output: "Il campo Nome inserito non è corretto. Rispettare il formato indicato."},
         {id: "cognome", regexp: new RegExp("^[a-zA-Z]{1,15}$"), output: "Il campo Cognome inserito non è corretto. Rispettare il formato indicato."},
         {id: "telefono", regexp: new RegExp("^[0-9]{1,10}$"), output: "Il campo Telefono inserito non è corretto. Rispettare il formato indicato."},
-        {id: "email", regexp: new RegExp("^[a-zA-Z0-9.:_-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$"), output: "Il campo <span xml:lang="en">Email</span> inserito non è corretto. Rispettare il formato indicato."},
+        {id: "email", regexp: new RegExp("^[a-zA-Z0-9.:_-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$"), output: "Il campo <span xml:lang=\"en\">Email</span> inserito non è corretto. Rispettare il formato indicato."},
         {id: "comune", regexp: new RegExp("^[a-zA-Z]{1,15}$"), output: "Il campo Comune inserito non è corretto. Rispettare il formato indicato."},
         {id: "citta", regexp: new RegExp("^[a-zA-Z]{1,15}$"), output: "Il campo Città inserito non è corretto. Rispettare il formato indicato."},
         {id: "indirizzo", regexp: new RegExp("^[a-zA-Z]{1,10}\\s[a-zA-Z\\s]{1,30}\\s[0-9]{1,4}$"), output: "Il campo Indirizzo inserito non è corretto. Rispettare il formato indicato."},

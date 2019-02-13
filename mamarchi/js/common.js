@@ -71,39 +71,7 @@ function mostraErrore(container, testo) {
     togliErrore(container);
     var paragraph = document.createElement("p");
     paragraph.className = "col4 error";
-    paragraph.appendChild(document.createTextNode(testo));
-    container.appendChild(paragraph);
-}
-
-function validazione(input, check) {
-    var i = document.getElementById(input.id);
-    check[input.id] = input.regexp.test(i.value);
-    if (check[input.id]) {
-        togliErrore(i.parentNode.parentNode);
-    } else {
-        mostraErrore(i.parentNode.parentNode, input.output);
-    }
-}
-
-function validazioneOnBlur(input, check) {
-    var i = document.getElementById(input.id);
-    i.onblur = function () {
-        validazione(input, check);
-    };
-}
-
-function togliErrore(container) {
-    var figli = container.childNodes;
-    if (hasClass(figli[figli.length - 1], "error")) {
-        container.removeChild(figli[figli.length - 1]);
-    }
-}
-
-function mostraErrore(container, testo) {
-    togliErrore(container);
-    var paragraph = document.createElement("p");
-    paragraph.className = "col4 error";
-    paragraph.appendChild(document.createTextNode(testo));
+    paragraph.innerHTML = testo;
     container.appendChild(paragraph);
 }
 
