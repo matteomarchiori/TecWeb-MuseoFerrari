@@ -24,7 +24,7 @@ body{
 }
 
 #menu li{
-    text-align:center;
+    xtext-align:center;
 	display:initial;
     margin:-3px;
 	padding:0.8em;
@@ -34,7 +34,7 @@ body{
 #menu > li:not(#currentLink){
     padding-left: 0.2em;
     padding-right: 0.2em;
-    background-color: #f1f1f1;
+    xbackground-color: #f1f1f1;
 }
 
 #menu > li:last-of-type, #menu > li:first-of-type {
@@ -42,7 +42,7 @@ body{
 }
 
 #menu li > a{
-    padding:0.6em;/*piccola diff tra li attivo e a*/
+    padding:0.6em;
     display:inline;
     width:unset;
     height:unset;
@@ -106,7 +106,7 @@ body{
 #presentazionegenerale p{
     margin-top:1em;
 }
-
+/*
 .tablemodelli td{
     padding:0.5em;
 }
@@ -114,14 +114,14 @@ body{
 .tablemodelli th{
     padding: 0.5em;
 }
-
+*/
 .infomodello{
 	margin-bottom:0.9em;
     padding-right:2em;
 }
 
 .pulsantePag a{
-	text-decoration:none;
+	xtext-decoration:none;
 }
 .pulsantePag{
 	width:33.3%;
@@ -145,6 +145,9 @@ body{
 
 #newsletter, #comeRaggiungerci, #contattaci{
 	padding:1em;
+}
+#newsletter fieldset{
+    width:75%;
 }
 
 #maps{
