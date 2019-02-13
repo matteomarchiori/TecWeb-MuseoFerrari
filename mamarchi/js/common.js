@@ -3,14 +3,14 @@ function setMobile(element){
 }
 
 function hasClass(element, className) {
-    return (' ' + element.className + ' ').indexOf(' ' + className+ ' ') > -1;
+    return (" " + element.className + " ").indexOf(" " + className + " ") > -1;
 }
 
 function removeClass(element, nomeClasse) {
-    element.className = element.className.replace(new RegExp('\\b' + nomeClasse + '\\b'),'');
-	if(element.className === "  "){
-		element.className = "";
-	}
+    element.className = element.className.replace(new RegExp("\\b" + nomeClasse + "\\b"),"");
+    if(element.className == "  "){
+        element.className = "";
+    }
 }
 
 function mobile() {
@@ -20,9 +20,9 @@ function mobile() {
     if (burger.className == "" && window.innerWidth < 830) {
         setMobile(burger);
         setMobile(menu);
-    } else if (hasClass(burger, 'mobile') && window.innerWidth >= 830) {
-        removeClass(burger, 'mobile');
-        removeClass(menu, 'mobile');
+    } else if (hasClass(burger, "mobile") && window.innerWidth >= 830) {
+        removeClass(burger, "mobile");
+        removeClass(menu, "mobile");
     }
 }
 
@@ -30,10 +30,10 @@ function common(){
     mobile();
     document.getElementById("hamburger").onclick = function () {
         var menu = document.getElementById("menu");
-        if (hasClass(menu, 'show')) {
-            removeClass(menu, 'show');
+        if (hasClass(menu, "show")) {
+            removeClass(menu, "show");
         } else {
-            menu.className += 'show';
+            menu.className += "show";
         }
     };
 }
@@ -211,9 +211,9 @@ function validazioneDataMostra(giorno, mese, anno, check){
 
 function pulsanti(){
     if(window.innerWidth >= 830){
-        var back = document.getElementById('pulsanteBack');
-        var numpagina = document.getElementById('numPagina');
-        var next = document.getElementById('pulsanteNext');
+        var back = document.getElementById("pulsanteBack");
+        var numpagina = document.getElementById("numPagina");
+        var next = document.getElementById("pulsanteNext");
         if(back===null && next===null){
             numpagina.className += " vuotoSinistro vuotoDestro ";
         }

@@ -75,7 +75,7 @@ body {
     margin-bottom: 1em;
 }
 
-#menu > li:first-of-type {
+#menu > li:nth-of-type(2) {
     margin-top: 1em;
 }
 
